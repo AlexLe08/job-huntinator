@@ -71,7 +71,9 @@ Dependabot proposes monthly lockfile and action updates.
 in summer (EDT). You can also trigger it from **Actions → scrape → Run workflow**, which has an optional dry-run switch
 and an extra-args field such as `--hours 72` or `--feeds hn`.
 
-Repo secrets (**Settings → Secrets and variables → Actions**):
+Secrets go in the **`production` environment** (**Settings → Environments → production → Environment secrets**), not
+as repo secrets. The scrape job runs in that environment, and the environment's deployment branches are limited to
+`main`, so a workflow on any other branch can't read them.
 
 | Secret | Required | Value |
 |---|---|---|

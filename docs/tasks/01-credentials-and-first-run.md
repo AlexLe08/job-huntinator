@@ -24,7 +24,7 @@ doesn't exist. Repo: github.com/AlexLe08/job-huntinator (public). See README "Se
 7. Delete the local `state/` and `data/` afterwards. Production state should start fresh from the Actions cache.
 
 **Alex:**
-8. GitHub repo → Settings → Secrets and variables → Actions → add `GOOGLE_SHEET_ID`, and `GOOGLE_SERVICE_ACCOUNT_JSON`
+8. GitHub repo → Settings → Environments → `production` (deployment branches: `main` only) → Environment secrets → add `GOOGLE_SHEET_ID`, and `GOOGLE_SERVICE_ACCOUNT_JSON`
    (the **contents** of the key file, not the path). Optional: `ADZUNA_APP_ID`/`ADZUNA_APP_KEY` (free at developer.adzuna.com).
 9. Actions → **scrape** → Run workflow, first with dry_run checked, then unchecked.
 
