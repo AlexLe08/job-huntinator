@@ -12,7 +12,7 @@ import base64
 import json
 import os
 import re
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from html import unescape
 from html.parser import HTMLParser
 from urllib.parse import parse_qs, urlencode, urlsplit
@@ -113,9 +113,7 @@ def parse_message(msg: dict) -> list[Job]:
         return []
     sender = _header(msg, "From").lower()
     received = (
-        datetime.fromtimestamp(int(msg.get("internalDate", 0)) / 1000, tz=timezone.utc)
-        if msg.get("internalDate")
-        else None
+        datetime.fromtimestamp(int(msg.get("internalDate", 0)) / 1000, tz=UTC) if msg.get("internalDate") else None
     )
     if "linkedin" in sender:
         return parse_alert_html(html, "linkedin", received)
@@ -186,7 +184,7 @@ def parse_alert_html(html: str, kind: str | None, received: datetime | None) -> 
     p.feed(html)
     toks = p.tokens
     jobs: dict[str, Job] = {}
-    for i, (typ, href, text) in enumerate(toks):
+    for i, (_typ, href, text) in enumerate(toks):
         ref = _job_ref(href or "", kind)
         if not ref or not text or SKIP_TEXT.match(text):
             continue
@@ -196,7 +194,7 @@ def parse_alert_html(html: str, kind: str | None, received: datetime | None) -> 
             continue
         # The next few text tokens (not belonging to another job link) hold company / location.
         info: list[str] = []
-        for typ2, href2, text2 in toks[i + 1 : i + 6]:
+        for _typ2, href2, text2 in toks[i + 1 : i + 6]:
             if _job_ref(href2 or "", kind):
                 break
             if text2 and not SKIP_TEXT.match(text2) and text2 != text:

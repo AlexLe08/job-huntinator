@@ -1,10 +1,10 @@
 import json
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from jobscraper.models import Job
 from jobscraper.state import State
 
-T0 = datetime(2026, 11, 20, 12, 0, tzinfo=timezone.utc)
+T0 = datetime(2026, 11, 20, 12, 0, tzinfo=UTC)
 H = 48
 
 

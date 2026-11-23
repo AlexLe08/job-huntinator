@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import html
 import re
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from ..filters import FilterConfig, classify_title
 from ..http import PoliteClient
@@ -90,7 +90,7 @@ def normalize(hit: dict, cfg: FilterConfig | None = None) -> Job | None:
         location=location[:160],
         url=best_link(extract_links(raw), comment_url),
         remote=True if re.search(r"\bremote\b", first, re.I) else None,
-        posted_at=datetime.fromtimestamp(int(hit["created_at_i"]), tz=timezone.utc),
+        posted_at=datetime.fromtimestamp(int(hit["created_at_i"]), tz=UTC),
         compensation=extract_comp(first) or extract_comp(text),
         description=text,
         tier="hn",

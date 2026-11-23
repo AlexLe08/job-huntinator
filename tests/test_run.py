@@ -1,10 +1,11 @@
 """End-to-end pipeline tests with mocked HTTP (respx) and fixture payloads."""
 
 import json
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 import httpx
 import respx
+from conftest import load_fixture
 
 from jobscraper import cli
 from jobscraper.companies import Company
@@ -14,9 +15,7 @@ from jobscraper.http import PoliteClient
 from jobscraper.run import fetch_all, select
 from jobscraper.state import State
 
-from conftest import load_fixture
-
-NOW = datetime(2026, 11, 22, 12, 0, tzinfo=timezone.utc)
+NOW = datetime(2026, 11, 22, 12, 0, tzinfo=UTC)
 CFG = FilterConfig.load()
 
 

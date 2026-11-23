@@ -22,7 +22,7 @@ import json
 import os
 import tempfile
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -32,7 +32,7 @@ PRUNE_AFTER_DAYS = 60
 
 
 def _iso(dt: datetime | None) -> str | None:
-    return dt.astimezone(timezone.utc).isoformat(timespec="seconds") if dt else None
+    return dt.astimezone(UTC).isoformat(timespec="seconds") if dt else None
 
 
 def _dt(s: str | None) -> datetime | None:
@@ -48,7 +48,7 @@ class State:
 
     # ------------------------------------------------------------ io
     @classmethod
-    def load(cls, path: str | Path) -> "State":
+    def load(cls, path: str | Path) -> State:
         p = Path(path)
         if not p.exists():
             return cls(path=p)

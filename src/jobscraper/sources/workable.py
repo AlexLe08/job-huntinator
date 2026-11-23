@@ -22,10 +22,12 @@ def fetch(client: PoliteClient, company: Company) -> list[Job]:
 def normalize(raw: dict, company: Company) -> Job:
     locs = raw.get("locations") or []
     names = []
-    for l in locs or [raw]:
-        names.append(", ".join(filter(None, [l.get("city"), l.get("region") or l.get("state"), l.get("country")])))
+    for loc in locs or [raw]:
+        names.append(
+            ", ".join(filter(None, [loc.get("city"), loc.get("region") or loc.get("state"), loc.get("country")]))
+        )
     location = "; ".join(dict.fromkeys(n for n in names if n))
-    codes = {l.get("countryCode") for l in locs if l.get("countryCode")}
+    codes = {loc.get("countryCode") for loc in locs if loc.get("countryCode")}
     country = "US" if "US" in codes else (next(iter(codes)) if codes else raw.get("country"))
     remote = raw.get("telecommuting")
     if remote and "remote" not in location.lower():

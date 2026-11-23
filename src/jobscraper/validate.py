@@ -11,9 +11,8 @@ import yaml
 
 from .companies import Company
 from .http import FetchError, PoliteClient
-from .sources.base import AUTODETECT, COMPANY_SOURCES
 from .sources import workday
-
+from .sources.base import AUTODETECT, COMPANY_SOURCES
 
 # ATSes that rate-limit guessing: probe only the first N slug variants, with wider spacing.
 LIGHT_PROBE = {"workable": 3, "recruitee": 3}
@@ -191,7 +190,7 @@ def apply_fixes(yaml_path: str | Path, results: list[Result]) -> int:
     """Rewrite companies.yaml in place: apply corrections, disable dead boards. Keeps the header comment."""
     p = Path(yaml_path)
     raw = p.read_text()
-    header = "".join(l + "\n" for l in raw.splitlines() if l.startswith("#") and not l.startswith("  "))
+    header = "".join(line + "\n" for line in raw.splitlines() if line.startswith("#") and not line.startswith("  "))
     data = yaml.safe_load(raw)
     rows = data["companies"]
     by_key = {(r.company.ats, r.company.token, r.company.company): r for r in results}

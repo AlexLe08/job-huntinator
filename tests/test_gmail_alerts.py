@@ -1,9 +1,9 @@
 import base64
-from datetime import datetime, timezone
-
-from jobscraper.sources import gmail_alerts
+from datetime import UTC, datetime
 
 from conftest import FIXTURES
+
+from jobscraper.sources import gmail_alerts
 
 
 def gmail_message(html: str, sender: str, ts_ms: int = 1795000000000) -> dict:
@@ -31,7 +31,7 @@ def test_linkedin_alert_parsing():
     ]
     assert jobs[0].url == "https://www.linkedin.com/jobs/view/4012345678/"
     assert jobs[1].remote is True
-    assert jobs[0].posted_at == datetime.fromtimestamp(1795000000, tz=timezone.utc)
+    assert jobs[0].posted_at == datetime.fromtimestamp(1795000000, tz=UTC)
 
 
 def test_indeed_alert_parsing():
@@ -65,7 +65,7 @@ def test_fetch_lists_then_reads_messages():
 
     c = FakeClient()
     jobs = gmail_alerts.fetch(
-        c, {"query": "label:job-alerts newer_than:3d", "max_messages": 5}, datetime.now(timezone.utc), token="tok"
+        c, {"query": "label:job-alerts newer_than:3d", "max_messages": 5}, datetime.now(UTC), token="tok"
     )
     assert len(jobs) == 2  # same jobs in both messages -> deduped
     assert "q=label%3Ajob-alerts" in c.calls[0][0] and c.calls[0][1] == {"Authorization": "Bearer tok"}

@@ -10,8 +10,8 @@ This endpoint may change without notice; failures are logged per company and nev
 from __future__ import annotations
 
 import re
+from datetime import UTC, datetime, timedelta
 from urllib.parse import urlsplit
-from datetime import datetime, timedelta, timezone
 
 from ..companies import Company
 from ..http import PoliteClient
@@ -40,7 +40,7 @@ def parse_posted_on(text: str | None, now: datetime | None = None) -> datetime |
     """'Posted Today' / 'Posted Yesterday' / 'Posted 3 Days Ago' / 'Posted 30+ Days Ago' -> approximate datetime."""
     if not text:
         return None
-    now = now or datetime.now(timezone.utc)
+    now = now or datetime.now(UTC)
     t = text.lower()
     if "today" in t:
         return now

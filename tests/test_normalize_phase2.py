@@ -1,12 +1,12 @@
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
+
+from conftest import load_fixture
 
 from jobscraper.companies import Company
 from jobscraper.filters import FilterConfig, classify_location
 from jobscraper.sources import recruitee, smartrecruiters, workable, workday
 
-from conftest import load_fixture
-
-NOW = datetime(2026, 11, 23, 12, 0, tzinfo=timezone.utc)
+NOW = datetime(2026, 11, 23, 12, 0, tzinfo=UTC)
 
 
 class FakeClient:
@@ -53,7 +53,7 @@ def test_recruitee_normalize():
     j = jobs[0]
     assert j.title == "Copywriter" and j.country == "NL"
     assert j.url == "https://careers.bunq.com/o/copywriter-3"
-    assert j.posted_at == datetime(2026, 11, 18, 16, 23, 32, tzinfo=timezone.utc)
+    assert j.posted_at == datetime(2026, 11, 18, 16, 23, 32, tzinfo=UTC)
     assert "Amsterdam" in j.location and j.description
 
 

@@ -34,8 +34,8 @@ def normalize(raw: dict, company: Company) -> Job:
     location = (
         "; ".join(
             dict.fromkeys(
-                ", ".join(filter(None, [l.get("city") or l.get("name"), l.get("state"), l.get("country")]))
-                for l in locs
+                ", ".join(filter(None, [loc.get("city") or loc.get("name"), loc.get("state"), loc.get("country")]))
+                for loc in locs
             )
         )
         or raw.get("location")

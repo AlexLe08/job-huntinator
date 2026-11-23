@@ -37,11 +37,11 @@ class FilterConfig:
     title_similarity: float
 
     @classmethod
-    def load(cls, path: str | Path | None = None) -> "FilterConfig":
+    def load(cls, path: str | Path | None = None) -> FilterConfig:
         return cls.from_dict(yaml.safe_load(Path(path or DEFAULT_PATH).read_text()))
 
     @classmethod
-    def from_dict(cls, d: dict[str, Any]) -> "FilterConfig":
+    def from_dict(cls, d: dict[str, Any]) -> FilterConfig:
         t, loc, rf = d["title"], d["location"], d["red_flags"]
         senior_mode = d.get("senior_mode", "flag")
         if senior_mode not in ("flag", "drop"):

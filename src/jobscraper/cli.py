@@ -34,11 +34,11 @@ def cmd_validate(args: argparse.Namespace) -> int:
 
 def cmd_run(args: argparse.Namespace) -> int:
     from . import output
-    from .sources.base import COMPANY_SOURCES
     from .companies import load_companies
     from .filters import FilterConfig
     from .run import default_paths, fetch_aggregators, fetch_all, make_clients, make_enricher, now_utc, select
     from .sources.aggregators import enabled_feeds, load_settings
+    from .sources.base import COMPANY_SOURCES
     from .state import State
 
     load_dotenv(ROOT / ".env")

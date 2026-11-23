@@ -4,7 +4,7 @@ Their terms ask for attribution / link-back, so job URLs stay pointed at the boa
 from __future__ import annotations
 
 import xml.etree.ElementTree as ET
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from email.utils import parsedate_to_datetime
 
 from ..http import PoliteClient
@@ -104,7 +104,7 @@ def normalize_himalayas(raw: dict) -> Job:
         url=raw.get("applicationLink") or raw.get("guid") or "",
         remote=True,
         country=country if len(restrictions) == 1 else None,
-        posted_at=datetime.fromtimestamp(int(pub), tz=timezone.utc) if pub else None,
+        posted_at=datetime.fromtimestamp(int(pub), tz=UTC) if pub else None,
         compensation=_range(raw.get("minSalary"), raw.get("maxSalary"), period) or extract_comp(desc),
         department=", ".join(raw.get("parentCategories") or []) or None,
         description=desc,
@@ -125,7 +125,10 @@ def parse_wwr(xml: str) -> list[Job]:
     root = ET.fromstring(xml)
     out: list[Job] = []
     for item in root.iter("item"):
-        get = lambda tag: (item.findtext(tag) or "").strip()
+
+        def get(tag: str, item: ET.Element = item) -> str:
+            return (item.findtext(tag) or "").strip()
+
         company, _, title = get("title").partition(": ")
         if not title:
             company, title = "", company

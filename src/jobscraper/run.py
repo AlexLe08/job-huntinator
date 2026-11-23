@@ -4,15 +4,14 @@ from __future__ import annotations
 
 import logging
 from collections import Counter
+from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from .companies import Company
 from .dedupe import TrackerIndex
-from typing import Callable
-
 from .filters import FilterConfig, classify_location, classify_title, evaluate
 from .http import PoliteClient
 from .models import Job
@@ -69,8 +68,8 @@ def fetch_all(companies: list[Company], clients: dict[str, PoliteClient], worker
 
 
 def fetch_aggregators(feeds: dict[str, dict], now: datetime, cfg: FilterConfig) -> list[FeedResult]:
-    from .sources.aggregators import AGGREGATORS, FeedSkipped
     from .sources.adzuna import MissingCredentials
+    from .sources.aggregators import AGGREGATORS, FeedSkipped
     from .sources.gmail_alerts import MissingCredentials as GmailMissing
 
     def one(name: str) -> FeedResult | None:
@@ -172,7 +171,7 @@ def make_enricher(clients: dict[str, PoliteClient]) -> Callable[[Job, Company], 
 
 
 def now_utc() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 def make_clients() -> dict[str, PoliteClient]:

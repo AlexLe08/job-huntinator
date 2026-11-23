@@ -1,3 +1,5 @@
+from datetime import UTC
+
 import pytest
 
 from jobscraper.dedupe import TrackerIndex, job_key, normalize_company, normalize_url
@@ -110,11 +112,11 @@ def test_index_tolerates_short_rows_and_missing_tabs():
 
 
 def test_sheet_row_shape_and_formula_escaping():
-    from datetime import datetime, timezone
+    from datetime import datetime
 
     j = job()
     j.match_tier, j.tier, j.flags, j.compensation = 1, "boston", ["senior"], "$100K – $120K"
-    row = sheet_row(j, datetime(2026, 11, 22, 17, 0, tzinfo=timezone.utc))
+    row = sheet_row(j, datetime(2026, 11, 22, 17, 0, tzinfo=UTC))
     assert row == [
         "2026-11-22 12:00",
         "Acme",

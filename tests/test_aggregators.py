@@ -1,7 +1,8 @@
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 import httpx
 import respx
+from conftest import FIXTURES, load_fixture
 
 from jobscraper.companies import Company
 from jobscraper.discovery import find_boards, render_markdown, update_suggestions
@@ -12,10 +13,8 @@ from jobscraper.run import FeedResult, select
 from jobscraper.sources import adzuna, hn, remote_boards
 from jobscraper.state import State
 
-from conftest import FIXTURES, load_fixture
-
 CFG = FilterConfig.load()
-NOW = datetime(2026, 11, 17, 12, 0, tzinfo=timezone.utc)
+NOW = datetime(2026, 11, 17, 12, 0, tzinfo=UTC)
 
 
 def client():
