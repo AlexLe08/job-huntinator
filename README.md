@@ -34,10 +34,20 @@ About 270 company boards and 5–6 feeds take ~3 minutes per run.
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"
-pytest -q                                   # ~180 tests, all offline (fixtures)
+pip install -e ".[dev]"                     # or, for the exact CI versions: uv sync --locked --extra dev
+pytest -q                                   # ~190 tests, all offline (fixtures)
+ruff check . && ruff format --check .       # lint + format (CI enforces both)
 python -m jobscraper run --dry-run --explain   # live APIs, writes nothing
 ```
+
+Optional but recommended: `pip install pre-commit && pre-commit install`. It runs ruff and a
+[gitleaks](https://github.com/gitleaks/gitleaks) secret scan on every commit. VS Code picks up `.vscode/` (interpreter,
+pytest, format-on-save with Ruff) and suggests the extensions in `.vscode/extensions.json`. For `git blame` to skip the
+bulk-formatting commit, run `git config blame.ignoreRevsFile .git-blame-ignore-revs` once.
+
+**Dependencies** are pinned in `uv.lock`; CI installs exactly those versions (`uv sync --locked`), so a new upstream
+release can't break a scheduled run. After changing dependencies in `pyproject.toml`, run `uv lock` and commit the result.
+Dependabot proposes monthly lockfile and action updates.
 
 `--dry-run` prints matches and writes nothing: no sheet, no state, no JSON. Without sheet credentials, it skips tracker dedupe.
 
@@ -77,11 +87,17 @@ Caches unused for 7 days are evicted. That won't happen with two runs a day, and
 
 **Public-repo notes:**
 - Actions logs are public, so the workflow runs with `--quiet`, which logs counts only and never job titles or links.
+  `test_cli_quiet_failures_leak_no_titles_or_job_links` guards this, including the board and enrichment failure paths.
+- Workflow inputs reach the script only through environment variables (never `${{ }}` inside `run:`), so the
+  extra-args field can't inject shell commands. Every action is pinned to a commit SHA.
 - No artifacts are uploaded (public-repo artifacts can be downloaded by any signed-in GitHub user). In CI, matches
   only go to the sheet; the dated JSON is written for local runs.
-- GitHub **disables scheduled workflows after 60 days without repo activity**. Re-enable from the Actions tab, or push any commit.
+- GitHub **disables scheduled workflows after 60 days without repo activity**. The `keepalive` job in `scrape.yml`
+  re-enables the workflow through the API once a day, which resets that timer. If it ever lapses anyway, re-enable it
+  from the Actions tab.
 
-`tests.yml` runs pytest on every push/PR (Python 3.11 and 3.13).
+`tests.yml` runs on PRs and pushes to `main`: pytest on Python 3.11 and 3.13, plus a lint + audit job (ruff,
+[zizmor](https://docs.zizmor.sh/) for workflow security, and pip-audit for known-vulnerable dependencies).
 
 ## Adding companies
 

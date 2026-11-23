@@ -167,3 +167,40 @@ def test_cli_quiet_prints_no_job_details(tmp_path, monkeypatch, capsys):
     out = capsys.readouterr()
     assert "Frontend Engineer" not in out.out + out.err
     assert "1 new matches" in out.err
+
+
+@respx.mock
+def test_cli_quiet_failures_leak_no_titles_or_job_links(tmp_path, monkeypatch, capsys, caplog):
+    """CI logs are public. Even when boards and enrichment fail, --quiet output must hold no job titles or links."""
+    from jobscraper.http import FetchError
+
+    monkeypatch.delenv("GOOGLE_SHEET_ID", raising=False)
+    monkeypatch.setattr(cli, "ROOT", tmp_path)
+    monkeypatch.setattr("jobscraper.run.make_clients", clients)
+    monkeypatch.setattr("jobscraper.run.now_utc", lambda: NOW)
+    job_url = "https://job-boards.greenhouse.io/acme/jobs/7"
+
+    def make_enricher(_clients):
+        def enrich(job, company):
+            raise FetchError(f"giving up on {job.url}: HTTP 429 for {job.url}", 429)
+
+        return enrich
+
+    monkeypatch.setattr("jobscraper.run.make_enricher", make_enricher)
+    companies = tmp_path / "companies.yaml"
+    companies.write_text(
+        "companies:\n  - {company: Acme, ats: greenhouse, token: acme}\n  - {company: Beta, ats: lever, token: beta}\n"
+    )
+    no_desc = dict(gh_job(7, "Frontend Engineer, Zephyr Team"), content="")
+    respx.get("https://boards-api.greenhouse.io/v1/boards/acme/jobs").mock(
+        return_value=httpx.Response(200, json=gh_board(no_desc))
+    )
+    respx.get(url__startswith="https://api.lever.co/v0/postings/beta").mock(return_value=httpx.Response(500))
+    with caplog.at_level("WARNING"):
+        rc = cli.main(["run", "--dry-run", "--quiet", "--explain", "--no-feeds", "--companies", str(companies)])
+    assert rc == 0
+    out = capsys.readouterr()
+    logged = out.out + out.err + caplog.text
+    assert "enrich failed" in logged and "fetch failed" in logged  # both failure paths were exercised
+    assert "Frontend Engineer, Zephyr Team" not in logged
+    assert job_url not in logged and "/jobs/7" not in logged
