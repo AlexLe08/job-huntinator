@@ -1,9 +1,10 @@
 """Small text helpers shared by sources and filters."""
+
 from __future__ import annotations
 
 import html
 import re
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 _TAG_RE = re.compile(r"<[^>]+>")
 _BLOCK_RE = re.compile(r"</?(p|div|br|li|ul|ol|h[1-6]|tr)[^>]*>", re.I)
@@ -61,14 +62,14 @@ def parse_iso(value: str | None) -> datetime | None:
         dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
     except ValueError:
         return None
-    return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+    return dt if dt.tzinfo else dt.replace(tzinfo=UTC)
 
 
 def from_epoch_ms(value: int | float | str | None) -> datetime | None:
     if value in (None, ""):
         return None
     try:
-        return datetime.fromtimestamp(int(value) / 1000, tz=timezone.utc)
+        return datetime.fromtimestamp(int(value) / 1000, tz=UTC)
     except (TypeError, ValueError, OverflowError):
         return None
 

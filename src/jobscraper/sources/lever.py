@@ -32,7 +32,7 @@ def normalize(raw: dict, company: Company) -> Job:
     cats = raw.get("categories") or {}
     all_locs = cats.get("allLocations") or []
     location = cats.get("location") or ""
-    extra = [l for l in all_locs if l and l != location]
+    extra = [loc for loc in all_locs if loc and loc != location]
     if extra:
         location = "; ".join([location, *extra]) if location else "; ".join(extra)
 

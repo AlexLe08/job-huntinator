@@ -1,4 +1,5 @@
 """Polite HTTP client: clear UA, timeouts, retries with exponential backoff, spacing between requests."""
+
 from __future__ import annotations
 
 import logging
@@ -87,7 +88,7 @@ class PoliteClient:
     def close(self) -> None:
         self._client.close()
 
-    def __enter__(self) -> "PoliteClient":
+    def __enter__(self) -> PoliteClient:
         return self
 
     def __exit__(self, *exc: Any) -> None:

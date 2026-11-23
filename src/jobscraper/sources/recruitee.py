@@ -1,4 +1,5 @@
 """Recruitee public offers API (<company>.recruitee.com/api/offers/)."""
+
 from __future__ import annotations
 
 from ..companies import Company
@@ -30,9 +31,16 @@ def _salary(s: dict | None) -> str | None:
 
 def normalize(raw: dict, company: Company) -> Job:
     locs = raw.get("locations") or []
-    location = "; ".join(dict.fromkeys(
-        ", ".join(filter(None, [l.get("city") or l.get("name"), l.get("state"), l.get("country")])) for l in locs
-    )) or raw.get("location") or ""
+    location = (
+        "; ".join(
+            dict.fromkeys(
+                ", ".join(filter(None, [loc.get("city") or loc.get("name"), loc.get("state"), loc.get("country")]))
+                for loc in locs
+            )
+        )
+        or raw.get("location")
+        or ""
+    )
     if raw.get("remote") and "remote" not in location.lower():
         location = f"Remote - {location}" if location else "Remote"
     description = "\n".join(filter(None, [html_to_text(raw.get("description")), html_to_text(raw.get("requirements"))]))

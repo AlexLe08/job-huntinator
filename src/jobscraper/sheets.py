@@ -1,4 +1,5 @@
 """Google Sheets I/O. Reads Applications/Archive/Leads (and Scraper) for dedupe; only ever appends to Scraper."""
+
 from __future__ import annotations
 
 import json
@@ -48,6 +49,10 @@ def _col(header: list[str], *names: str) -> int | None:
     return None
 
 
+def _cell(row: list[str], i: int | None) -> str:
+    return row[i].strip() if i is not None and i < len(row) else ""
+
+
 def index_rows(tab_rows: dict[str, list[list[str]]]) -> TrackerIndex:
     """Build a dedupe index from {tab name: rows incl. header}. Columns are located by header name."""
     idx = TrackerIndex()
@@ -59,8 +64,7 @@ def index_rows(tab_rows: dict[str, list[list[str]]]) -> TrackerIndex:
         if li is None:
             log.warning("tab %s has no link column; matching on company+role only", tab)
         for row in rows[1:]:
-            get = lambda i: row[i].strip() if i is not None and i < len(row) else ""
-            idx.add(get(ci), get(ri), get(li))
+            idx.add(_cell(row, ci), _cell(row, ri), _cell(row, li))
     return idx
 
 

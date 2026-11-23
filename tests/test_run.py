@@ -1,9 +1,11 @@
 """End-to-end pipeline tests with mocked HTTP (respx) and fixture payloads."""
+
 import json
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 import httpx
 import respx
+from conftest import load_fixture
 
 from jobscraper import cli
 from jobscraper.companies import Company
@@ -13,9 +15,7 @@ from jobscraper.http import PoliteClient
 from jobscraper.run import fetch_all, select
 from jobscraper.state import State
 
-from conftest import load_fixture
-
-NOW = datetime(2026, 11, 22, 12, 0, tzinfo=timezone.utc)
+NOW = datetime(2026, 11, 22, 12, 0, tzinfo=UTC)
 CFG = FilterConfig.load()
 
 
@@ -24,9 +24,16 @@ def gh_board(*jobs):
 
 
 def gh_job(i, title, location="Remote - US", posted=NOW - timedelta(hours=3)):
-    return {"id": i, "title": title, "absolute_url": f"https://job-boards.greenhouse.io/acme/jobs/{i}",
-            "location": {"name": location}, "first_published": posted.isoformat(),
-            "updated_at": posted.isoformat(), "content": "&lt;p&gt;Build UIs in React.&lt;/p&gt;", "departments": []}
+    return {
+        "id": i,
+        "title": title,
+        "absolute_url": f"https://job-boards.greenhouse.io/acme/jobs/{i}",
+        "location": {"name": location},
+        "first_published": posted.isoformat(),
+        "updated_at": posted.isoformat(),
+        "content": "&lt;p&gt;Build UIs in React.&lt;/p&gt;",
+        "departments": [],
+    }
 
 
 def clients():
@@ -35,17 +42,27 @@ def clients():
 
 @respx.mock
 def test_pipeline_fresh_filtered_and_failure_tolerant():
-    respx.get("https://boards-api.greenhouse.io/v1/boards/acme/jobs").mock(return_value=httpx.Response(200, json=gh_board(
-        gh_job(1, "Frontend Engineer"),
-        gh_job(2, "Staff Frontend Engineer"),
-        gh_job(3, "Frontend Engineer", location="London, UK"),
-        gh_job(4, "Frontend Engineer II", posted=NOW - timedelta(days=20)),  # old -> flood guard
-        gh_job(5, "Senior Web Developer", location="Boston, MA"),
-    )))
-    respx.get("https://api.lever.co/v0/postings/spotify").mock(return_value=httpx.Response(200, json=load_fixture("lever_spotify.json")))
+    respx.get("https://boards-api.greenhouse.io/v1/boards/acme/jobs").mock(
+        return_value=httpx.Response(
+            200,
+            json=gh_board(
+                gh_job(1, "Frontend Engineer"),
+                gh_job(2, "Staff Frontend Engineer"),
+                gh_job(3, "Frontend Engineer", location="London, UK"),
+                gh_job(4, "Frontend Engineer II", posted=NOW - timedelta(days=20)),  # old -> flood guard
+                gh_job(5, "Senior Web Developer", location="Boston, MA"),
+            ),
+        )
+    )
+    respx.get("https://api.lever.co/v0/postings/spotify").mock(
+        return_value=httpx.Response(200, json=load_fixture("lever_spotify.json"))
+    )
     respx.get("https://api.ashbyhq.com/posting-api/job-board/broken").mock(return_value=httpx.Response(500))
-    companies = [Company("Acme", "greenhouse", "acme", "boston"), Company("Spotify", "lever", "spotify"),
-                 Company("Broken", "ashby", "broken")]
+    companies = [
+        Company("Acme", "greenhouse", "acme", "boston"),
+        Company("Spotify", "lever", "spotify"),
+        Company("Broken", "ashby", "broken"),
+    ]
     feeds = fetch_all(companies, clients())
     assert [f.error is not None for f in feeds] == [False, False, True]
 
@@ -57,8 +74,12 @@ def test_pipeline_fresh_filtered_and_failure_tolerant():
 
     # Second run, 6h later: one brand-new posting appears; earlier ones already reported.
     state.mark_reported([m.job.id for m in r.matches], NOW)
-    respx.get("https://boards-api.greenhouse.io/v1/boards/acme/jobs").mock(return_value=httpx.Response(200, json=gh_board(
-        gh_job(1, "Frontend Engineer"), gh_job(6, "UI Engineer", posted=NOW - timedelta(days=60)))))
+    respx.get("https://boards-api.greenhouse.io/v1/boards/acme/jobs").mock(
+        return_value=httpx.Response(
+            200,
+            json=gh_board(gh_job(1, "Frontend Engineer"), gh_job(6, "UI Engineer", posted=NOW - timedelta(days=60))),
+        )
+    )
     later = NOW + timedelta(hours=6)
     r2 = select(fetch_all(companies[:1], clients()), state, CFG, later)
     assert [m.job.title for m in r2.matches] == ["UI Engineer"]  # new on a known feed: fresh by first-seen
@@ -86,7 +107,8 @@ def test_cli_dry_run_writes_nothing(tmp_path, monkeypatch, capsys):
     companies = tmp_path / "companies.yaml"
     companies.write_text("companies:\n  - {company: Acme, ats: greenhouse, token: acme, tier: boston}\n")
     respx.get("https://boards-api.greenhouse.io/v1/boards/acme/jobs").mock(
-        return_value=httpx.Response(200, json=gh_board(gh_job(1, "Frontend Engineer"))))
+        return_value=httpx.Response(200, json=gh_board(gh_job(1, "Frontend Engineer")))
+    )
     state_path = tmp_path / "state" / "seen.json"
 
     rc = cli.main(["run", "--dry-run", "--no-feeds", "--companies", str(companies), "--state", str(state_path)])
@@ -104,11 +126,14 @@ def test_cli_no_sheet_run_writes_state_and_json_then_reports_once(tmp_path, monk
     monkeypatch.setattr(cli, "ROOT", tmp_path)
     monkeypatch.setattr("jobscraper.run.make_clients", clients)
     monkeypatch.setattr("jobscraper.run.now_utc", lambda: NOW)
-    monkeypatch.setattr("jobscraper.run.default_paths", lambda root: {"state": tmp_path / "seen.json", "matches": tmp_path / "matches"})
+    monkeypatch.setattr(
+        "jobscraper.run.default_paths", lambda root: {"state": tmp_path / "seen.json", "matches": tmp_path / "matches"}
+    )
     companies = tmp_path / "companies.yaml"
     companies.write_text("companies:\n  - {company: Acme, ats: greenhouse, token: acme}\n")
     respx.get("https://boards-api.greenhouse.io/v1/boards/acme/jobs").mock(
-        return_value=httpx.Response(200, json=gh_board(gh_job(1, "Frontend Engineer"))))
+        return_value=httpx.Response(200, json=gh_board(gh_job(1, "Frontend Engineer")))
+    )
 
     assert cli.main(["run", "--no-sheet", "--no-feeds", "--companies", str(companies)]) == 0
     data = json.loads((tmp_path / "matches" / "2026-11-22.json").read_text())
@@ -136,8 +161,46 @@ def test_cli_quiet_prints_no_job_details(tmp_path, monkeypatch, capsys):
     companies = tmp_path / "companies.yaml"
     companies.write_text("companies:\n  - {company: Acme, ats: greenhouse, token: acme}\n")
     respx.get("https://boards-api.greenhouse.io/v1/boards/acme/jobs").mock(
-        return_value=httpx.Response(200, json=gh_board(gh_job(1, "Frontend Engineer"))))
+        return_value=httpx.Response(200, json=gh_board(gh_job(1, "Frontend Engineer")))
+    )
     assert cli.main(["run", "--dry-run", "--quiet", "--explain", "--no-feeds", "--companies", str(companies)]) == 0
     out = capsys.readouterr()
     assert "Frontend Engineer" not in out.out + out.err
     assert "1 new matches" in out.err
+
+
+@respx.mock
+def test_cli_quiet_failures_leak_no_titles_or_job_links(tmp_path, monkeypatch, capsys, caplog):
+    """CI logs are public. Even when boards and enrichment fail, --quiet output must hold no job titles or links."""
+    from jobscraper.http import FetchError
+
+    monkeypatch.delenv("GOOGLE_SHEET_ID", raising=False)
+    monkeypatch.setattr(cli, "ROOT", tmp_path)
+    monkeypatch.setattr("jobscraper.run.make_clients", clients)
+    monkeypatch.setattr("jobscraper.run.now_utc", lambda: NOW)
+    job_url = "https://job-boards.greenhouse.io/acme/jobs/7"
+
+    def make_enricher(_clients):
+        def enrich(job, company):
+            raise FetchError(f"giving up on {job.url}: HTTP 429 for {job.url}", 429)
+
+        return enrich
+
+    monkeypatch.setattr("jobscraper.run.make_enricher", make_enricher)
+    companies = tmp_path / "companies.yaml"
+    companies.write_text(
+        "companies:\n  - {company: Acme, ats: greenhouse, token: acme}\n  - {company: Beta, ats: lever, token: beta}\n"
+    )
+    no_desc = dict(gh_job(7, "Frontend Engineer, Zephyr Team"), content="")
+    respx.get("https://boards-api.greenhouse.io/v1/boards/acme/jobs").mock(
+        return_value=httpx.Response(200, json=gh_board(no_desc))
+    )
+    respx.get(url__startswith="https://api.lever.co/v0/postings/beta").mock(return_value=httpx.Response(500))
+    with caplog.at_level("WARNING"):
+        rc = cli.main(["run", "--dry-run", "--quiet", "--explain", "--no-feeds", "--companies", str(companies)])
+    assert rc == 0
+    out = capsys.readouterr()
+    logged = out.out + out.err + caplog.text
+    assert "enrich failed" in logged and "fetch failed" in logged  # both failure paths were exercised
+    assert "Frontend Engineer, Zephyr Team" not in logged
+    assert job_url not in logged and "/jobs/7" not in logged

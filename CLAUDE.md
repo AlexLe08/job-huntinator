@@ -20,12 +20,17 @@ and promotes the top rows to "Leads". The pipeline: fetch → first-seen state �
   emails in Alex's own Gmail (read-only).
 - Sheets: read Applications / Archive / Leads; **only append** to Scraper. Never edit or delete other tabs.
 - Commit or push only when Alex asks; end commit messages with the attribution lines the harness provides.
+- Workflows: pass `inputs.*` / event data to `run:` steps through `env:`, never `${{ }}` inside the script. Pin actions
+  to commit SHAs (Dependabot bumps them). `zizmor .` must stay clean.
+- Logs must never contain job titles or job URLs, including in error/warning paths: log job IDs and HTTP status instead.
 
 ## Commands
 
 ```bash
 source .venv/bin/activate            # or: python3 -m venv .venv && pip install -e ".[dev]"
 pytest -q                            # offline, fixtures only; keep it green
+ruff check . && ruff format --check .   # CI enforces both; `ruff format .` to fix
+uv lock                              # after any dependency change in pyproject.toml; commit uv.lock
 python -m jobscraper run --dry-run --explain              # live APIs, writes nothing
 python -m jobscraper run --dry-run --explain --hours 336 --company vercel   # judge filters on 2 weeks of data
 python -m jobscraper validate-companies [--fix] [--only NAME]   # full run ~6–10 min, rewrites config/companies.report.md

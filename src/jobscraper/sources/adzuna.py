@@ -1,4 +1,5 @@
 """Adzuna official job-search API (free key). Broad US coverage similar to the big boards."""
+
 from __future__ import annotations
 
 import os
@@ -26,8 +27,12 @@ def fetch(client: PoliteClient, settings: dict, now: datetime) -> list[Job]:
     for what in settings.get("queries") or []:
         for where in wheres:
             params = {
-                "app_id": app_id, "app_key": app_key, "what": what, "max_days_old": settings.get("max_days_old", 2),
-                "results_per_page": settings.get("results_per_page", 50), "sort_by": "date",
+                "app_id": app_id,
+                "app_key": app_key,
+                "what": what,
+                "max_days_old": settings.get("max_days_old", 2),
+                "results_per_page": settings.get("results_per_page", 50),
+                "sort_by": "date",
                 "content-type": "application/json",
             }
             if where:
@@ -48,10 +53,17 @@ def normalize(raw: dict) -> Job:
             comp += " (est.)"
     loc = (raw.get("location") or {}).get("display_name") or ""
     return Job(
-        id=f"adzuna:{raw['id']}", source=FEED, company=(raw.get("company") or {}).get("display_name") or "",
-        title=html_to_text(raw.get("title")), location=loc, url=raw.get("redirect_url") or "",
-        remote=True if "remote" in (raw.get("title", "") + loc).lower() else None, country="US",
-        posted_at=parse_iso(raw.get("created")), compensation=comp,
-        department=(raw.get("category") or {}).get("label"), description=html_to_text(raw.get("description")),
+        id=f"adzuna:{raw['id']}",
+        source=FEED,
+        company=(raw.get("company") or {}).get("display_name") or "",
+        title=html_to_text(raw.get("title")),
+        location=loc,
+        url=raw.get("redirect_url") or "",
+        remote=True if "remote" in (raw.get("title", "") + loc).lower() else None,
+        country="US",
+        posted_at=parse_iso(raw.get("created")),
+        compensation=comp,
+        department=(raw.get("category") or {}).get("label"),
+        description=html_to_text(raw.get("description")),
         tier="adzuna",
     )

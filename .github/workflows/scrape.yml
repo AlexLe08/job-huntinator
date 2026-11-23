@@ -24,26 +24,36 @@ concurrency:
 permissions:
   contents: read
 
+env:
+  UV_VERSION: "0.13.9"
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        id: py
         with:
           python-version: "3.12"
-          cache: pip
 
-      - name: Install
-        run: pip install -e .
+      # Installs the exact versions in uv.lock, so a new upstream release can't silently break a scheduled run.
+      - name: Install (locked)
+        env:
+          UV_PYTHON: ${{ steps.py.outputs.python-path }}
+        run: |
+          pip install "uv==${UV_VERSION}"
+          uv sync --locked
 
       # State (seen jobs, discovery suggestions) lives in the Actions cache, never in the repo.
       # Matches go to the sheet; new company suggestions are shown on the run's summary page.
       # Cache keys are immutable, so every run saves a new key and restores the newest by prefix.
       - name: Restore state
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: state
           key: jobscraper-state-${{ github.run_id }}
@@ -57,14 +67,35 @@ jobs:
           ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
           GMAIL_OAUTH_CLIENT_JSON: ${{ secrets.GMAIL_OAUTH_CLIENT_JSON }}
           GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+          # Inputs go through env, never `${{ }}` inside the script, so they can't inject shell commands.
+          DRY_RUN: ${{ inputs.dry_run }}
+          EXTRA_ARGS: ${{ inputs.extra_args }}
         # --quiet: this repo is public, so Actions logs are public. Print counts only, never titles/links.
         run: |
-          python -m jobscraper run --quiet --explain \
-            ${{ inputs.dry_run && '--dry-run' || '' }} ${{ inputs.extra_args }}
+          args=(--quiet --explain)
+          if [ "$DRY_RUN" = "true" ]; then args+=(--dry-run); fi
+          # Split on whitespace only: no globbing, no command substitution.
+          read -r -a extra <<< "$EXTRA_ARGS"
+          uv run --no-sync python -m jobscraper run "${args[@]}" "${extra[@]}"
 
       - name: Save state
         if: ${{ always() && !inputs.dry_run && hashFiles('state/seen.json') != '' }}
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: state
           key: jobscraper-state-${{ github.run_id }}
+
+  # Public repos: GitHub disables scheduled workflows after 60 days without repository activity.
+  # Re-enabling the workflow through the API resets that timer. Runs once a day, checks nothing out,
+  # holds no secrets, and is the only job with `actions: write`.
+  keepalive:
+    if: github.event_name == 'schedule' && github.event.schedule == '30 11 * * *'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      - name: Reset the 60-day inactivity timer
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/scrape.yml/enable"

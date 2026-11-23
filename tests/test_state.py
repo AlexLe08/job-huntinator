@@ -1,16 +1,23 @@
 import json
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from jobscraper.models import Job
 from jobscraper.state import State
 
-T0 = datetime(2026, 11, 20, 12, 0, tzinfo=timezone.utc)
+T0 = datetime(2026, 11, 20, 12, 0, tzinfo=UTC)
 H = 48
 
 
 def job(i, posted=None):
-    return Job(id=f"greenhouse:acme:{i}", source="greenhouse", company="Acme", title=f"Frontend Engineer {i}",
-               location="Remote - US", url=f"https://example.com/{i}", posted_at=posted)
+    return Job(
+        id=f"greenhouse:acme:{i}",
+        source="greenhouse",
+        company="Acme",
+        title=f"Frontend Engineer {i}",
+        location="Remote - US",
+        url=f"https://example.com/{i}",
+        posted_at=posted,
+    )
 
 
 def test_first_poll_is_baseline_only_recent_posted_are_fresh():

@@ -1,9 +1,10 @@
 """Hacker News monthly "Ask HN: Who is hiring?" thread via the official Algolia HN API."""
+
 from __future__ import annotations
 
 import html
 import re
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from ..filters import FilterConfig, classify_title
 from ..http import PoliteClient
@@ -13,7 +14,9 @@ from .feeds import best_link
 
 FEED = "hn"
 API = "https://hn.algolia.com/api/v1"
-ROLE_WORDS = re.compile(r"\b(engineer|developer|designer|programmer|swe|sde|frontend|front-end|full ?stack|devrel|advocate|qa|sdet)\b", re.I)
+ROLE_WORDS = re.compile(
+    r"\b(engineer|developer|designer|programmer|swe|sde|frontend|front-end|full ?stack|devrel|advocate|qa|sdet)\b", re.I
+)
 LOCATION_WORDS = re.compile(r"\b(remote|onsite|on-site|hybrid|in office|anywhere)\b|,\s*[A-Z]{2}\b", re.I)
 NOISE = re.compile(r"\b(full[- ]?time|part[- ]?time|contract|intern(ship)?|visa|equity|salary|\$|€|£|\d+k)\b", re.I)
 
@@ -87,7 +90,7 @@ def normalize(hit: dict, cfg: FilterConfig | None = None) -> Job | None:
         location=location[:160],
         url=best_link(extract_links(raw), comment_url),
         remote=True if re.search(r"\bremote\b", first, re.I) else None,
-        posted_at=datetime.fromtimestamp(int(hit["created_at_i"]), tz=timezone.utc),
+        posted_at=datetime.fromtimestamp(int(hit["created_at_i"]), tz=UTC),
         compensation=extract_comp(first) or extract_comp(text),
         description=text,
         tier="hn",

@@ -1,17 +1,17 @@
 """The scrape pipeline: fetch -> record in state -> fresh candidates -> filters -> tracker dedupe -> output."""
+
 from __future__ import annotations
 
 import logging
 from collections import Counter
+from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from .companies import Company
 from .dedupe import TrackerIndex
-from typing import Callable
-
 from .filters import FilterConfig, classify_location, classify_title, evaluate
 from .http import PoliteClient
 from .models import Job
@@ -68,8 +68,8 @@ def fetch_all(companies: list[Company], clients: dict[str, PoliteClient], worker
 
 
 def fetch_aggregators(feeds: dict[str, dict], now: datetime, cfg: FilterConfig) -> list[FeedResult]:
-    from .sources.aggregators import AGGREGATORS, FeedSkipped
     from .sources.adzuna import MissingCredentials
+    from .sources.aggregators import AGGREGATORS, FeedSkipped
     from .sources.gmail_alerts import MissingCredentials as GmailMissing
 
     def one(name: str) -> FeedResult | None:
@@ -127,7 +127,10 @@ def select(
                 try:
                     enricher(job, f.company)
                 except Exception as exc:  # keep the job; red-flag scan just has less text
-                    log.warning("enrich failed for %s: %s", job.url, exc)
+                    # Log the opaque job ID and status only: job URLs (and FetchError messages, which embed
+                    # them) often carry the title slug, and CI logs are public.
+                    status = getattr(exc, "status", None)
+                    log.warning("enrich failed for %s: %s", job.id, f"HTTP {status}" if status else type(exc).__name__)
                     job.flags.append("no-desc")
             v = evaluate(job, cfg)
             if not v.keep:
@@ -138,7 +141,9 @@ def select(
                 tracked.append((job, why))
                 reasons[f"already-tracked:{why}"] += 1
                 continue
-            if is_aggregator and (ats_index.match(job, cfg.title_similarity) or kept_index.match(job, cfg.title_similarity)):
+            if is_aggregator and (
+                ats_index.match(job, cfg.title_similarity) or kept_index.match(job, cfg.title_similarity)
+            ):
                 reasons["duplicate-of-other-source"] += 1
                 continue
             kept_index.add(job.company, job.title, job.url)
@@ -148,8 +153,10 @@ def select(
 
 
 def _passes_cheap_filters(job: Job, cfg: FilterConfig) -> bool:
-    return classify_title(job.title, cfg).keep and \
-        classify_location(job.location, job.remote, job.country) in cfg.location_keep
+    return (
+        classify_title(job.title, cfg).keep
+        and classify_location(job.location, job.remote, job.country) in cfg.location_keep
+    )
 
 
 def make_enricher(clients: dict[str, PoliteClient]) -> Callable[[Job, Company], None]:
@@ -164,7 +171,7 @@ def make_enricher(clients: dict[str, PoliteClient]) -> Callable[[Job, Company], 
 
 
 def now_utc() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 def make_clients() -> dict[str, PoliteClient]:

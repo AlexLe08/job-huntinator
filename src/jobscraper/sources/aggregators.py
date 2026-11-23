@@ -1,8 +1,9 @@
 """Registry of aggregator feeds. Each entry: fetch(client, settings, now, cfg) -> list[Job]."""
+
 from __future__ import annotations
 
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable
 
 import yaml
 

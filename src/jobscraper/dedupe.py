@@ -1,4 +1,5 @@
 """Match scraped jobs against what's already in the tracker (by URL / ATS job id, then company + similar title)."""
+
 from __future__ import annotations
 
 import re

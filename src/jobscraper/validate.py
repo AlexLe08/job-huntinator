@@ -1,4 +1,5 @@
 """Check that every company's ATS board token resolves; auto-detect the right ATS/token when it doesn't."""
+
 from __future__ import annotations
 
 import re
@@ -10,9 +11,8 @@ import yaml
 
 from .companies import Company
 from .http import FetchError, PoliteClient
-from .sources.base import AUTODETECT, COMPANY_SOURCES
 from .sources import workday
-
+from .sources.base import AUTODETECT, COMPANY_SOURCES
 
 # ATSes that rate-limit guessing: probe only the first N slug variants, with wider spacing.
 LIGHT_PROBE = {"workable": 3, "recruitee": 3}
@@ -42,8 +42,15 @@ def slug_variants(company: Company) -> list[tuple[str, bool]]:
     hyph = re.sub(r"[^a-z0-9]+", "-", name).strip("-")
     first = re.split(r"[^a-z0-9]+", name)[0]
     out: list[tuple[str, bool]] = []
-    for v, sure in ((company.token, True), (company.token.lower(), True), (base, True), (hyph, True),
-                    (f"{base}hq", True), (f"{base}inc", True), (first, first == base)):
+    for v, sure in (
+        (company.token, True),
+        (company.token.lower(), True),
+        (base, True),
+        (hyph, True),
+        (f"{base}hq", True),
+        (f"{base}inc", True),
+        (first, first == base),
+    ):
         if v and v not in [o for o, _ in out]:
             out.append((v, sure))
     return out
@@ -84,7 +91,9 @@ def probe(client: PoliteClient, ats: str, token: str) -> Probe | None:
 
 def probe_workday(client: PoliteClient, company: Company) -> Probe | None:
     try:
-        data = client.post_json(workday.board_url(company), {"appliedFacets": {}, "limit": 1, "offset": 0, "searchText": ""})
+        data = client.post_json(
+            workday.board_url(company), {"appliedFacets": {}, "limit": 1, "offset": 0, "searchText": ""}
+        )
     except FetchError as exc:
         if exc.status in (404, 400, 410, 422):
             return None
@@ -114,7 +123,7 @@ def validate_one(clients: dict[str, PoliteClient], company: Company, deep: bool 
         for ats in AUTODETECT:
             variants = slug_variants(company)
             if ats in LIGHT_PROBE:  # stricter rate limits: only the most likely slugs
-                variants = variants[:LIGHT_PROBE[ats]]
+                variants = variants[: LIGHT_PROBE[ats]]
             for tok, sure in variants:
                 if ats == company.ats and tok == company.token:
                     continue
@@ -164,7 +173,9 @@ def write_report(results: list[Result], path: str | Path | None) -> str:
         for r in sorted(rs, key=lambda r: r.company.company.lower()):
             c, f = r.company, r.found
             if status in ("corrected", "unsure"):
-                lines.append(f"- {c.company}: {c.ats}/{c.token} -> **{f.ats}/{f.token}** ({f.jobs} jobs{', board: ' + f.board_name if f.board_name else ''})")
+                lines.append(
+                    f"- {c.company}: {c.ats}/{c.token} -> **{f.ats}/{f.token}** ({f.jobs} jobs{', board: ' + f.board_name if f.board_name else ''})"
+                )
             elif status == "ok":
                 lines.append(f"- {c.company} ({c.ats}/{c.token}): {f.jobs} jobs")
             else:
@@ -179,7 +190,7 @@ def apply_fixes(yaml_path: str | Path, results: list[Result]) -> int:
     """Rewrite companies.yaml in place: apply corrections, disable dead boards. Keeps the header comment."""
     p = Path(yaml_path)
     raw = p.read_text()
-    header = "".join(l + "\n" for l in raw.splitlines() if l.startswith("#") and not l.startswith("  "))
+    header = "".join(line + "\n" for line in raw.splitlines() if line.startswith("#") and not line.startswith("  "))
     data = yaml.safe_load(raw)
     rows = data["companies"]
     by_key = {(r.company.ats, r.company.token, r.company.company): r for r in results}

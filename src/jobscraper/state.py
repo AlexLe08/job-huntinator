@@ -15,13 +15,14 @@ File layout (state/seen.json):
   is ever polled are "baseline" -- their own posted_at must be within the window instead, so the very first
   run (or a run after the cache is lost) doesn't report every open role as new.
 """
+
 from __future__ import annotations
 
 import json
 import os
 import tempfile
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -31,7 +32,7 @@ PRUNE_AFTER_DAYS = 60
 
 
 def _iso(dt: datetime | None) -> str | None:
-    return dt.astimezone(timezone.utc).isoformat(timespec="seconds") if dt else None
+    return dt.astimezone(UTC).isoformat(timespec="seconds") if dt else None
 
 
 def _dt(s: str | None) -> datetime | None:
@@ -47,7 +48,7 @@ class State:
 
     # ------------------------------------------------------------ io
     @classmethod
-    def load(cls, path: str | Path) -> "State":
+    def load(cls, path: str | Path) -> State:
         p = Path(path)
         if not p.exists():
             return cls(path=p)

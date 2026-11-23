@@ -1,10 +1,10 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
+
+from conftest import load_fixture
 
 from jobscraper.companies import Company
 from jobscraper.sources import ashby, greenhouse, lever
 from jobscraper.text import extract_comp, html_to_text
-
-from conftest import load_fixture
 
 
 def _by_title(jobs, title):
@@ -29,7 +29,7 @@ class TestGreenhouse:
 
     def test_uses_first_published_not_updated_at(self):
         j = _by_title(self.jobs(), "Engineering Manager, Dashboard")
-        assert j.posted_at == datetime(2026, 9, 22, 20, 38, 55, tzinfo=timezone.utc)
+        assert j.posted_at == datetime(2026, 9, 22, 20, 38, 55, tzinfo=UTC)
         assert j.updated_at is not None and j.updated_at != j.posted_at
 
     def test_double_escaped_html_becomes_plain_text(self):
@@ -114,7 +114,13 @@ def test_extract_comp_variants():
 
 
 def test_greenhouse_placeholder_location_falls_back_to_offices():
-    raw = {"id": 1, "title": "Software Engineer", "absolute_url": "https://x", "location": {"name": "N/A"},
-           "offices": [{"name": "US", "location": None}], "content": ""}
+    raw = {
+        "id": 1,
+        "title": "Software Engineer",
+        "absolute_url": "https://x",
+        "location": {"name": "N/A"},
+        "offices": [{"name": "US", "location": None}],
+        "content": "",
+    }
     j = greenhouse.normalize(raw, Company("Stripe", "greenhouse", "stripe"))
     assert j.location == "US"
