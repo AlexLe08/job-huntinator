@@ -127,7 +127,11 @@ def select(
                 try:
                     enricher(job, f.company)
                 except Exception as exc:  # keep the job; red-flag scan just has less text
-                    log.warning("enrich failed for %s: %s", job.url, exc)
+                    # Log the opaque job ID and status only: job URLs (and FetchError messages, which embed
+                    # them) often carry the title slug, and CI logs are public.
+                    status = getattr(exc, "status", None)
+                    log.warning("enrich failed for %s: %s", job.id,
+                                f"HTTP {status}" if status else type(exc).__name__)
                     job.flags.append("no-desc")
             v = evaluate(job, cfg)
             if not v.keep:
