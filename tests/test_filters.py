@@ -163,8 +163,15 @@ def test_red_flags(text, expected):
 
 
 def _job(**kw):
-    base = dict(id="x:y:1", source="greenhouse", company="Acme", title="Frontend Engineer",
-                location="Boston, MA", url="https://example.com/1", description="React and TypeScript.")
+    base = dict(
+        id="x:y:1",
+        source="greenhouse",
+        company="Acme",
+        title="Frontend Engineer",
+        location="Boston, MA",
+        url="https://example.com/1",
+        description="React and TypeScript.",
+    )
     base.update(kw)
     return Job(**base)
 
@@ -193,20 +200,29 @@ def test_evaluate_red_flag_drop_vs_flag():
     assert v.keep and "8+yrs" in v.flags
 
 
-@pytest.mark.parametrize("title", ["Software Engineer, Vulnerability Management", "Software Engineer, Runtimes",
-                                   "Software Engineer, Fraud Detection"])
+@pytest.mark.parametrize(
+    "title",
+    [
+        "Software Engineer, Vulnerability Management",
+        "Software Engineer, Runtimes",
+        "Software Engineer, Fraud Detection",
+    ],
+)
 def test_more_swe_specialties_dropped(title):
     assert classify_title(title, CFG).reason == "title-swe-specialty"
 
 
-@pytest.mark.parametrize("location, expected", [
-    ("Remote - Asia Only", "non_us"),
-    ("Remote - Anywhere in the World", "remote_unspecified"),
-    ("Remote - Worldwide", "remote_unspecified"),
-    ("Remote - India, United States", "us_remote"),
-    ("Remote - USA Only", "us_remote"),
-    ("Remote - US Only", "us_remote"),
-])
+@pytest.mark.parametrize(
+    "location, expected",
+    [
+        ("Remote - Asia Only", "non_us"),
+        ("Remote - Anywhere in the World", "remote_unspecified"),
+        ("Remote - Worldwide", "remote_unspecified"),
+        ("Remote - India, United States", "us_remote"),
+        ("Remote - USA Only", "us_remote"),
+        ("Remote - US Only", "us_remote"),
+    ],
+)
 def test_remote_board_locations(location, expected):
     assert classify_location(location, True, None) == expected
 
@@ -215,9 +231,15 @@ def test_quantum_applications_engineer_not_generic_swe():
     assert not classify_title("Senior Quantum Applications Engineer", CFG).keep
 
 
-@pytest.mark.parametrize("title, keep", [
-    ("Test Automation Engineer", True), ("QA Automation Engineer", True), ("Automation Test Engineer", True),
-    ("Senior Process Automation Engineer (Power Apps, Power Automate)", False), ("Marketing Automation Engineer", False),
-])
+@pytest.mark.parametrize(
+    "title, keep",
+    [
+        ("Test Automation Engineer", True),
+        ("QA Automation Engineer", True),
+        ("Automation Test Engineer", True),
+        ("Senior Process Automation Engineer (Power Apps, Power Automate)", False),
+        ("Marketing Automation Engineer", False),
+    ],
+)
 def test_automation_means_test_automation(title, keep):
     assert classify_title(title, CFG).keep is keep

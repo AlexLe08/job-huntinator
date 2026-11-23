@@ -6,6 +6,7 @@ companies.yaml entry:
 Large employers have thousands of postings, so we run a few keyword searches instead of paging everything.
 This endpoint may change without notice; failures are logged per company and never stop the run.
 """
+
 from __future__ import annotations
 
 import re

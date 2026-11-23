@@ -64,8 +64,11 @@ def cmd_run(args: argparse.Namespace) -> int:
 
     state = State.load(state_path)
     if not state.loaded_from_disk:
-        print(f"note: no state at {state_path} -- first-poll flood guard applies (only jobs posted <"
-              f"{cfg.freshness_hours:g}h ago are reported)", file=sys.stderr)
+        print(
+            f"note: no state at {state_path} -- first-poll flood guard applies (only jobs posted <"
+            f"{cfg.freshness_hours:g}h ago are reported)",
+            file=sys.stderr,
+        )
 
     # Tracker dedupe: required for a real run, optional (best effort) for --dry-run.
     from .sheets import SheetsNotConfigured, append_rows, load_tracker_index, open_sheet
@@ -99,8 +102,11 @@ def cmd_run(args: argparse.Namespace) -> int:
 
     if not args.quiet:
         print(output.table(jobs))
-    print(f"\n{len(jobs)} new matches | {sum(len(f.jobs) for f in feeds)} jobs on {len(feeds)} boards | "
-          f"{len(result.failed)} boards failed", file=sys.stderr)
+    print(
+        f"\n{len(jobs)} new matches | {sum(len(f.jobs) for f in feeds)} jobs on {len(feeds)} boards | "
+        f"{len(result.failed)} boards failed",
+        file=sys.stderr,
+    )
     if args.explain:
         for reason, n in result.drop_reasons.most_common():
             print(f"  {n:6d}  {reason}", file=sys.stderr)
@@ -119,8 +125,12 @@ def cmd_run(args: argparse.Namespace) -> int:
             print(f"discovery: {len(new)} unlisted ATS boards seen on aggregator posts", file=sys.stderr)
         print("dry run: nothing written", file=sys.stderr)
     else:
-        sugg = update_suggestions(agg_jobs, load_companies(args.companies, include_disabled=True),
-                                  state_path.with_name("suggestions.json"), now)
+        sugg = update_suggestions(
+            agg_jobs,
+            load_companies(args.companies, include_disabled=True),
+            state_path.with_name("suggestions.json"),
+            now,
+        )
         if sugg:
             render_markdown(sugg, paths["matches"].parent / "companies.suggested.md")
         if summary_path := os.environ.get("GITHUB_STEP_SUMMARY"):  # set by GitHub Actions
@@ -180,13 +190,20 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--dry-run", action="store_true", help="print matches; write nothing (no sheet, state, or JSON)")
     r.add_argument("--no-sheet", action="store_true", help="write JSON + state but skip Google Sheets")
     r.add_argument("--explain", action="store_true", help="print drop-reason counts and failed boards")
-    r.add_argument("--quiet", action="store_true",
-                   help="no job titles/links in output, counts only (use in CI: public-repo Actions logs are public)")
+    r.add_argument(
+        "--quiet",
+        action="store_true",
+        help="no job titles/links in output, counts only (use in CI: public-repo Actions logs are public)",
+    )
     r.add_argument("--company", nargs="+", help="only these companies (name or token)")
     r.add_argument("--limit", type=int, help="only the first N companies")
     r.add_argument("--hours", type=float, help="override freshness_hours")
     r.add_argument("--companies", default=str(DEFAULT_COMPANIES))
-    r.add_argument("--feeds", nargs="+", help="only these aggregator feeds (hn remotive remoteok himalayas weworkremotely adzuna ...)")
+    r.add_argument(
+        "--feeds",
+        nargs="+",
+        help="only these aggregator feeds (hn remotive remoteok himalayas weworkremotely adzuna ...)",
+    )
     r.add_argument("--no-feeds", action="store_true", help="company boards only")
     r.add_argument("--feeds-only", action="store_true", help="aggregator feeds only, no company boards")
     r.add_argument("--sources", default=None, help="path to sources.yaml")
@@ -195,7 +212,9 @@ def build_parser() -> argparse.ArgumentParser:
     r.set_defaults(func=cmd_run)
 
     g = sub.add_parser("gmail-auth", help="one-time local OAuth consent for reading job-alert emails (gmail.readonly)")
-    g.add_argument("client_secret", help="path to the OAuth client JSON downloaded from Google Cloud (Desktop app type)")
+    g.add_argument(
+        "client_secret", help="path to the OAuth client JSON downloaded from Google Cloud (Desktop app type)"
+    )
     g.set_defaults(func=cmd_gmail_auth)
 
     v = sub.add_parser("validate-companies", help="check every board token resolves; auto-detect ATS")

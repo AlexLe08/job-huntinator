@@ -1,4 +1,5 @@
 """SmartRecruiters public postings API. List has no description; enrich() fetches it for filtered candidates."""
+
 from __future__ import annotations
 
 from ..companies import Company
@@ -30,7 +31,9 @@ def fetch(client: PoliteClient, company: Company) -> list[Job]:
 
 def normalize(raw: dict, company: Company) -> Job:
     loc = raw.get("location") or {}
-    location = loc.get("fullLocation") or ", ".join(filter(None, [loc.get("city"), loc.get("region"), loc.get("country")]))
+    location = loc.get("fullLocation") or ", ".join(
+        filter(None, [loc.get("city"), loc.get("region"), loc.get("country")])
+    )
     location = location.replace(", ,", ",")
     ident = (raw.get("company") or {}).get("identifier") or company.token
     return Job(
@@ -52,9 +55,11 @@ def normalize(raw: dict, company: Company) -> Job:
 def enrich(client: PoliteClient, job: Job, company: Company) -> None:
     posting_id = job.id.rsplit(":", 1)[1]
     data = client.get_json(f"https://api.smartrecruiters.com/v1/companies/{company.token}/postings/{posting_id}")
-    sections = ((data.get("jobAd") or {}).get("sections") or {})
-    parts = [html_to_text((sections.get(k) or {}).get("text")) for k in
-             ("companyDescription", "jobDescription", "qualifications", "additionalInformation")]
+    sections = (data.get("jobAd") or {}).get("sections") or {}
+    parts = [
+        html_to_text((sections.get(k) or {}).get("text"))
+        for k in ("companyDescription", "jobDescription", "qualifications", "additionalInformation")
+    ]
     job.description = "\n".join(p for p in parts if p)
     job.compensation = job.compensation or extract_comp(job.description)
     if data.get("postingUrl"):

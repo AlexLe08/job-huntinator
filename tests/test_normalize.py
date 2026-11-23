@@ -114,7 +114,13 @@ def test_extract_comp_variants():
 
 
 def test_greenhouse_placeholder_location_falls_back_to_offices():
-    raw = {"id": 1, "title": "Software Engineer", "absolute_url": "https://x", "location": {"name": "N/A"},
-           "offices": [{"name": "US", "location": None}], "content": ""}
+    raw = {
+        "id": 1,
+        "title": "Software Engineer",
+        "absolute_url": "https://x",
+        "location": {"name": "N/A"},
+        "offices": [{"name": "US", "location": None}],
+        "content": "",
+    }
     j = greenhouse.normalize(raw, Company("Stripe", "greenhouse", "stripe"))
     assert j.location == "US"

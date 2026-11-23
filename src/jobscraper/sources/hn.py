@@ -1,4 +1,5 @@
 """Hacker News monthly "Ask HN: Who is hiring?" thread via the official Algolia HN API."""
+
 from __future__ import annotations
 
 import html
@@ -13,7 +14,9 @@ from .feeds import best_link
 
 FEED = "hn"
 API = "https://hn.algolia.com/api/v1"
-ROLE_WORDS = re.compile(r"\b(engineer|developer|designer|programmer|swe|sde|frontend|front-end|full ?stack|devrel|advocate|qa|sdet)\b", re.I)
+ROLE_WORDS = re.compile(
+    r"\b(engineer|developer|designer|programmer|swe|sde|frontend|front-end|full ?stack|devrel|advocate|qa|sdet)\b", re.I
+)
 LOCATION_WORDS = re.compile(r"\b(remote|onsite|on-site|hybrid|in office|anywhere)\b|,\s*[A-Z]{2}\b", re.I)
 NOISE = re.compile(r"\b(full[- ]?time|part[- ]?time|contract|intern(ship)?|visa|equity|salary|\$|€|£|\d+k)\b", re.I)
 

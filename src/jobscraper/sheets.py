@@ -1,4 +1,5 @@
 """Google Sheets I/O. Reads Applications/Archive/Leads (and Scraper) for dedupe; only ever appends to Scraper."""
+
 from __future__ import annotations
 
 import json

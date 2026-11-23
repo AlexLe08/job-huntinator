@@ -1,4 +1,5 @@
 """Title / location / red-flag filters. Pure functions; config comes from config/filters.yaml."""
+
 from __future__ import annotations
 
 import re
@@ -75,6 +76,7 @@ class Verdict:
 
 # ---------------------------------------------------------------- title
 
+
 def normalize_title(title: str) -> str:
     t = title.lower().replace("&", " and ")
     t = re.sub(r"[-‐–—/,|()\[\]:._+]", " ", t)
@@ -107,20 +109,65 @@ def classify_title(title: str, cfg: FilterConfig) -> Verdict:
 # ---------------------------------------------------------------- location
 
 US_STATES = {
-    "AL": "alabama", "AK": "alaska", "AZ": "arizona", "AR": "arkansas", "CA": "california",
-    "CO": "colorado", "CT": "connecticut", "DE": "delaware", "FL": "florida", "GA": "georgia",
-    "HI": "hawaii", "ID": "idaho", "IL": "illinois", "IN": "indiana", "IA": "iowa", "KS": "kansas",
-    "KY": "kentucky", "LA": "louisiana", "ME": "maine", "MD": "maryland", "MA": "massachusetts",
-    "MI": "michigan", "MN": "minnesota", "MS": "mississippi", "MO": "missouri", "MT": "montana",
-    "NE": "nebraska", "NV": "nevada", "NH": "new hampshire", "NJ": "new jersey", "NM": "new mexico",
-    "NY": "new york", "NC": "north carolina", "ND": "north dakota", "OH": "ohio", "OK": "oklahoma",
-    "OR": "oregon", "PA": "pennsylvania", "RI": "rhode island", "SC": "south carolina",
-    "SD": "south dakota", "TN": "tennessee", "TX": "texas", "UT": "utah", "VT": "vermont",
-    "VA": "virginia", "WA": "washington", "WV": "west virginia", "WI": "wisconsin", "WY": "wyoming",
+    "AL": "alabama",
+    "AK": "alaska",
+    "AZ": "arizona",
+    "AR": "arkansas",
+    "CA": "california",
+    "CO": "colorado",
+    "CT": "connecticut",
+    "DE": "delaware",
+    "FL": "florida",
+    "GA": "georgia",
+    "HI": "hawaii",
+    "ID": "idaho",
+    "IL": "illinois",
+    "IN": "indiana",
+    "IA": "iowa",
+    "KS": "kansas",
+    "KY": "kentucky",
+    "LA": "louisiana",
+    "ME": "maine",
+    "MD": "maryland",
+    "MA": "massachusetts",
+    "MI": "michigan",
+    "MN": "minnesota",
+    "MS": "mississippi",
+    "MO": "missouri",
+    "MT": "montana",
+    "NE": "nebraska",
+    "NV": "nevada",
+    "NH": "new hampshire",
+    "NJ": "new jersey",
+    "NM": "new mexico",
+    "NY": "new york",
+    "NC": "north carolina",
+    "ND": "north dakota",
+    "OH": "ohio",
+    "OK": "oklahoma",
+    "OR": "oregon",
+    "PA": "pennsylvania",
+    "RI": "rhode island",
+    "SC": "south carolina",
+    "SD": "south dakota",
+    "TN": "tennessee",
+    "TX": "texas",
+    "UT": "utah",
+    "VT": "vermont",
+    "VA": "virginia",
+    "WA": "washington",
+    "WV": "west virginia",
+    "WI": "wisconsin",
+    "WY": "wyoming",
     "DC": "district of columbia",
 }
-_MA = re.compile(r"\b(boston|cambridge,? ma|cambridge, massachusetts|somerville|worcester|waltham|burlington,? ma|lexington,? ma|newton,? ma|framingham|quincy|woburn|bedford,? ma|marlborough|massachusetts)\b|,\s*ma\b", re.I)
-_NC = re.compile(r"\b(raleigh|durham|research triangle|rtp|chapel hill|cary|morrisville|north carolina)\b|,\s*nc\b", re.I)
+_MA = re.compile(
+    r"\b(boston|cambridge,? ma|cambridge, massachusetts|somerville|worcester|waltham|burlington,? ma|lexington,? ma|newton,? ma|framingham|quincy|woburn|bedford,? ma|marlborough|massachusetts)\b|,\s*ma\b",
+    re.I,
+)
+_NC = re.compile(
+    r"\b(raleigh|durham|research triangle|rtp|chapel hill|cary|morrisville|north carolina)\b|,\s*nc\b", re.I
+)
 _US_CITIES = re.compile(
     r"\b(san francisco|sf bay|bay area|new york|nyc|seattle|austin|chicago|los angeles|denver|boulder|atlanta|"
     r"portland|san diego|san jose|palo alto|mountain view|menlo park|sunnyvale|oakland|redwood city|"
@@ -181,8 +228,10 @@ def classify_location(location: str, remote: bool | None = None, country: str | 
             return "us_remote" if (remote or best == "remote_unspecified") else "us_onsite"
         return "non_us"
     # "United States" (no city/state) + remote flag -> US remote
-    if best == "us_onsite" and remote and not (
-        _US_CITIES.search(location) or _US_STATE_ABBR.search(location) or _US_STATE_NAME.search(location)
+    if (
+        best == "us_onsite"
+        and remote
+        and not (_US_CITIES.search(location) or _US_STATE_ABBR.search(location) or _US_STATE_NAME.search(location))
     ):
         return "us_remote"
     return best

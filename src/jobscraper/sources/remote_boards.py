@@ -1,5 +1,6 @@
 """Remote job boards with public feeds: Remotive, RemoteOK, Himalayas, We Work Remotely (RSS).
 Their terms ask for attribution / link-back, so job URLs stay pointed at the board's own listing."""
+
 from __future__ import annotations
 
 import xml.etree.ElementTree as ET
@@ -34,11 +35,18 @@ def normalize_remotive(raw: dict) -> Job:
     desc = html_to_text(raw.get("description"))
     loc = raw.get("candidate_required_location") or "Worldwide"
     return Job(
-        id=f"remotive:{raw['id']}", source="remotive", company=raw.get("company_name") or "",
-        title=(raw.get("title") or "").strip(), location=f"Remote - {loc}", url=raw.get("url") or "",
-        remote=True, posted_at=parse_iso(raw.get("publication_date")),
-        compensation=(raw.get("salary") or "").strip() or extract_comp(desc), department=raw.get("category"),
-        description=desc, tier="remotive",
+        id=f"remotive:{raw['id']}",
+        source="remotive",
+        company=raw.get("company_name") or "",
+        title=(raw.get("title") or "").strip(),
+        location=f"Remote - {loc}",
+        url=raw.get("url") or "",
+        remote=True,
+        posted_at=parse_iso(raw.get("publication_date")),
+        compensation=(raw.get("salary") or "").strip() or extract_comp(desc),
+        department=raw.get("category"),
+        description=desc,
+        tier="remotive",
     )
 
 
@@ -52,11 +60,18 @@ def normalize_remoteok(raw: dict) -> Job:
     desc = html_to_text(raw.get("description"))
     loc = raw.get("location") or "Worldwide"
     return Job(
-        id=f"remoteok:{raw['id']}", source="remoteok", company=raw.get("company") or "",
-        title=(raw.get("position") or "").strip(), location=f"Remote - {loc}", url=raw.get("url") or "",
-        remote=True, posted_at=parse_iso(raw.get("date")),
+        id=f"remoteok:{raw['id']}",
+        source="remoteok",
+        company=raw.get("company") or "",
+        title=(raw.get("position") or "").strip(),
+        location=f"Remote - {loc}",
+        url=raw.get("url") or "",
+        remote=True,
+        posted_at=parse_iso(raw.get("date")),
         compensation=_range(raw.get("salary_min"), raw.get("salary_max")) or extract_comp(desc),
-        department=", ".join((raw.get("tags") or [])[:4]) or None, description=desc, tier="remoteok",
+        department=", ".join((raw.get("tags") or [])[:4]) or None,
+        description=desc,
+        tier="remoteok",
     )
 
 
@@ -81,13 +96,19 @@ def normalize_himalayas(raw: dict) -> Job:
     period = {"hourly": "/hr", "yearly": "/yr", "annual": "/yr"}.get((raw.get("salaryPeriod") or "").lower(), "")
     pub = raw.get("pubDate")
     return Job(
-        id=f"himalayas:{raw.get('guid')}", source="himalayas", company=raw.get("companyName") or "",
-        title=(raw.get("title") or "").strip(), location=f"Remote - {loc}",
-        url=raw.get("applicationLink") or raw.get("guid") or "", remote=True,
+        id=f"himalayas:{raw.get('guid')}",
+        source="himalayas",
+        company=raw.get("companyName") or "",
+        title=(raw.get("title") or "").strip(),
+        location=f"Remote - {loc}",
+        url=raw.get("applicationLink") or raw.get("guid") or "",
+        remote=True,
         country=country if len(restrictions) == 1 else None,
         posted_at=datetime.fromtimestamp(int(pub), tz=timezone.utc) if pub else None,
         compensation=_range(raw.get("minSalary"), raw.get("maxSalary"), period) or extract_comp(desc),
-        department=", ".join(raw.get("parentCategories") or []) or None, description=desc, tier="himalayas",
+        department=", ".join(raw.get("parentCategories") or []) or None,
+        description=desc,
+        tier="himalayas",
     )
 
 
@@ -116,11 +137,21 @@ def parse_wwr(xml: str) -> list[Job]:
             posted = None
         region = get("region") or "Anywhere"
         country = get("country") or None
-        out.append(Job(
-            id=f"weworkremotely:{link.rstrip('/').rsplit('/', 1)[-1]}", source="weworkremotely",
-            company=company.strip(), title=title.strip(),
-            location=f"Remote - {region}" + (f" ({country})" if country else ""), url=link, remote=True,
-            country=country, posted_at=posted, compensation=extract_comp(desc), department=get("category") or None,
-            description=desc, tier="weworkremotely",
-        ))
+        out.append(
+            Job(
+                id=f"weworkremotely:{link.rstrip('/').rsplit('/', 1)[-1]}",
+                source="weworkremotely",
+                company=company.strip(),
+                title=title.strip(),
+                location=f"Remote - {region}" + (f" ({country})" if country else ""),
+                url=link,
+                remote=True,
+                country=country,
+                posted_at=posted,
+                compensation=extract_comp(desc),
+                department=get("category") or None,
+                description=desc,
+                tier="weworkremotely",
+            )
+        )
     return out

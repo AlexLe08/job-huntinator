@@ -1,4 +1,5 @@
 """Shared bits for aggregator feeds (sources that aren't one-company job boards)."""
+
 from __future__ import annotations
 
 import re

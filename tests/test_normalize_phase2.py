@@ -58,7 +58,9 @@ def test_recruitee_normalize():
 
 
 def test_workday_normalize_and_enrich():
-    c = Company("Red Hat", "workday", "redhat", tier="rtp", extra={"host": "redhat.wd5.myworkdayjobs.com", "site": "jobs"})
+    c = Company(
+        "Red Hat", "workday", "redhat", tier="rtp", extra={"host": "redhat.wd5.myworkdayjobs.com", "site": "jobs"}
+    )
     raw = load_fixture("workday_redhat.json")["jobPostings"]
     jobs = [workday.normalize(r, c, NOW) for r in raw]
     j = jobs[0]
@@ -84,6 +86,7 @@ def test_workday_posted_on_parsing():
 
 def test_workday_requires_host_and_site():
     import pytest
+
     with pytest.raises(ValueError):
         workday.board_url(Company("X", "workday", "x"))
 
@@ -95,16 +98,31 @@ def test_enricher_runs_only_for_cheap_filter_passes():
 
     cfg = FilterConfig.load()
     c = Company("Acme", "smartrecruiters", "acme")
+
     def mk(i, title, loc):
-        return Job(id=f"smartrecruiters:acme:{i}", source="smartrecruiters", company="Acme", title=title,
-                   location=loc, url=f"https://x/{i}", posted_at=NOW - timedelta(hours=1))
-    jobs = [mk(1, "Frontend Engineer", "Boston, MA"), mk(2, "Account Executive", "Boston, MA"),
-            mk(3, "Frontend Engineer", "Berlin, Germany"), mk(4, "Web Developer", "Austin, TX")]
+        return Job(
+            id=f"smartrecruiters:acme:{i}",
+            source="smartrecruiters",
+            company="Acme",
+            title=title,
+            location=loc,
+            url=f"https://x/{i}",
+            posted_at=NOW - timedelta(hours=1),
+        )
+
+    jobs = [
+        mk(1, "Frontend Engineer", "Boston, MA"),
+        mk(2, "Account Executive", "Boston, MA"),
+        mk(3, "Frontend Engineer", "Berlin, Germany"),
+        mk(4, "Web Developer", "Austin, TX"),
+    ]
     called = []
+
     def enricher(job, company):
         called.append(job.id)
         if job.id.endswith(":4"):
             job.description = "Requires an active TS/SCI clearance."
+
     r = select([FeedResult("smartrecruiters:acme", c, jobs)], State(), cfg, NOW, None, enricher)
     assert called == ["smartrecruiters:acme:1", "smartrecruiters:acme:4"]
     assert [m.job.title for m in r.matches] == ["Frontend Engineer"]
@@ -120,10 +138,19 @@ def test_enrich_failure_log_has_no_url_or_title(caplog):
 
     c = Company("Acme", "workday", "acme")
     url = "https://acme.wd1.myworkdayjobs.com/External/job/Boston-MA/Frontend-Engineer_R1"
-    job = Job(id="workday:acme:R1", source="workday", company="Acme", title="Frontend Engineer",
-              location="Boston, MA", url=url, posted_at=NOW - timedelta(hours=1))
+    job = Job(
+        id="workday:acme:R1",
+        source="workday",
+        company="Acme",
+        title="Frontend Engineer",
+        location="Boston, MA",
+        url=url,
+        posted_at=NOW - timedelta(hours=1),
+    )
+
     def enricher(job, company):
         raise FetchError(f"giving up on {url}: HTTP 429 for {url}", 429)
+
     with caplog.at_level("WARNING"):
         r = select([FeedResult("workday:acme", c, [job])], State(), FilterConfig.load(), NOW, None, enricher)
     assert "no-desc" in r.matches[0].job.flags

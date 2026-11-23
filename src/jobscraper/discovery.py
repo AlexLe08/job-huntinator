@@ -1,5 +1,6 @@
 """Spot employer ATS boards linked from aggregator posts that aren't in companies.yaml yet.
 Suggestions accumulate in state/suggestions.json and render to data/companies.suggested.md. Nothing is auto-added."""
+
 from __future__ import annotations
 
 import json
@@ -11,7 +12,10 @@ from .companies import Company
 from .models import Job
 
 PATTERNS = [
-    ("greenhouse", re.compile(r"https?://(?:boards|job-boards)\.greenhouse\.io/(?:embed/job_board\?for=)?([a-z0-9_-]+)", re.I)),
+    (
+        "greenhouse",
+        re.compile(r"https?://(?:boards|job-boards)\.greenhouse\.io/(?:embed/job_board\?for=)?([a-z0-9_-]+)", re.I),
+    ),
     ("lever", re.compile(r"https?://jobs\.lever\.co/([a-z0-9_.-]+)", re.I)),
     ("ashby", re.compile(r"https?://jobs\.ashbyhq\.com/([a-z0-9_.%-]+)", re.I)),
     ("workable", re.compile(r"https?://apply\.workable\.com/(?!j/|api/)([a-z0-9_-]+)", re.I)),
@@ -45,8 +49,17 @@ def update_suggestions(jobs: list[Job], companies: list[Company], path: str | Pa
             if (ats, tok) in known:
                 continue
             key = f"{ats}:{tok}"
-            rec = data.setdefault(key, {"ats": ats, "token": tok, "company": job.company, "count": 0,
-                                        "first_seen": now.isoformat(timespec="seconds"), "example": job.url})
+            rec = data.setdefault(
+                key,
+                {
+                    "ats": ats,
+                    "token": tok,
+                    "company": job.company,
+                    "count": 0,
+                    "first_seen": now.isoformat(timespec="seconds"),
+                    "example": job.url,
+                },
+            )
             rec["count"] += 1
             rec["last_seen"] = now.isoformat(timespec="seconds")
             rec["last_title"] = job.title
@@ -57,11 +70,17 @@ def update_suggestions(jobs: list[Job], companies: list[Company], path: str | Pa
 
 def render_markdown(data: dict, path: str | Path) -> None:
     rows = sorted(data.values(), key=lambda r: (-r["count"], r["company"].lower()))
-    lines = ["# Suggested companies (seen on aggregator posts, not in companies.yaml)", "",
-             "Copy the ones you want into config/companies.yaml, then run `python -m jobscraper validate-companies`.", ""]
+    lines = [
+        "# Suggested companies (seen on aggregator posts, not in companies.yaml)",
+        "",
+        "Copy the ones you want into config/companies.yaml, then run `python -m jobscraper validate-companies`.",
+        "",
+    ]
     for r in rows:
-        lines.append(f"- {r['company'] or '?'}: `{{company: {r['company'] or r['token']}, ats: {r['ats']}, "
-                     f"token: {r['token']}, tier: discovered}}`  -- seen {r['count']}x, e.g. {r.get('last_title', '')}")
+        lines.append(
+            f"- {r['company'] or '?'}: `{{company: {r['company'] or r['token']}, ats: {r['ats']}, "
+            f"token: {r['token']}, tier: discovered}}`  -- seen {r['count']}x, e.g. {r.get('last_title', '')}"
+        )
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text("\n".join(lines) + "\n")
 
@@ -73,17 +92,21 @@ def summary_markdown(data: dict, now: datetime, limit: int = 30) -> str:
     if not rows:
         return "### Company suggestions\n\nNo unlisted ATS boards seen yet.\n"
     run_stamp = now.isoformat(timespec="seconds")
-    lines = ["### Company suggestions",
-             "",
-             f"{len(rows)} ATS boards linked from aggregator posts are not in `config/companies.yaml`. "
-             "Paste the ones you want, then run `python -m jobscraper validate-companies --only \"<name>\"`.",
-             "",
-             "| Seen | New this run | YAML line |",
-             "|---:|:---:|---|"]
+    lines = [
+        "### Company suggestions",
+        "",
+        f"{len(rows)} ATS boards linked from aggregator posts are not in `config/companies.yaml`. "
+        'Paste the ones you want, then run `python -m jobscraper validate-companies --only "<name>"`.',
+        "",
+        "| Seen | New this run | YAML line |",
+        "|---:|:---:|---|",
+    ]
     for r in rows[:limit]:
         name = (r["company"] or r["token"]).replace("|", "/")
         new = "yes" if r.get("first_seen") == run_stamp else ""
-        lines.append(f"| {r['count']} | {new} | `- {{company: {name}, ats: {r['ats']}, token: {r['token']}, tier: discovered}}` |")
+        lines.append(
+            f"| {r['count']} | {new} | `- {{company: {name}, ats: {r['ats']}, token: {r['token']}, tier: discovered}}` |"
+        )
     if len(rows) > limit:
         lines.append(f"\n_{len(rows) - limit} more with fewer sightings not shown._")
     return "\n".join(lines) + "\n"

@@ -1,4 +1,5 @@
 """Workable public widget API (apply.workable.com/<account>)."""
+
 from __future__ import annotations
 
 from ..companies import Company

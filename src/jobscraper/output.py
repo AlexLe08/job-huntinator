@@ -1,4 +1,5 @@
 """Format matches for the sheet, JSON, and terminal."""
+
 from __future__ import annotations
 
 import json
@@ -62,5 +63,7 @@ def table(jobs: list[Job]) -> str:
     for j in jobs:
         flags = f"  [{', '.join(j.flags)}]" if j.flags else ""
         comp = f"  {j.compensation}" if j.compensation else ""
-        lines.append(f"{tier_label(j):<22} {j.company[:22]:<22} {j.title[:48]:<48} {j.location[:32]:<32}{comp}{flags}\n{'':22} {j.url}")
+        lines.append(
+            f"{tier_label(j):<22} {j.company[:22]:<22} {j.title[:48]:<48} {j.location[:32]:<32}{comp}{flags}\n{'':22} {j.url}"
+        )
     return "\n".join(lines)

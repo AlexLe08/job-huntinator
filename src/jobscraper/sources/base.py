@@ -7,6 +7,7 @@ A *company source* (ATS) exposes:
     def normalize(raw: dict, company) -> Job
     def enrich(client, job, company) -> None      # optional: fill description etc. for filtered candidates only
 """
+
 from __future__ import annotations
 
 from types import ModuleType

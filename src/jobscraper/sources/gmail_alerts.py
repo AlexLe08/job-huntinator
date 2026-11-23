@@ -5,6 +5,7 @@ Alert email layouts change now and then. Parsing therefore keys on the stable pa
 link (LinkedIn /jobs/view/<id>, Indeed jk=<id>) -- and reads title/company/location from the text
 around it. If a layout change breaks it, the feed returns fewer jobs; it never fails the run.
 """
+
 from __future__ import annotations
 
 import base64
@@ -25,7 +26,10 @@ API = "https://gmail.googleapis.com/gmail/v1/users/me"
 
 LINKEDIN_JOB = re.compile(r"linkedin\.com/(?:comm/)?jobs/view/(\d+)", re.I)
 INDEED_HOST = re.compile(r"(^|\.)indeed\.com$", re.I)
-SKIP_TEXT = re.compile(r"^(view job|apply|easy apply|see all jobs|view all|unsubscribe|new|promoted|actively recruiting|\d+ (applicants|connections?).*)$", re.I)
+SKIP_TEXT = re.compile(
+    r"^(view job|apply|easy apply|see all jobs|view all|unsubscribe|new|promoted|actively recruiting|\d+ (applicants|connections?).*)$",
+    re.I,
+)
 
 
 class MissingCredentials(RuntimeError):
@@ -46,8 +50,14 @@ def access_token() -> str:
             client_raw = fh.read()
     info = json.loads(client_raw)
     info = info.get("installed") or info.get("web") or info
-    creds = Credentials(None, refresh_token=refresh, client_id=info["client_id"], client_secret=info["client_secret"],
-                        token_uri=info.get("token_uri", "https://oauth2.googleapis.com/token"), scopes=SCOPES)
+    creds = Credentials(
+        None,
+        refresh_token=refresh,
+        client_id=info["client_id"],
+        client_secret=info["client_secret"],
+        token_uri=info.get("token_uri", "https://oauth2.googleapis.com/token"),
+        scopes=SCOPES,
+    )
     creds.refresh(Request())
     return creds.token
 
@@ -65,8 +75,12 @@ def run_auth_flow(client_secret_path: str) -> str:
 def fetch(client: PoliteClient, settings: dict, now: datetime, token: str | None = None) -> list[Job]:
     token = token or access_token()
     headers = {"Authorization": f"Bearer {token}"}
-    q = urlencode({"q": settings.get("query", "label:job-alerts newer_than:3d"),
-                   "maxResults": int(settings.get("max_messages", 50))})
+    q = urlencode(
+        {
+            "q": settings.get("query", "label:job-alerts newer_than:3d"),
+            "maxResults": int(settings.get("max_messages", 50)),
+        }
+    )
     listing = client.get_json(f"{API}/messages?{q}", headers=headers)
     jobs: dict[str, Job] = {}
     for m in listing.get("messages", []):
@@ -98,7 +112,11 @@ def parse_message(msg: dict) -> list[Job]:
     if not html:
         return []
     sender = _header(msg, "From").lower()
-    received = datetime.fromtimestamp(int(msg.get("internalDate", 0)) / 1000, tz=timezone.utc) if msg.get("internalDate") else None
+    received = (
+        datetime.fromtimestamp(int(msg.get("internalDate", 0)) / 1000, tz=timezone.utc)
+        if msg.get("internalDate")
+        else None
+    )
     if "linkedin" in sender:
         return parse_alert_html(html, "linkedin", received)
     if "indeed" in sender:
@@ -193,8 +211,15 @@ def parse_alert_html(html: str, kind: str | None, received: datetime | None) -> 
                 company = info[0]
                 location = info[1] if len(info) > 1 else ""
         jobs[key] = Job(
-            id=key, source=source, company=company, title=text, location=location, url=url,
-            remote=True if "remote" in location.lower() else None, posted_at=received, description="",
+            id=key,
+            source=source,
+            company=company,
+            title=text,
+            location=location,
+            url=url,
+            remote=True if "remote" in location.lower() else None,
+            posted_at=received,
+            description="",
             tier=f"{source}-alert",
         )
     return list(jobs.values())

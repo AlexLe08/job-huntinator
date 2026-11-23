@@ -1,4 +1,5 @@
 """Load the company list (config/companies.yaml)."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field

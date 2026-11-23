@@ -1,4 +1,5 @@
 """The scrape pipeline: fetch -> record in state -> fresh candidates -> filters -> tracker dedupe -> output."""
+
 from __future__ import annotations
 
 import logging
@@ -130,8 +131,7 @@ def select(
                     # Log the opaque job ID and status only: job URLs (and FetchError messages, which embed
                     # them) often carry the title slug, and CI logs are public.
                     status = getattr(exc, "status", None)
-                    log.warning("enrich failed for %s: %s", job.id,
-                                f"HTTP {status}" if status else type(exc).__name__)
+                    log.warning("enrich failed for %s: %s", job.id, f"HTTP {status}" if status else type(exc).__name__)
                     job.flags.append("no-desc")
             v = evaluate(job, cfg)
             if not v.keep:
@@ -142,7 +142,9 @@ def select(
                 tracked.append((job, why))
                 reasons[f"already-tracked:{why}"] += 1
                 continue
-            if is_aggregator and (ats_index.match(job, cfg.title_similarity) or kept_index.match(job, cfg.title_similarity)):
+            if is_aggregator and (
+                ats_index.match(job, cfg.title_similarity) or kept_index.match(job, cfg.title_similarity)
+            ):
                 reasons["duplicate-of-other-source"] += 1
                 continue
             kept_index.add(job.company, job.title, job.url)
@@ -152,8 +154,10 @@ def select(
 
 
 def _passes_cheap_filters(job: Job, cfg: FilterConfig) -> bool:
-    return classify_title(job.title, cfg).keep and \
-        classify_location(job.location, job.remote, job.country) in cfg.location_keep
+    return (
+        classify_title(job.title, cfg).keep
+        and classify_location(job.location, job.remote, job.country) in cfg.location_keep
+    )
 
 
 def make_enricher(clients: dict[str, PoliteClient]) -> Callable[[Job, Company], None]:

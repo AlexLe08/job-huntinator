@@ -9,8 +9,15 @@ H = 48
 
 
 def job(i, posted=None):
-    return Job(id=f"greenhouse:acme:{i}", source="greenhouse", company="Acme", title=f"Frontend Engineer {i}",
-               location="Remote - US", url=f"https://example.com/{i}", posted_at=posted)
+    return Job(
+        id=f"greenhouse:acme:{i}",
+        source="greenhouse",
+        company="Acme",
+        title=f"Frontend Engineer {i}",
+        location="Remote - US",
+        url=f"https://example.com/{i}",
+        posted_at=posted,
+    )
 
 
 def test_first_poll_is_baseline_only_recent_posted_are_fresh():

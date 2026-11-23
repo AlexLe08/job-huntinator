@@ -15,6 +15,7 @@ File layout (state/seen.json):
   is ever polled are "baseline" -- their own posted_at must be within the window instead, so the very first
   run (or a run after the cache is lost) doesn't report every open role as new.
 """
+
 from __future__ import annotations
 
 import json

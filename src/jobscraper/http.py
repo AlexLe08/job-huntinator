@@ -1,4 +1,5 @@
 """Polite HTTP client: clear UA, timeouts, retries with exponential backoff, spacing between requests."""
+
 from __future__ import annotations
 
 import logging

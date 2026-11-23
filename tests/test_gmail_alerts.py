@@ -8,11 +8,18 @@ from conftest import FIXTURES
 
 def gmail_message(html: str, sender: str, ts_ms: int = 1795000000000) -> dict:
     data = base64.urlsafe_b64encode(html.encode()).decode().rstrip("=")
-    return {"id": "m1", "internalDate": str(ts_ms), "payload": {
-        "mimeType": "multipart/alternative",
-        "headers": [{"name": "From", "value": sender}, {"name": "Subject", "value": "New jobs"}],
-        "parts": [{"mimeType": "text/plain", "body": {"data": ""}},
-                  {"mimeType": "text/html", "body": {"data": data}}]}}
+    return {
+        "id": "m1",
+        "internalDate": str(ts_ms),
+        "payload": {
+            "mimeType": "multipart/alternative",
+            "headers": [{"name": "From", "value": sender}, {"name": "Subject", "value": "New jobs"}],
+            "parts": [
+                {"mimeType": "text/plain", "body": {"data": ""}},
+                {"mimeType": "text/html", "body": {"data": data}},
+            ],
+        },
+    }
 
 
 def test_linkedin_alert_parsing():
@@ -57,13 +64,16 @@ def test_fetch_lists_then_reads_messages():
             return gmail_message(html, "alert@indeed.com")
 
     c = FakeClient()
-    jobs = gmail_alerts.fetch(c, {"query": "label:job-alerts newer_than:3d", "max_messages": 5}, datetime.now(timezone.utc), token="tok")
+    jobs = gmail_alerts.fetch(
+        c, {"query": "label:job-alerts newer_than:3d", "max_messages": 5}, datetime.now(timezone.utc), token="tok"
+    )
     assert len(jobs) == 2  # same jobs in both messages -> deduped
     assert "q=label%3Ajob-alerts" in c.calls[0][0] and c.calls[0][1] == {"Authorization": "Bearer tok"}
 
 
 def test_missing_credentials(monkeypatch):
     import pytest
+
     monkeypatch.delenv("GMAIL_REFRESH_TOKEN", raising=False)
     with pytest.raises(gmail_alerts.MissingCredentials):
         gmail_alerts.access_token()

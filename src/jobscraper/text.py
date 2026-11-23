@@ -1,4 +1,5 @@
 """Small text helpers shared by sources and filters."""
+
 from __future__ import annotations
 
 import html
