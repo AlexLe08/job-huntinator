@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jobscraper"
+version = "0.1.0"
+description = "Polls public ATS job-board APIs for fresh frontend roles and feeds a Google Sheet."
+requires-python = ">=3.11"
+dependencies = [
+  "httpx>=0.27",
+  "PyYAML>=6",
+  "gspread>=6",
+  "google-auth>=2.29",
+  "google-auth-oauthlib>=1.2",  # only for the one-time local `gmail-auth` helper
+  "requests>=2.31",             # google-auth token refresh transport
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "respx>=0.21"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

@@ -1,0 +1,41 @@
+# Aggregator feeds (not per-company). Each can be switched off independently.
+# A feed whose secrets are missing is skipped with a warning.
+
+hn:                          # Hacker News "Ask HN: Who is hiring?" (official Algolia HN API)
+  enabled: true
+  lookback_hours: 72         # only top-level comments newer than this are fetched
+
+remotive:                    # remotive.com public API (their jobs are delayed 24h; attribution = we keep their URL)
+  enabled: true
+  categories: [software-dev]
+
+remoteok:                    # remoteok.com/api (terms: link back + credit; we keep their URL)
+  enabled: true
+
+himalayas:                   # himalayas.app/jobs/api, newest first; stops paging once jobs are older than lookback
+  enabled: true
+  max_pages: 15
+  lookback_hours: 72
+
+weworkremotely:              # RSS feeds
+  enabled: true
+  feeds: [remote-front-end-programming-jobs, remote-full-stack-programming-jobs]
+
+adzuna:                      # api.adzuna.com -- needs ADZUNA_APP_ID / ADZUNA_APP_KEY (free key at developer.adzuna.com)
+  enabled: true
+  country: us
+  max_days_old: 2
+  results_per_page: 50
+  queries:
+    - frontend engineer
+    - front end developer
+    - ui engineer
+    - react developer
+    - design systems engineer
+    - full stack engineer
+  where: []                  # optional extra location-scoped queries, e.g. ["Boston, MA", "Raleigh, NC"]
+
+gmail_alerts:                # LinkedIn / Indeed alert emails in your Gmail (read-only OAuth; see README)
+  enabled: false
+  query: 'label:job-alerts newer_than:3d'
+  max_messages: 50

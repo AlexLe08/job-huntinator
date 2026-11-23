@@ -1,0 +1,395 @@
+# Company validation report
+
+**dead**: 95 | **empty**: 7 | **ok**: 261 | **skipped**: 10 | **unsure**: 4
+
+## Possible match, NOT applied by --fix (loose name guess; confirm by hand) (4)
+
+- Forward Financing: greenhouse/forwardfinancing -> **greenhouse/forward** (2 jobs, board: Forward)
+- Help Scout: greenhouse/helpscout -> **greenhouse/help** (13 jobs, board: HELP)
+- Nomad Health: greenhouse/nomadhealth -> **ashby/nomad** (1 jobs)
+- Prometheus Group: greenhouse/prometheusgroup -> **ashby/prometheus** (2 jobs)
+
+## Dead: no board found on any supported ATS (95)
+
+- Adwerx (greenhouse/adwerx)
+- Akili (greenhouse/akili)
+- Allurion (greenhouse/allurion)
+- Anysphere (Cursor) (ashby/anysphere)
+- Aras (greenhouse/aras)
+- BitSight (greenhouse/bitsight)
+- Brightly Software (greenhouse/brightly)
+- Builder.io (greenhouse/builderio)
+- Buildium (greenhouse/buildium)
+- Cal.com (ashby/cal)
+- Canva (lever/canva)
+- Cerebral (greenhouse/cerebral)
+- Chainalysis (greenhouse/chainalysis)
+- Coda (greenhouse/coda)
+- Cogo Labs (greenhouse/cogolabs)
+- Convex (ashby/convex)
+- Cybereason (greenhouse/cybereason)
+- DataRobot (greenhouse/datarobot)
+- dbt Labs (greenhouse/dbtlabsinc)
+- Desktop Metal (greenhouse/desktopmetal)
+- Devoted Health (greenhouse/devotedhealth)
+- Discourse (greenhouse/discourse)
+- Diveplane (greenhouse/diveplane)
+- Doist (greenhouse/doist)
+- Domo (greenhouse/domo)
+- Drift (greenhouse/drift)
+- DuckDuckGo (ashby/duckduckgo)
+- Embark Veterinary (greenhouse/embarkveterinary)
+- Etsy (greenhouse/etsy)
+- Eventbrite (lever/eventbrite)
+- Evisort (greenhouse/evisort)
+- Firefly Health (greenhouse/fireflyhealth)
+- Flywire (greenhouse/flywire)
+- Framer (ashby/framer)
+- Front (lever/frontapp)
+- Grammarly (greenhouse/grammarly)
+- Grubhub (greenhouse/grubhub)
+- HashiCorp (greenhouse/hashicorp)
+- Headspace (greenhouse/headspace)
+- Hebbia (ashby/hebbia)
+- Hotjar (greenhouse/hotjar)
+- HubSpot (greenhouse/hubspot)
+- InsightSquared (greenhouse/insightsquared)
+- Jasper (ashby/jasper)
+- JupiterOne (greenhouse/jupiterone)
+- Kensho (greenhouse/kensho)
+- Lexia Learning (greenhouse/lexia)
+- Liveblocks (ashby/liveblocks)
+- Loom (greenhouse/loom)
+- Lulu (greenhouse/lulu)
+- MineralTree (greenhouse/mineraltree)
+- Navan (greenhouse/navan)
+- Niantic (greenhouse/niantic)
+- Noom (greenhouse/noom)
+- Nuvolo (greenhouse/nuvolo)
+- Pitch (ashby/pitch)
+- Plasmic (ashby/plasmic)
+- Pluralsight (greenhouse/pluralsight)
+- Postman (greenhouse/postman)
+- Prisma (ashby/prisma)
+- Procore (greenhouse/procoretechnologies)
+- Quickbase (greenhouse/quickbase)
+- Quizlet (greenhouse/quizlet)
+- Rapid7 (greenhouse/rapid7)
+- Redpanda (greenhouse/redpandadata)
+- Relias (greenhouse/relias)
+- Remitly (greenhouse/remitly)
+- Retool (ashby/retool)
+- Reveal Mobile (greenhouse/revealmobile)
+- Rippling (ashby/rippling)
+- Robin (greenhouse/robinpowered)
+- Rue Gilt Groupe (greenhouse/ruegiltgroupe)
+- SciQuest / Jaggaer (greenhouse/jaggaer)
+- ServiceTitan (greenhouse/servicetitan)
+- Shopify (ashby/shopify)
+- Sparkbox (greenhouse/sparkbox)
+- Spot AI (ashby/spotai)
+- Spreedly (greenhouse/spreedly)
+- Spring Health (greenhouse/springhealth66)
+- Superhuman (greenhouse/superhuman)
+- The Browser Company (greenhouse/thebrowsercompany)
+- Thoughtbot (greenhouse/thoughtbot)
+- Timescale (ashby/timescale)
+- Truss (greenhouse/truss)
+- Two Sigma (greenhouse/twosigma)
+- Unity (greenhouse/unity3d)
+- Validic (greenhouse/validic)
+- Validity (greenhouse/validity)
+- Varo (greenhouse/varomoney)
+- Vecna Robotics (greenhouse/vecnarobotics)
+- Vimeo (greenhouse/vimeo)
+- Wayfair (greenhouse/wayfair)
+- Weights & Biases (lever/wandb)
+- WillowTree (greenhouse/willowtree)
+- Zendesk (greenhouse/zendesk)
+
+## Board exists but has 0 open jobs (7)
+
+- Dagster Labs (greenhouse/dagsterlabs)
+- Deel (ashby/deel)
+- Markforged (greenhouse/markforged)
+- OpenSea (ashby/opensea)
+- Raycast (ashby/raycast)
+- Remote (greenhouse/remotecom)
+- Stytch (ashby/stytch)
+
+## Skipped (unsupported ATS) (10)
+
+- Avalara (workday/avalara): workday entry needs host and site
+- Cimpress / Vistaprint (workday/cimpress): workday entry needs host and site
+- Citrix (Cloud Software Group) (workday/cloudsoftwaregroup): workday entry needs host and site
+- Liberty Mutual (workday/libertymutual): workday entry needs host and site
+- Mass General Brigham Digital (workday/massgeneralbrigham): workday entry needs host and site
+- MathWorks (other/mathworks): ats 'other' not supported yet
+- NetApp (workday/netapp): workday entry needs host and site
+- Pegasystems (workday/pega): workday entry needs host and site
+- SAS (other/sas): ats 'other' not supported yet
+- Veradigm (workday/veradigm): workday entry needs host and site
+
+## OK (261)
+
+- 1Password (ashby/1password): 80 jobs
+- Abridge (ashby/abridge): 29 jobs
+- Acorns (ashby/acorns): 8 jobs
+- Acquia (greenhouse/acquia): 6 jobs
+- Ad Hoc (ashby/ad-hoc): 1 jobs
+- Affirm (greenhouse/affirm): 219 jobs
+- Agero (greenhouse/agero): 17 jobs
+- Airbnb (greenhouse/airbnb): 202 jobs
+- Airbyte (ashby/airbyte): 14 jobs
+- Airship (greenhouse/airship): 9 jobs
+- Airtable (greenhouse/airtable): 11 jobs
+- Alchemy (ashby/alchemy): 18 jobs
+- Algolia (greenhouse/algolia): 28 jobs
+- Alma (ashby/alma): 27 jobs
+- Amplitude (ashby/amplitude): 48 jobs
+- Amwell (greenhouse/amwell): 8 jobs
+- Anchorage Digital (lever/anchorage): 20 jobs
+- Anthropic (greenhouse/anthropic): 636 jobs
+- Articulate (lever/articulate): 2 jobs
+- Asana (greenhouse/asana): 111 jobs
+- Astronomer (ashby/astronomer): 21 jobs
+- athenahealth (workday/athenahealth): 71 jobs
+- Attio (ashby/attio): 22 jobs
+- Automattic (greenhouse/automatticcareers): 6 jobs
+- Bandwidth (greenhouse/bandwidth): 21 jobs
+- Baseten (ashby/baseten): 108 jobs
+- Benchling (ashby/benchling): 60 jobs
+- Betterment (greenhouse/betterment): 26 jobs
+- Bill.com (greenhouse/billcom): 36 jobs
+- Block (greenhouse/block): 184 jobs
+- Bolt (StackBlitz) (greenhouse/stackblitz): 4 jobs
+- Boston Dynamics (workday/bostondynamics): 88 jobs
+- Brex (greenhouse/brex): 248 jobs
+- Bubble (ashby/bubble): 1 jobs
+- Buffer (ashby/buffer): 2 jobs
+- Butterfly Network (greenhouse/butterflynetwork): 17 jobs
+- Calendly (greenhouse/calendly): 4 jobs
+- Calm (greenhouse/calm): 1 jobs
+- Canonical (greenhouse/canonical): 318 jobs
+- CarGurus (greenhouse/cargurus): 45 jobs
+- Carta (greenhouse/carta): 80 jobs
+- Catalant (ashby/catalant): 10 jobs
+- Celonis (greenhouse/celonis): 265 jobs
+- Chainguard (greenhouse/chainguard): 109 jobs
+- Character.AI (ashby/character): 13 jobs
+- Checkr (greenhouse/checkr): 38 jobs
+- Chime (greenhouse/chime): 80 jobs
+- Chromatic (ashby/chromatic): 6 jobs
+- Circle.so (ashby/circle): 6 jobs
+- Cisco (workday/cisco): 1408 jobs
+- Clerk (ashby/clerk): 2 jobs
+- ClickHouse (ashby/clickhouse): 205 jobs
+- ClickUp (ashby/clickup): 48 jobs
+- Clipboard Health (ashby/clipboard): 34 jobs
+- Close (ashby/close): 3 jobs
+- Cloudflare (greenhouse/cloudflare): 504 jobs
+- Cockroach Labs (greenhouse/cockroachlabs): 11 jobs
+- Coder (ashby/coder): 28 jobs
+- Cohere (ashby/cohere): 124 jobs
+- Coinbase (greenhouse/coinbase): 252 jobs
+- Constant Contact (greenhouse/constantcontact): 13 jobs
+- Contentful (greenhouse/contentful): 50 jobs
+- Coursera (greenhouse/coursera): 34 jobs
+- Current (greenhouse/current): 4 jobs
+- Customer.io (greenhouse/customerio): 22 jobs
+- Databricks (greenhouse/databricks): 894 jobs
+- Datadog (greenhouse/datadog): 382 jobs
+- Dave (ashby/dave): 10 jobs
+- Decagon (ashby/decagon): 109 jobs
+- Descript (greenhouse/descript): 10 jobs
+- Discord (greenhouse/discord): 29 jobs
+- DoorDash (greenhouse/doordashusa): 408 jobs
+- DraftKings (workday/draftkings): 70 jobs
+- Drata (ashby/drata): 24 jobs
+- Dropbox (greenhouse/dropbox): 47 jobs
+- Duolingo (greenhouse/duolingo): 54 jobs
+- Elastic (greenhouse/elastic): 382 jobs
+- ElevenLabs (ashby/elevenlabs): 123 jobs
+- Ellevation Education (lever/ellevationeducation): 5 jobs
+- Epic Games (greenhouse/epicgames): 138 jobs
+- EverQuote (greenhouse/everquote): 15 jobs
+- EverTrue (greenhouse/evertrue): 3 jobs
+- Expensify (ashby/expensify): 4 jobs
+- ezCater (greenhouse/ezcaterinc): 1 jobs
+- Faire (greenhouse/faire): 74 jobs
+- Fidelity Investments (workday/fmr): 875 jobs
+- Figma (greenhouse/figma): 147 jobs
+- Fireblocks (greenhouse/fireblocks): 35 jobs
+- Fivetran (greenhouse/fivetran): 196 jobs
+- Flexport (greenhouse/flexport): 211 jobs
+- Formlabs (greenhouse/formlabs): 275 jobs
+- Gamma (ashby/gamma): 20 jobs
+- Gemini (greenhouse/gemini): 26 jobs
+- Ghost (ashby/ghost): 4 jobs
+- Ginkgo Bioworks (greenhouse/ginkgobioworks): 17 jobs
+- GitLab (greenhouse/gitlab): 246 jobs
+- Glean (greenhouse/gleanwork): 129 jobs
+- Glide (ashby/glide): 10 jobs
+- Gradient AI (greenhouse/gradientai): 5 jobs
+- Grafana Labs (greenhouse/grafanalabs): 139 jobs
+- Graphite (ashby/graphitehq): 5 jobs
+- Grow Therapy (ashby/grow-therapy): 32 jobs
+- Gusto (greenhouse/gusto): 84 jobs
+- Harvey (ashby/harvey): 390 jobs
+- Headway (ashby/headway): 94 jobs
+- Hex (ashby/hex): 42 jobs
+- Hightouch (ashby/hightouch): 1 jobs
+- Hims & Hers (ashby/hims-and-hers): 147 jobs
+- Hometap (greenhouse/hometap): 11 jobs
+- Hopper (ashby/hopper): 29 jobs
+- Hudson River Trading (greenhouse/wehrtyou): 86 jobs
+- Hyperproof (greenhouse/hyperproof): 5 jobs
+- Included Health (lever/includedhealth): 41 jobs
+- Inngest (ashby/inngest): 2 jobs
+- Instacart (greenhouse/instacart): 92 jobs
+- Instructure (ashby/instructure): 54 jobs
+- Intercom (greenhouse/intercom): 120 jobs
+- IQVIA (workday/iqvia): 1928 jobs
+- Ironclad (ashby/ironcladhq): 24 jobs
+- Jane Street (greenhouse/janestreet): 216 jobs
+- Jobber (ashby/jobber): 35 jobs
+- Justworks (greenhouse/justworks): 107 jobs
+- Kayak (ashby/kayak): 42 jobs
+- Khan Academy (greenhouse/khanacademy): 3 jobs
+- Kit (ConvertKit) (ashby/kit): 9 jobs
+- Klaviyo (greenhouse/klaviyo): 124 jobs
+- Komodo Health (greenhouse/komodohealth): 20 jobs
+- Kraken (ashby/kraken.com): 93 jobs
+- LangChain (ashby/langchain): 100 jobs
+- Lattice (greenhouse/lattice): 4 jobs
+- LaunchDarkly (greenhouse/launchdarkly): 33 jobs
+- Levitate (greenhouse/levitate): 8 jobs
+- Life360 (greenhouse/life360): 31 jobs
+- Lightmatter (greenhouse/lightmatter): 86 jobs
+- Linear (ashby/linear): 32 jobs
+- LinkSquares (greenhouse/linksquaresinc): 5 jobs
+- Lovable (ashby/lovable): 78 jobs
+- Lucid Software (greenhouse/lucidsoftware): 25 jobs
+- Lyft (greenhouse/lyft): 145 jobs
+- Lyra Health (lever/lyrahealth): 452 jobs
+- Mattermost (greenhouse/mattermost): 10 jobs
+- Mercury (greenhouse/mercury): 70 jobs
+- Mintlify (ashby/mintlify): 5 jobs
+- Miro (ashby/miro): 13 jobs
+- Mixpanel (greenhouse/mixpanel): 40 jobs
+- Modal (ashby/modal): 52 jobs
+- MongoDB (greenhouse/mongodb): 419 jobs
+- MotherDuck (ashby/motherduck): 6 jobs
+- Motional (greenhouse/motional): 82 jobs
+- Mozilla (greenhouse/mozilla): 138 jobs
+- Mux (ashby/mux): 2 jobs
+- Nasuni (greenhouse/nasuni): 21 jobs
+- Nava PBC (greenhouse/navapbc): 19 jobs
+- Neon (ashby/neon): 1 jobs
+- Netlify (greenhouse/netlify): 6 jobs
+- Nextdoor (greenhouse/nextdoor): 24 jobs
+- Notable (ashby/notable): 9 jobs
+- Notion (ashby/notion): 170 jobs
+- Nuna (ashby/nuna): 5 jobs
+- Nuro (greenhouse/nuro): 105 jobs
+- Okta (greenhouse/okta): 377 jobs
+- OpenAI (ashby/openai): 852 jobs
+- Oscar Health (greenhouse/oscar): 180 jobs
+- Oyster (ashby/oyster): 20 jobs
+- Paperless Parts (greenhouse/paperlessparts): 6 jobs
+- PathAI (greenhouse/pathai): 15 jobs
+- Patreon (ashby/patreon): 21 jobs
+- Paxos (ashby/paxos): 26 jobs
+- Peloton (greenhouse/peloton): 42 jobs
+- Pendo (greenhouse/pendo): 21 jobs
+- Perplexity (ashby/perplexity): 151 jobs
+- Phantom (ashby/phantom): 17 jobs
+- Pinecone (ashby/pinecone): 8 jobs
+- Pinterest (greenhouse/pinterest): 174 jobs
+- Plaid (ashby/plaid): 146 jobs
+- Plain (ashby/plain): 6 jobs
+- PlanetScale (greenhouse/planetscale): 12 jobs
+- Podium (greenhouse/podium81): 66 jobs
+- Possible Finance (ashby/possible-finance): 6 jobs
+- PostHog (ashby/posthog): 9 jobs
+- Prefect (ashby/prefect): 5 jobs
+- Proof (Notarize) (greenhouse/proof): 124 jobs
+- Pryon (lever/pryon): 3 jobs
+- Qualtrics (greenhouse/qualtrics): 178 jobs
+- Railway (ashby/railway): 7 jobs
+- Ramp (ashby/ramp): 187 jobs
+- Reach Security (ashby/reach): 6 jobs
+- Recorded Future (greenhouse/recordedfuture): 57 jobs
+- Red Hat (workday/redhat): 156 jobs
+- Reddit (greenhouse/reddit): 148 jobs
+- Render (ashby/render): 37 jobs
+- Replit (ashby/replit): 38 jobs
+- Resend (ashby/resend): 13 jobs
+- Riot Games (greenhouse/riotgames): 201 jobs
+- Rithum (greenhouse/rithum): 11 jobs
+- Ro (lever/ro): 56 jobs
+- Robinhood (greenhouse/robinhood): 163 jobs
+- Roblox (greenhouse/roblox): 259 jobs
+- Rocket Money (greenhouse/truebill): 20 jobs
+- Rula (ashby/rula): 32 jobs
+- Runway (ashby/runway): 3 jobs
+- Salsify (greenhouse/salsify): 12 jobs
+- Samsara (greenhouse/samsara): 301 jobs
+- Sanity (ashby/sanity): 32 jobs
+- Scale AI (greenhouse/scaleai): 162 jobs
+- Sentry (ashby/sentry): 42 jobs
+- Sierra (ashby/sierra): 194 jobs
+- SimpliSafe (greenhouse/simplisafe): 35 jobs
+- Skylight (greenhouse/skylighthq): 12 jobs
+- SmartRent (greenhouse/smartrent): 9 jobs
+- Snyk (ashby/snyk): 39 jobs
+- Socket (ashby/socket): 23 jobs
+- SoFi (greenhouse/sofi): 53 jobs
+- Sourcegraph (greenhouse/sourcegraph91): 8 jobs
+- Spotify (lever/spotify): 91 jobs
+- Squarespace (greenhouse/squarespace): 20 jobs
+- Starburst (greenhouse/starburst): 36 jobs
+- State Street (workday/statestreet): 1142 jobs
+- Storyblok (greenhouse/storyblok): 10 jobs
+- Strava (ashby/strava): 24 jobs
+- Stripe (greenhouse/stripe): 777 jobs
+- Substack (ashby/substack): 20 jobs
+- Supabase (ashby/supabase): 80 jobs
+- Tailscale (greenhouse/tailscale): 89 jobs
+- Teamworks (ashby/teamworks): 11 jobs
+- Temporal (ashby/temporal): 92 jobs
+- Thumbtack (ashby/thumbtack): 43 jobs
+- Toast (greenhouse/toast): 325 jobs
+- Together AI (greenhouse/togetherai): 76 jobs
+- Toptal (lever/toptal): 25 jobs
+- Trigger.dev (ashby/triggerdev): 5 jobs
+- Tripadvisor (greenhouse/tripadvisor): 15 jobs
+- Tulip Interfaces (greenhouse/tulip): 68 jobs
+- Twilio (greenhouse/twilio): 109 jobs
+- Twitch (greenhouse/twitch): 50 jobs
+- Typeform (greenhouse/typeform): 6 jobs
+- Udemy (greenhouse/udemy): 2 jobs
+- Uniswap Labs (ashby/uniswap): 9 jobs
+- Upstart (greenhouse/upstart): 77 jobs
+- Vanta (ashby/vanta): 69 jobs
+- Vapi (ashby/vapi): 5 jobs
+- Vercel (greenhouse/vercel): 86 jobs
+- Verkada (greenhouse/verkada): 353 jobs
+- Vertex Pharmaceuticals (workday/vrtx): 258 jobs
+- Vestmark (greenhouse/vestmark): 3 jobs
+- Viget (lever/viget): 4 jobs
+- Warp (greenhouse/warp): 6 jobs
+- Wealthfront (lever/wealthfront): 20 jobs
+- Weave (greenhouse/weave): 1 jobs
+- Webflow (ashby/webflow): 31 jobs
+- Whoop (ashby/whoop): 112 jobs
+- Wikimedia Foundation (greenhouse/wikimedia): 11 jobs
+- Wistia (ashby/wistia): 3 jobs
+- WorkOS (ashby/workos): 26 jobs
+- Writer (ashby/writer): 46 jobs
+- Zapier (ashby/zapier): 9 jobs
+- Zed Industries (ashby/zed): 2 jobs
+- Zillow (workday/zillow): 205 jobs
+- Zocdoc (greenhouse/zocdoc): 66 jobs
+- ZoomInfo (greenhouse/zoominfo): 90 jobs
+- Zuora (greenhouse/zuora): 44 jobs

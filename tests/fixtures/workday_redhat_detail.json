@@ -1,0 +1,38 @@
+{
+ "jobPostingInfo": {
+  "id": "23c583e53b891000889e1bf6cd960000",
+  "title": "AI/ML Customer Engineer",
+  "jobDescription": "<h1>About the Singapore AI Center of Excellence (COE)</h1><p><span>The Singapore AI Center of Excellence (COE) is a dedicated engineering and R&amp;D hub focused on Enterprise and Sovereign AI. Our mission is to help organizations move AI workflows cleanly into production through two main paths: creating reusable software architectures that solve common industry problems, and contributing code directly to upstream open-source projects to fix enterprise gaps in system deployment, runtime tuning, and platform management.</span></p><p><span>Basing our engineering team in Singapore creates a close feedback loop between customers, partners, and core product teams. This direct connection keeps our development roadmaps relevant, speeds up solution delivery, and strengthens our ability to co-innovate across the region.</span></p><h2></h2><h2>Role Overview</h2><p><span>The AI/ML Engineer is a highly technical, hands-on role at the intersection of Enterprise AI and client-facing architecture. As part of our Customer Engineering function, you will write production-grade solution blueprints alongside strategic customers and technology partners. Your mission is to solve immediate, high-stakes operational bottlenecks in the APAC region by delivering repeatable, extensible, and open-sourced AI Quickstarts that show the industry how to solve complex challenges.</span></p><p><span>In this team, career growth and seniority are defined purely by your technical competence, architectural depth, and ability to deliver end-to-end solutions autonomously in highly ambiguous environments. There is no expectation of team management, project coordination, or formal talent mentorship; your progression is driven entirely by engineering impact.</span></p><p></p><p><b>What you will do:</b></p><ul><li><p><span>Enterprise-Minded Blueprinting: Design and build comprehensive, production-ready architecture blueprints and reference codebases. These blueprints must naturally take into account critical enterprise requirements\u2014including systems-level hardening, infrastructure scalability, and network isolation boundaries\u2014without you needing to perform the last-mile hands-on production deployment yourself.</span></p></li><li><p><span>Open-Source AI Quickstarts: Package repeatable, extensible technical architectures as open-sourced AI Quickstarts to solve complex, real-world industry problems and accelerate ecosystem adoption.</span></p></li><li><p><span>Co-Development &amp; Integration: Collaborat",
+  "location": "Singapore",
+  "postedOn": "Posted Today",
+  "startDate": "2026-11-23",
+  "timeType": "Full time",
+  "jobReqId": "R-057975",
+  "jobPostingId": "AI-ML-Customer-Engineer_R-057975",
+  "jobPostingSiteId": "Jobs",
+  "country": {
+   "descriptor": "Singapore",
+   "id": "80938777cac5440fab50d729f9634969"
+  },
+  "canApply": true,
+  "posted": true,
+  "includeResumeParsing": true,
+  "jobRequisitionLocation": {
+   "descriptor": "Singapore",
+   "country": {
+    "descriptor": "Singapore",
+    "id": "80938777cac5440fab50d729f9634969",
+    "alpha2Code": "SG"
+   }
+  },
+  "remoteType": "Onsite",
+  "externalUrl": "https://redhat.wd5.myworkdayjobs.com/Jobs/job/Singapore/AI-ML-Customer-Engineer_R-057975",
+  "questionnaireId": "b7809aee755e1056263efe3362a40000",
+  "endDate": "2026-11-25"
+ },
+ "hiringOrganization": {
+  "name": "Red Hat Asia-Pacific PTE LTD",
+  "url": ""
+ },
+ "userAuthenticated": false
+}

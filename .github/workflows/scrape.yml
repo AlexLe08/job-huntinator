@@ -1,0 +1,70 @@
+name: scrape
+
+on:
+  schedule:
+    # GitHub cron is UTC and can start a few minutes late.
+    # 11:30 UTC = 6:30 EST / 7:30 EDT; 17:30 UTC = 12:30 EST / 1:30 PM EDT.
+    - cron: "30 11 * * *"
+    - cron: "30 17 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (print counts, write nothing)"
+        type: boolean
+        default: false
+      extra_args:
+        description: "Extra CLI args, e.g. --feeds hn remotive  or  --hours 72"
+        type: string
+        default: ""
+
+concurrency:
+  group: scrape            # never let two runs race on the state file
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -e .
+
+      # State (seen jobs, discovery suggestions) lives in the Actions cache, never in the repo.
+      # Matches go to the sheet; new company suggestions are shown on the run's summary page.
+      # Cache keys are immutable, so every run saves a new key and restores the newest by prefix.
+      - name: Restore state
+        uses: actions/cache/restore@v4
+        with:
+          path: state
+          key: jobscraper-state-${{ github.run_id }}
+          restore-keys: jobscraper-state-
+
+      - name: Scrape
+        env:
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          GMAIL_OAUTH_CLIENT_JSON: ${{ secrets.GMAIL_OAUTH_CLIENT_JSON }}
+          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+        # --quiet: this repo is public, so Actions logs are public. Print counts only, never titles/links.
+        run: |
+          python -m jobscraper run --quiet --explain \
+            ${{ inputs.dry_run && '--dry-run' || '' }} ${{ inputs.extra_args }}
+
+      - name: Save state
+        if: ${{ always() && !inputs.dry_run && hashFiles('state/seen.json') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: state
+          key: jobscraper-state-${{ github.run_id }}

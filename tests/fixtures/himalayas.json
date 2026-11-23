@@ -1,0 +1,169 @@
+{
+ "comments": "21/08/2026: Cursor pagination is now available and is the preferred way to page through the feed. Pass the nextCursor value from each response back as ?cursor=. It is faster than offset and will never return the same job twice. The offset parameter is deprecated and will be removed in a future release. 13/03/2026: The API has been updated to include the companySlug field in the response.",
+ "updatedAt": 1795415554,
+ "offset": 0,
+ "limit": 5,
+ "totalCount": 120036,
+ "nextCursor": "MjAyNi0xMS0yM1QwNjowODo0Mi41NDA3MjJafDI1NzY2MTc",
+ "jobs": [
+  {
+   "title": "General Correspondence Specialist",
+   "excerpt": "Come join our amazing team and work remote from home!",
+   "companyName": "Carrington",
+   "companySlug": "carringtonwholesale",
+   "companyLogo": "",
+   "employmentType": "Full Time",
+   "minSalary": 23.5,
+   "maxSalary": 25.5,
+   "salaryPeriod": "hourly",
+   "seniority": [
+    "Mid-level"
+   ],
+   "currency": "USD",
+   "locationRestrictions": [
+    "United States"
+   ],
+   "timezoneRestrictions": [
+    -10,
+    -9,
+    -8,
+    -7,
+    -6,
+    -5,
+    14
+   ],
+   "categories": [
+    "Correspondence-Specialist",
+    "Mortgage-Servicing-Specialist",
+    "Customer-Service",
+    "Correspondence-Coordinator"
+   ],
+   "parentCategories": [
+    "Customer Service"
+   ],
+   "description": "<p><strong>Come join our amazing team and work remote from home!</strong></p><p><strong>The General Correspondence Specialist is responsible for reviewing and responding to general inquiries from borrowers, attorneys and/or authorized third-parties, confirmed successor in interest, or non-authorized third-parties, escalations from call center, and other correspondence received by the company. General correspondence may include verbal complaints or inquiries received that are non-specific and/or unrelated to the servicing of a customer\u2019s mortgage. Perform all duties in accordance with all company guidelines and applicable federal, state and local regulations, wherein the company operates.  The target pay range for this position is $23.50/hr - $25.50/hr.</strong></p><h3>What you\u2019ll do:</h3><ul>\n<li>Review incoming written inquiries from requesters that are non-specific and/or unrelated to the servicing of a customer\u2019s mortgage. </li>\n<li>Perform factual analyses of loan information, as necessary, and identify what information should be communicated in response to the general correspondence.</li>\n<li>Collaborate with other business units to assess appropriate resolution, when necessar",
+   "pubDate": 1795415554,
+   "expiryDate": 1800599554,
+   "applicationLink": "https://himalayas.app/companies/carringtonwholesale/jobs/general-correspondence-specialist?utm_source=api",
+   "guid": "https://himalayas.app/companies/carringtonwholesale/jobs/general-correspondence-specialist"
+  },
+  {
+   "title": "Microsoft Fabric Data Engineer (Freelance kan)",
+   "excerpt": "\ud83d\udccb T\u00e2ches et responsabilit\u00e9s Depuis plusieurs ann\u00e9es, l\u2019organisation s\u2019appuie sur un entrep\u00f4t de donn\u00e9es central pour ses rapports et ses analyses.",
+   "companyName": "EngiFlex",
+   "companySlug": "engiflex",
+   "companyLogo": "https://cdn-images.himalayas.app/rfvvga8ydwzvbire5qdaz5ny2o5j",
+   "employmentType": "Full Time",
+   "minSalary": null,
+   "maxSalary": null,
+   "salaryPeriod": "annual",
+   "seniority": [
+    "Senior"
+   ],
+   "currency": null,
+   "locationRestrictions": [
+    "Belgium"
+   ],
+   "timezoneRestrictions": [
+    1
+   ],
+   "categories": [
+    "Data-Engineer",
+    "Microsoft-Fabric-Data-Engineer",
+    "Azure-Data-Engineer",
+    "ETL-Engineer",
+    "BI-Data-Engineer"
+   ],
+   "parentCategories": [
+    "Data Science"
+   ],
+   "description": "<h4>\ud83d\udccb T\u00e2ches et responsabilit\u00e9s</h4><p>Depuis plusieurs ann\u00e9es, l\u2019organisation s\u2019appuie sur un entrep\u00f4t de donn\u00e9es central pour ses rapports et ses analyses. Cette plateforme est en cours de modernisation par une migration vers le cloud Microsoft Azure. Microsoft Fabric, notamment pour l\u2019ETL, et Power BI font partie des outils adopt\u00e9s dans cette \u00e9volution.</p><p>Pour accompagner cette modernisation, nous recherchons un <strong>Data Engineer Microsoft Fabric</strong>.</p><h3>\ud83d\udccc Mission :</h3><ul>\n<li>Concevoir et impl\u00e9menter des mod\u00e8les de donn\u00e9es orient\u00e9s BI selon la m\u00e9thodologie Kimball et le mod\u00e8le snowflake, \u00e0 partir des besoins m\u00e9tier et des exigences techniques.</li>\n<li>D\u00e9velopper les tables de faits, les dimensions et les agr\u00e9gats du DataWarehouse en respectant les priorit\u00e9s et le planning.</li>\n<li>D\u00e9velopper les flux ETL dans Microsoft Fabric, notamment avec Dataflows Gen2, des Notebooks PySpark et des Pipelines, sur Azure Cloud.</li>\n<li>Garantir la qualit\u00e9, la fiabilit\u00e9, le monitoring et les performances des traitements et des flux.</li>\n<li>G\u00e9rer le monitoring, la tra\u00e7abilit\u00e9, les alertes et les rejets des flux.</li>\n<li>Automatiser les d\u00e9ploiements au moyen de pratiques",
+   "pubDate": 1795415217,
+   "expiryDate": 1800599216,
+   "applicationLink": "https://himalayas.app/companies/engiflex/jobs/microsoft-fabric-data-engineer-freelance-kan?utm_source=api",
+   "guid": "https://himalayas.app/companies/engiflex/jobs/microsoft-fabric-data-engineer-freelance-kan"
+  },
+  {
+   "title": "Robotics Teleoperator",
+   "excerpt": "Role Overview We\u2019re hiring data collection operators to support physical AI programs.",
+   "companyName": "Welocalize",
+   "companySlug": "welocalize",
+   "companyLogo": "https://cdn-images.himalayas.app/mgs6a3lgzst6biuk1ro30100pkwv",
+   "employmentType": "Part Time",
+   "minSalary": 36,
+   "maxSalary": 36,
+   "salaryPeriod": "hourly",
+   "seniority": [
+    "Entry-level"
+   ],
+   "currency": "USD",
+   "locationRestrictions": [
+    "United States"
+   ],
+   "timezoneRestrictions": [
+    -10,
+    -9,
+    -8,
+    -7,
+    -6,
+    -5,
+    14
+   ],
+   "categories": [
+    "Teleoperator",
+    "Robotics-Operations",
+    "Robotics-Technician",
+    "Robotics-Specialist",
+    "Robotics",
+    "Remote-Robotic-Systems-Specialist",
+    "Robotics-Engineer",
+    "Mechatronics-Engineer"
+   ],
+   "parentCategories": [
+    "Hardware Engineer"
+   ],
+   "description": "<h3><strong>Role Overview</strong></h3><p>We\u2019re hiring data collection operators to support physical AI programs. In this role, you\u2019ll operate physical AI data collection systems (via teleoperation tools or guided interfaces) to generate high-quality real-world data used to train and evaluate AI models.</p><p><span>This is hands-on, execution-focused work. You\u2019ll be working with real hardware in structured environments, following defined scenarios, and helping produce the data that directly shapes how robots learn and perform.</span></p><p><span><strong>Project Details<br></strong></span></p><ul class=\"list-disc list-outside leading-3 -mt-2\">\n<li class=\"leading-normal -mb-2\"><p>Location: San Francisco, CA \u2014 100% onsite</p></li>\n<li class=\"leading-normal -mb-2\"><p>Type: Full-time, short-term W-2 employee</p></li>\n<li class=\"leading-normal -mb-2\"><p>Schedule: Full-time; 8 hours/day, 5 days/week. <span>7:00 AM to 3:00 PM</span>&nbsp;</p></li>\n<li class=\"leading-normal -mb-2\"><p>Duration: 6 weeks with possibility of extension</p></li>\n<li class=\"leading-normal -mb-2\"><p>Start: ASAP</p></li>\n<li class=\"leading-normal -mb-2\"><p>Compensation: US$36/hour</p></li>\n<li class=\"leading-normal ",
+   "pubDate": 1795415034,
+   "expiryDate": 1798006948,
+   "applicationLink": "https://himalayas.app/companies/welocalize/jobs/robotics-teleoperator?utm_source=api",
+   "guid": "https://himalayas.app/companies/welocalize/jobs/robotics-teleoperator"
+  },
+  {
+   "title": "Graphic Designer- PLGGD007",
+   "excerpt": "Job Title: General Graphic Designer Location: Remote (Ability to work within specified time zones as needed) Work Schedule: Flexible based on employers needs, typically Monday to Friday.",
+   "companyName": "Sagan Recruitment",
+   "companySlug": "sagan-recruitment",
+   "companyLogo": "https://cdn-images.himalayas.app/rbuvncuorqddvs05naqk1it98s2e",
+   "employmentType": "Full Time",
+   "minSalary": 1800,
+   "maxSalary": 3200,
+   "salaryPeriod": "annual",
+   "seniority": [
+    "Mid-level"
+   ],
+   "currency": "USD",
+   "locationRestrictions": [
+    "Ukraine"
+   ],
+   "timezoneRestrictions": [
+    2,
+    3
+   ],
+   "categories": [
+    "Graphic-Designer",
+    "Visual-Designer",
+    "Brand-Designer",
+    "Web-Designer",
+    "UI-UX-Designer"
+   ],
+   "parentCategories": [
+    "Design"
+   ],
+   "description": "<h3>Job Title: General Graphic Designer</h3><p>Location: Remote (Ability to work within specified time zones as needed)</p><p>Work Schedule: Flexible based on employers needs, typically Monday to Friday.</p><h3>Company Overview:</h3><p>Sagan is an exclusive membership community for top executives, founders, and CEOs seeking to hire and maximize the impact of international talent. We bridge the gap between global talent and US-based businesses, connecting candidates from vibrant regions like Latin America, the Philippines, India, Pakistan, Bangladesh, and Africa with leading American companies. Discover a world of career possibilities with Sagan.</p><h3>Position Overview</h3><p>We are seeking a talented General Graphic Designer to join our dynamic design team. In this role, you will work on a variety of design projects, including branding, print materials, digital assets, social media graphics, and web design elements. You will play a key role in maintaining a consistent visual identity across all platforms, while collaborating with cross-functional teams to ensure high-quality, on-brand designs.</p><p>The ideal candidate should have a strong design background, creativity, and the a",
+   "pubDate": 1795414173,
+   "expiryDate": 1800598172,
+   "applicationLink": "https://himalayas.app/companies/sagan-recruitment/jobs/graphic-designer-plggd007?utm_source=api",
+   "guid": "https://himalayas.app/companies/sagan-recruitment/jobs/graphic-designer-plggd007"
+  }
+ ]
+}

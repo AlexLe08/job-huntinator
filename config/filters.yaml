@@ -1,0 +1,68 @@
+# All filter knobs live here. Patterns are case-insensitive Python regexes, matched against
+# a normalized title (lowercased, punctuation like "-", "/", "," turned into spaces).
+# Tip: run `python -m jobscraper run --dry-run --explain` to see why each job was kept or dropped.
+
+freshness_hours: 48          # report a job only if we first saw it within this many hours
+
+senior_mode: flag            # flag | drop  -- "senior"/"sr" titles: keep with a flag, or drop entirely
+
+title:
+  tier1:                     # strong matches
+    - '\bfront ?end\b'
+    - '\bui (engineer|developer)\b'
+    - '\bweb (engineer|developer)\b'
+    - '\bdesign systems?\b'
+    - '\bdesign engineer\b'
+    - '\bfull ?stack\b'
+    - '\bproduct engineer\b'
+    - '\b(react|javascript|typescript) (engineer|developer)\b'
+  tier2:                     # adjacent roles, ranked lower
+    - '\bsolutions? (engineer|architect)\b'
+    - '\bsupport engineer\b'
+    - '\bimplementation (engineer|consultant|specialist)\b'
+    - '\bforward deployed engineer\b'
+    - '\bcustomer engineer\b'
+    - '\b(qa|quality assurance|quality) (engineer|analyst)\b'
+    - '\b(test|qa|quality|software test) automation engineer\b|\bautomation (test|qa) engineer\b|\btest engineer\b'
+    - '\bsdet\b'
+    - '\bdeveloper (advocate|relations|experience)\b'
+    - '\bdevrel\b'
+  exclude:                   # hard drop, checked before includes
+    - '\bstaff\b'
+    - '\bprincipal\b'
+    - '\blead\b'
+    - '\bmanager\b'
+    - '\bdirector\b'
+    - '\bhead of\b'
+    - '\bvp\b|\bvice president\b'
+    - '\bintern(ship)?\b'
+    - '\bco ?op\b'
+    - '\bembedded\b'
+    - '\bfirmware\b'
+    - '\bdata scientist\b'
+    - '(?<!solutions )(?<!solution )\barchitect\b'   # solutions architect is tier2; other architects are too senior
+  # Mobile titles are dropped unless the title also matches a tier1 web/frontend pattern
+  # (e.g. "Mobile & Web Engineer" stays).
+  mobile_only: '\b(ios|android|mobile|swift|kotlin)\b'
+  # Generic "Software Engineer" titles count as tier1 unless they name a non-frontend specialty
+  # (then they're dropped, or kept as tier2 if a tier2 pattern also matches).
+  generic_swe: '\b(software|product) (engineer|developer)\b|\bapplication developer\b|\bswe\b|\bengineer (i|ii|iii|1|2|3)\b'
+  generic_swe_exclude: '\b(back ?end|infrastructure|infra|platform|machine learning|ml|ai research|data|security|sre|site reliability|devops|network|systems|kernel|compiler|distributed|database|storage|gpu|hardware|robotics|game|graphics|audio|reliability|vulnerability|runtimes?|observability|identity|fraud|risk|crypto|blockchain|quant|trading)\b'
+  senior: '\b(senior|sr)\b'
+
+location:
+  # Which location classes to keep. Classes: MA, NC, us_remote, us_onsite, remote_unspecified, unknown, non_us
+  keep: [MA, NC, us_remote, us_onsite, remote_unspecified, unknown]
+  # Classes that get a flag so the screener can double-check them
+  flag: {remote_unspecified: 'loc?', unknown: 'loc?'}
+
+red_flags:                   # scanned in the description text
+  mode: drop                 # drop | flag
+  patterns:
+    '8+yrs': '(?<![-–\d])(?<![-–] )(?:minimum of |at least )?\b(?:[89]|1\d)\s*\+?\s*(?:or more\s+)?(?:years|yrs)\b[^.\n]{0,60}\bexperience'
+    clearance: '\b(?:active|current|obtain|maintain|eligib\w*)\b[^.\n]{0,40}\b(?:security|secret|ts/sci|dod)\s+clearance\b|\bts/sci\b|\btop secret\b|\bpolygraph\b'
+  # Only applies when the clearance pattern also matched
+  citizen_with_clearance: '\b(?:u\.?s\.? citizen(?:ship)?|united states citizen(?:ship)?)\b'
+
+dedupe:
+  title_similarity: 0.85     # company match + title ratio >= this = already tracked

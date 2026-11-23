@@ -1,0 +1,483 @@
+{
+ "total": 103,
+ "jobPostings": [
+  {
+   "title": "AI/ML Customer Engineer",
+   "externalPath": "/job/Singapore/AI-ML-Customer-Engineer_R-057975",
+   "locationsText": "Singapore",
+   "postedOn": "Posted Today",
+   "remoteType": "Onsite",
+   "bulletFields": [
+    "R-057975"
+   ]
+  },
+  {
+   "title": "Principal Specialist Solution Architect - App Platform",
+   "externalPath": "/job/Remote-US-TX/Principal-Specialist-Solution-Architect---App-Platform_R-060179-1",
+   "locationsText": "Remote US TX",
+   "postedOn": "Posted Today",
+   "remoteType": "Remote",
+   "bulletFields": [
+    "R-060179"
+   ]
+  },
+  {
+   "title": "Principal Specialist Solution Architect, App Platform",
+   "externalPath": "/job/Remote-US-IL/Principal-Specialist-Solution-Architect--App-Platform_R-060178-2",
+   "locationsText": "Remote US IL",
+   "postedOn": "Posted Yesterday",
+   "remoteType": "Remote",
+   "bulletFields": [
+    "R-060178"
+   ]
+  },
+  {
+   "title": "Senior Specialist Solution Architect - OpenShift",
+   "externalPath": "/job/Remote-US-TX/Senior-Specialist-Solution-Architect---OpenShift_R-060181-1",
+   "locationsText": "Remote US TX",
+   "postedOn": "Posted Today",
+   "remoteType": "Remote",
+   "bulletFields": [
+    "R-060181"
+   ]
+  },
+  {
+   "title": "Technical Account Manager - OpenShift",
+   "externalPath": "/job/Remote-US-MN/Technical-Account-Manager---OpenShift_R-060301-1",
+   "locationsText": "5 Locations",
+   "postedOn": "Posted 3 Days Ago",
+   "remoteType": "Remote",
+   "bulletFields": [
+    "R-060301"
+   ]
+  },
+  {
+   "title": "Technical Account Manager",
+   "externalPath": "/job/Remote-US-GA/Technical-Account-Manager_R-060521-2",
+   "locationsText": "Remote US GA",
+   "postedOn": "Posted 3 Days Ago",
+   "remoteType": "Remote",
+   "bulletFields": [
+    "R-060521"
+   ]
+  }
+ ],
+ "facets": [
+  {
+   "facetParameter": "a",
+   "descriptor": "Country",
+   "values": [
+    {
+     "descriptor": "United States of America",
+     "id": "bc33aa3152ec42d4995f4791a106ed09",
+     "count": 27
+    },
+    {
+     "descriptor": "Singapore",
+     "id": "80938777cac5440fab50d729f9634969",
+     "count": 15
+    },
+    {
+     "descriptor": "Australia",
+     "id": "d903bb3fedad45039383f6de334ad4db",
+     "count": 11
+    },
+    {
+     "descriptor": "Japan",
+     "id": "8b705da2becf43cfaccc091da0988ab2",
+     "count": 10
+    },
+    {
+     "descriptor": "Brazil",
+     "id": "1a29bb1357b240ab99a2fa755cc87c0e",
+     "count": 7
+    },
+    {
+     "descriptor": "India",
+     "id": "c4f78be1a8f14da0ab49ce1162348a5e",
+     "count": 5
+    },
+    {
+     "descriptor": "France",
+     "id": "54c5b6971ffb4bf0b116fe7651ec789a",
+     "count": 5
+    },
+    {
+     "descriptor": "Netherlands",
+     "id": "9696868b09c64d52a62ee13b052383cc",
+     "count": 4
+    },
+    {
+     "descriptor": "Germany",
+     "id": "dcc5b7608d8644b3a93716604e78e995",
+     "count": 4
+    },
+    {
+     "descriptor": "Mexico",
+     "id": "e2adff9272454660ac4fdb56fc70bb51",
+     "count": 3
+    },
+    {
+     "descriptor": "Italy",
+     "id": "8cd04a563fd94da7b06857a79faaf815",
+     "count": 3
+    },
+    {
+     "descriptor": "Saudi Arabia",
+     "id": "50423b5190ad49bb89e94cd58dfaad69",
+     "count": 2
+    },
+    {
+     "descriptor": "Qatar",
+     "id": "f5ff182c7fab406bbb110cc1f7e99064",
+     "count": 2
+    },
+    {
+     "descriptor": "Israel",
+     "id": "084562884af243748dad7c84c304d89a",
+     "count": 2
+    },
+    {
+     "descriptor": "Colombia",
+     "id": "e8106cd6a3534f2dba6fdee2d41db89d",
+     "count": 2
+    },
+    {
+     "descriptor": "Austria",
+     "id": "d004c0d1a6c84511ab048669fcdf9fd7",
+     "count": 2
+    },
+    {
+     "descriptor": "Chile",
+     "id": "53fe09ef12b9408682a1d2439823f2e0",
+     "count": 1
+    },
+    {
+     "descriptor": "Argentina",
+     "id": "e42ad5eac46d4cc9b367ceaef42577c5",
+     "count": 1
+    },
+    {
+     "descriptor": "United Kingdom",
+     "id": "29247e57dbaf46fb855b224e03170bc7",
+     "count": 1
+    },
+    {
+     "descriptor": "Sweden",
+     "id": "6a800a4736884df5826858d435650f45",
+     "count": 1
+    },
+    {
+     "descriptor": "Spain",
+     "id": "bd34c524a6a04ae6915f5d96fa086199",
+     "count": 1
+    },
+    {
+     "descriptor": "Korea, Republic of",
+     "id": "7a5a2aadf9d34086a2bfbfd408bc28da",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "facetParameter": "b",
+   "descriptor": "Region/State/Province",
+   "values": [
+    {
+     "descriptor": "Central Singapore",
+     "id": "f9826c11d56f47b68b9e31b4cba4819f",
+     "count": 15
+    },
+    {
+     "descriptor": "North Carolina",
+     "id": "1486a0a4a8464c3b9ec482d4038deb99",
+     "count": 14
+    },
+    {
+     "descriptor": "Tokyo",
+     "id": "6534030e79d54ac897646438ed66ac9a",
+     "count": 10
+    },
+    {
+     "descriptor": "Texas",
+     "id": "fc77e3a1ab36487f9646d14f7242dd77",
+     "count": 6
+    },
+    {
+     "descriptor": "S\u00e3o Paulo",
+     "id": "6177762425c54ca8aa31aac74fb08fad",
+     "count": 6
+    },
+    {
+     "descriptor": "Australian Capital Territory",
+     "id": "84a282321f50441a8fe36040f9b90027",
+     "count": 6
+    },
+    {
+     "descriptor": "Victoria",
+     "id": "ab28d9dc175e444fa11c7c0f28f52e2c",
+     "count": 5
+    },
+    {
+     "descriptor": "New South Wales",
+     "id": "c7cff0e46d864ae49ef40b4ba71e7e5c",
+     "count": 5
+    },
+    {
+     "descriptor": "Massachusetts",
+     "id": "c66d738416b74fb180376cf59cc7ec8f",
+     "count": 5
+    },
+    {
+     "descriptor": "Hauts-de-Seine",
+     "id": "976ef07781e545349758f90170bf3166",
+     "count": 5
+    },
+    {
+     "descriptor": "Virginia",
+     "id": "e0889a76c58d4fff9b54b80dadc49000",
+     "count": 4
+    },
+    {
+     "descriptor": "North Holland",
+     "id": "0dfdd5ec7da640d292ff45e401b35d2b",
+     "count": 4
+    },
+    {
+     "descriptor": "Bavaria",
+     "id": "bd89fff5ffa6440a9abeaf2c5c1dc37c",
+     "count": 4
+    },
+    {
+     "descriptor": "Milano",
+     "id": "15666db5b54343c1ac41344d81e951eb",
+     "count": 3
+    },
+    {
+     "descriptor": "Mah\u0101r\u0101shtra",
+     "id": "a3c37012f51642f4a7b3dafc8ac37801",
+     "count": 3
+    },
+    {
+     "descriptor": "Georgia",
+     "id": "dec8eabbb13d45bdb159b8e25d896110",
+     "count": 3
+    },
+    {
+     "descriptor": "Florida",
+     "id": "9c1a239b35bd4598856e5393b249b8a1",
+     "count": 3
+    },
+    {
+     "descriptor": "Delhi",
+     "id": "a1dd3300691e478c83f6632acd616705",
+     "count": 3
+    },
+    {
+     "descriptor": "Vienna",
+     "id": "eb8327b8071d4011ac36f81ce91c6dea",
+     "count": 2
+    },
+    {
+     "descriptor": "South Carolina",
+     "id": "1d2632a43d204a2799bcd38b57e8a26e",
+     "count": 2
+    },
+    {
+     "descriptor": "Riyadh",
+     "id": "a9b4429766264ac88ba45046ce44b654",
+     "count": 2
+    },
+    {
+     "descriptor": "Distrito Capital de Bogot\u00e1",
+     "id": "a2b67cd4a7c742abb74218ef226aef4d",
+     "count": 2
+    },
+    {
+     "descriptor": "Center District",
+     "id": "3c145ef71da8436da952514d03d954ef",
+     "count": 2
+    },
+    {
+     "descriptor": "California",
+     "id": "ec3d210e4240442e99a28fa70419aec5",
+     "count": 2
+    },
+    {
+     "descriptor": "Ad Dawhah",
+     "id": "4f82bebcc58a49e5942a3a9ef6528b79",
+     "count": 2
+    },
+    {
+     "descriptor": "Illinois",
+     "id": "d8bb292ed9fe44a2899a990ad569538c",
+     "count": 1
+    },
+    {
+     "descriptor": "Hesse",
+     "id": "6cc156ba5cce4b9587306688ce202df9",
+     "count": 1
+    },
+    {
+     "descriptor": "Hampshire",
+     "id": "42a98072ea70411dabde47d538d4f156",
+     "count": 1
+    },
+    {
+     "descriptor": "Distrito Federal",
+     "id": "c6bb3bccb5c54883b38f2be6e44c3b77",
+     "count": 1
+    },
+    {
+     "descriptor": "Colorado",
+     "id": "a83d6eabae3b49718c4ce09eeb66fd0b",
+     "count": 1
+    },
+    {
+     "descriptor": "Buenos Aires",
+     "id": "758d5939ee334162b54a2ef2d7d29ab6",
+     "count": 1
+    },
+    {
+     "descriptor": "Baden-Wurttemberg",
+     "id": "fc63a555e1d541379dde6e260bfad7d2",
+     "count": 1
+    },
+    {
+     "descriptor": "Washington",
+     "id": "de9b48948ef8421db97ddf4ea206e931",
+     "count": 1
+    },
+    {
+     "descriptor": "Stockholm County",
+     "id": "e6ba1942c53645958c2958bbd17e1d1d",
+     "count": 1
+    },
+    {
+     "descriptor": "Seoul",
+     "id": "443e53d4f94a4547af860b67235f9942",
+     "count": 1
+    },
+    {
+     "descriptor": "Region Metropolitana de Santiago",
+     "id": "ea75ae953e9d45ce87314070d8c528b0",
+     "count": 1
+    },
+    {
+     "descriptor": "Ohio",
+     "id": "41493c81d9214eb190fd14067c7d974d",
+     "count": 1
+    },
+    {
+     "descriptor": "Nebraska",
+     "id": "3a652942d5f84071a48bc94a2b17d331",
+     "count": 1
+    },
+    {
+     "descriptor": "Missouri",
+     "id": "790e3c3ddfaa4123905237a05f1df9e9",
+     "count": 1
+    },
+    {
+     "descriptor": "Minnesota",
+     "id": "02f3984b69ba450080e456fe733f6741",
+     "count": 1
+    },
+    {
+     "descriptor": "Michigan",
+     "id": "b8372eef6b5341a39cdc95ac32790cba",
+     "count": 1
+    },
+    {
+     "descriptor": "Maryland",
+     "id": "586509e6daa741808206b095fee97e8f",
+     "count": 1
+    },
+    {
+     "descriptor": "Madrid",
+     "id": "0321ceabe7ca4740bd2d5f2e2e6e5d68",
+     "count": 1
+    },
+    {
+     "descriptor": "London, City of",
+     "id": "5d288ad1e2a84e09a32c0954a5946d7f",
+     "count": 1
+    },
+    {
+     "descriptor": "Kansas",
+     "id": "975ef5fd66c048909a4d64b64b762836",
+     "count": 1
+    },
+    {
+     "descriptor": "Indiana",
+     "id": "28489665bcac44028a70d0642c932be4",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "facetParameter": "c",
+   "descriptor": "Remote Type",
+   "values": [
+    {
+     "descriptor": "Hybrid",
+     "id": "c0dc068729fd100110e3536e3af70000",
+     "count": 47
+    },
+    {
+     "descriptor": "Remote",
+     "id": "48e76bf7cb5510011a9542195ab40001",
+     "count": 34
+    },
+    {
+     "descriptor": "Onsite",
+     "id": "48e76bf7cb5510011a9542195ab40000",
+     "count": 22
+    }
+   ]
+  },
+  {
+   "facetParameter": "d",
+   "descriptor": "Job Function",
+   "values": [
+    {
+     "descriptor": "Consulting",
+     "id": "c18026e7757601bed732126f4e43e84a",
+     "count": 37
+    },
+    {
+     "descriptor": "Engineering",
+     "id": "c18026e77576010f6ef6126f4e43ec4a",
+     "count": 33
+    },
+    {
+     "descriptor": "Sales",
+     "id": "c18026e7757601c892be156f4e43fc4a",
+     "count": 27
+    },
+    {
+     "descriptor": "Unclassified Group",
+     "id": "c18026e77576014add93166f4e43004b",
+     "count": 5
+    },
+    {
+     "descriptor": "Program & Project Management",
+     "id": "c18026e7757601417f64156f4e43fa4a",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "facetParameter": "e",
+   "descriptor": "Full/Part-time",
+   "values": [
+    {
+     "descriptor": "Full time",
+     "id": "3afab13eadf301a2eaafadcc15425800",
+     "count": 94
+    }
+   ]
+  }
+ ],
+ "userAuthenticated": false
+}

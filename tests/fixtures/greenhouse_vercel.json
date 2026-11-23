@@ -1,0 +1,452 @@
+{
+ "jobs": [
+  {
+   "absolute_url": "https://job-boards.greenhouse.io/vercel/jobs/6230763004",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 5230975004,
+   "location": {
+    "name": "Remote - Australia"
+   },
+   "metadata": [
+    {
+     "id": 18783104004,
+     "name": "Career Site Categories",
+     "value": "Field Engineering",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 6230763004,
+   "updated_at": "2026-11-18T17:29:27-05:00",
+   "requisition_id": "1379",
+   "title": "Customer Support Engineer",
+   "company_name": "Vercel",
+   "first_published": "2026-10-21T13:00:26-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;About Vercel:&lt;/h2&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Vercel is the agentic infrastructure company, freeing people and agents to ship what&#39;s next. For more than a decade we&#39;ve helped builders move from idea to production with speed, security, and exceptional developer experience.&lt;/span&gt;&lt;/p&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Now we&#39;re scaling our products for both agents and people to ship and run software, built in the open and trusted by OpenAI, PayPal, Ramp, Supreme, and millions of developers worldwide.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;h2&gt;&lt;strong&gt;About the Role:&lt;/strong&gt;&lt;/h2&gt;\n&lt;p&gt;As a Customer Support Engineer, you\u2019ll resolve technical problems and questions for Vercel customers, and build the internal tooling and fixes that help them get the most from the platform. You\u2019ll specialize in a product area and own it within the team, working alongside engineering. Success means fixing root causes and improving the customer experience through engineering. This role includes evening, weekend, and on-call work on a rota.&lt;/p&gt;\n&lt;p&gt;For candidates based in Sydney, the role requires a hybrid schedule, three days per week in our Sydney office.&lt;/p&gt;\n&lt;h2&gt;&lt;strong&gt;What You Will Do:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Resolve technical cases from Vercel customers, including issues raised outside regular case channels&lt;/li&gt;\n&lt;li&gt;Build and improve internal tools alongside engineering, and complete engineering work regularly&lt;/li&gt;\n&lt;li&gt;Specialize in a product area and own it within the team&lt;/li&gt;\n&lt;li&gt;Give advice and assistance to the Vercel community&lt;/li&gt;\n&lt;li&gt;Support Customer Success Managers on Enterprise requests, and improve internal documentation and processes&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;&lt;strong&gt;About You:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Relevant frontend development experience (ideally 1+year)&lt;/li&gt;\n&lt;li&gt;Hands-on experience with cloud technologies and serverless computing&lt;/li&gt;\n&lt;li&gt;Engineered fixes for the root causes of technical problems, not workarounds&lt;/li&gt;\n&lt;li&gt;Available for a weekend and on-call rota&lt;/li&gt;\n&lt;li&gt;Experience working on a fully remote, globally distributed team&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;Bonus if You:&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Have hands-on experience with React and Next.js&lt;/li&gt;\n&lt;li&gt;Have backend development experience, especially Node.js, or have worked with monorepos and custom CI/CD pipelines&lt;/li&gt;\n&lt;li&gt;Have set up CDNs, DNS, or cloud infrastructure, or handled incident management&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;&lt;strong&gt;Benefits &amp;amp; Perks:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Competitive compensation and stock options.&lt;/li&gt;\n&lt;li&gt;Flexible working style - 100% remote, with teammates located throughout the globe.&lt;/li&gt;\n&lt;li&gt;Learn and Grow - we provide mentorship and send you to events that help you build your network and skills.&lt;/li&gt;\n&lt;li&gt;Unlimited PTO - 4 weeks recommended per year. Take time when you need it.&lt;/li&gt;\n&lt;li&gt;Generous Gear Credit.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;div id=&quot;te-floating-button-container&quot;&gt;&lt;/div&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;h2&gt;&lt;strong&gt;Disclosures:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Privacy: &lt;/strong&gt;Please review our &lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;a href=&quot;https://vercel.com/legal/job-applicant-privacy-notice&quot;&gt;Job Applicant Privacy Policy&lt;/a&gt;&lt;/span&gt; for more information on how we handle your data.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Equal Opportunity:&amp;nbsp;&lt;/strong&gt;Vercel is committed to fostering and empowering an inclusive community within our organization. We do not discriminate on the basis of race, religion, color, gender expression or identity, sexual orientation, national origin, citizenship, age, marital status, veteran status, disability status, or any other characteristic protected by law. Vercel encourages everyone to apply for our available positions, even if they don&#39;t necessarily check every box on the job description.&lt;/li&gt;\n&lt;/ul&gt;&lt;/div&gt;",
+   "departments": [
+    {
+     "id": 4147565004,
+     "name": "Support",
+     "child_ids": [],
+     "parent_id": null
+    }
+   ],
+   "offices": [
+    {
+     "id": 4035433004,
+     "name": "Remote - Australia ",
+     "location": "Canberra, Australian Capital Territory, Australia",
+     "child_ids": [],
+     "parent_id": 4014160004
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": "http://app4.greenhouse.io/ai_opt_out_request/job_post/6230763004/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://job-boards.greenhouse.io/vercel/jobs/6122437004",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 5190494004,
+   "location": {
+    "name": "Hybrid - San Francisco, New York City, Austin"
+   },
+   "metadata": [
+    {
+     "id": 18783104004,
+     "name": "Career Site Categories",
+     "value": "Engineering",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 6122437004,
+   "updated_at": "2026-11-11T10:33:37-05:00",
+   "requisition_id": "1297",
+   "title": "DevRel Engineer, Agentic Infrastructure",
+   "company_name": "Vercel",
+   "first_published": "2026-07-22T13:27:13-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;About Vercel:&lt;/h2&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Vercel is the agentic infrastructure company, freeing people and agents to ship what&#39;s next. For more than a decade we&#39;ve helped builders move from idea to production with speed, security, and exceptional developer experience.&lt;/span&gt;&lt;/p&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Now we&#39;re scaling our products for both agents and people to ship and run software, built in the open and trusted by OpenAI, PayPal, Ramp, Supreme, and millions of developers worldwide.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;h2&gt;About the role&lt;/h2&gt;\n&lt;p&gt;We&#39;re hiring a DevRel Engineer to work inside the product teams building Vercel&#39;s agentic infrastructure: &lt;a href=&quot;https://vercel.com/ai-gateway&quot;&gt;AI Gateway&lt;/a&gt;, &lt;a href=&quot;https://vercel.com/docs/vercel-sandbox&quot;&gt;Sandbox&lt;/a&gt;, and the primitives that come after them. You&#39;ll sit with product and engineering, build with these tools before anyone else can, and show the world what they make possible. You will report to the Head of AI Infrastructure and can be located anywhere.&lt;/p&gt;\n&lt;p&gt;If you\u2019re based within a pre-determined commuting distance of one of our offices (SF, NY, London, or Berlin), the role includes in-office anchor days on Monday, Tuesday, and Friday, even if the role is listed as remote. For location-specific details, please connect with our recruiting team.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;When applying, include a link to something you made that taught developers something, a talk, a repo, a post, a video. Applications without one will not be considered.&lt;/strong&gt;&lt;/p&gt;\n&lt;h2&gt;What you&#39;ll do&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Build agents and applications on AI Gateway and Sandbox before they ship, then turn what you learn into demos, templates, and open source projects developers actually clone and run.&lt;/li&gt;\n&lt;li&gt;Teach developers how to build with agentic infrastructure through writing, talks, videos, and live coding. You set the canonical examples the ecosystem emulates.&lt;/li&gt;\n&lt;li&gt;Shape the products themselves. You sit in the same planning meetings as the PMs and engineers, and your job is to hit the rough edges first and make sure they get fixed before launch.&lt;/li&gt;\n&lt;li&gt;Own the important pieces of launches: example repos, launch demos, docs contributions, and the first wave of answers when developers start asking questions.&lt;/li&gt;\n&lt;li&gt;Bring the outside in: track how developers across the ecosystem are building agents, where they get stuck, and what they&#39;re reaching for that doesn&#39;t exist yet.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;What you need&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;5+ years in engineering, DevRel, or DX roles, with software you can point to.&lt;/li&gt;\n&lt;li&gt;You&#39;ve built and shipped AI applications or agents: you know tool calling, model routing, and sandboxed code execution from using them.&lt;/li&gt;\n&lt;li&gt;Strong TypeScript, and you&#39;re at home in the Next.js and AI SDK ecosystem.&lt;/li&gt;\n&lt;li&gt;You have a public body of work: talks, posts, open source, or videos.&lt;/li&gt;\n&lt;li&gt;You can take a half-finished API and produce a working demo and a clear explanation in the same week, often the same day.&lt;/li&gt;\n&lt;li&gt;You&#39;ve changed a product roadmap with developer feedback.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;Bonus if you&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Maintain or contribute to an open source project other developers depend on.&lt;/li&gt;\n&lt;li&gt;Have spun up a microVM and have opinions on why isolation matters for agents.&lt;/li&gt;\n&lt;li&gt;Have shipped something real on Vercel with the AI SDK.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;&lt;strong&gt;Compensation &amp;amp; Benefits:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Competitive compensation package, including equity.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Inclusive Healthcare Package.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Learn and Grow - we provide mentorship and send you to events that help you build your network and skills.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Flexible Time Off.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;We will provide you the gear you need to do your role, and a WFH budget for you to outfit your space as needed.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;The San Francisco, CA base pay range for this role is $168,000 - $252,000. Actual salary will be based on job-related skills, experience, and location. Compensation outside of San Francisco may be adjusted based on employee location. The total compensation package may include benefits, equity-based compensation, and eligibility for a company bonus or variable pay program depending on the role. Your recruiter can share more details during the hiring process.&lt;/span&gt;&lt;/p&gt;\n&lt;p&gt;#LI-KR1&lt;/p&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;h2&gt;&lt;strong&gt;Disclosures:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Privacy: &lt;/strong&gt;Please review our &lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;a href=&quot;https://vercel.com/legal/job-applicant-privacy-notice&quot;&gt;Job Applicant Privacy Policy&lt;/a&gt;&lt;/span&gt; for more information on how we handle your data.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Equal Opportunity:&amp;nbsp;&lt;/strong&gt;Vercel is committed to fostering and empowering an inclusive community within our organization. We do not discriminate on the basis of race, religion, color, gender expression or identity, sexual orientation, national origin, citizenship, age, marital status, veteran status, disability status, or any other characteristic protected by law. Vercel encourages everyone to apply for our available positions, even if they don&#39;t necessarily check every box on the job description.&lt;/li&gt;\n&lt;/ul&gt;&lt;/div&gt;",
+   "departments": [
+    {
+     "id": 4042495004,
+     "name": "Engineering",
+     "child_ids": [],
+     "parent_id": null
+    }
+   ],
+   "offices": [
+    {
+     "id": 4091065004,
+     "name": "Office - San Francisco",
+     "location": "San Francisco, California, United States",
+     "child_ids": [],
+     "parent_id": 4014159004
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": "http://app4.greenhouse.io/ai_opt_out_request/job_post/6122437004/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://job-boards.greenhouse.io/vercel/jobs/6231045004",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 5231095004,
+   "location": {
+    "name": "Hybrid - San Francisco"
+   },
+   "metadata": [
+    {
+     "id": 18783104004,
+     "name": "Career Site Categories",
+     "value": "Engineering",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 6231045004,
+   "updated_at": "2026-11-04T18:17:55-05:00",
+   "requisition_id": "R-00004",
+   "title": "Engineering Director, Vercel for Platforms",
+   "company_name": "Vercel",
+   "first_published": "2026-10-21T12:40:43-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;About Vercel:&lt;/h2&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Vercel is the agentic infrastructure company, freeing people and agents to ship what&#39;s next. For more than a decade we&#39;ve helped builders move from idea to production with speed, security, and exceptional developer experience.&lt;/span&gt;&lt;/p&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Now we&#39;re scaling our products for both agents and people to ship and run software, built in the open and trusted by OpenAI, PayPal, Ramp, Supreme, and millions of developers worldwide.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;h2&gt;About the role:&lt;/h2&gt;\n&lt;p&gt;As an Engineering Director, Vercel for Platforms, you\u2019ll lead the engineering team behind the product that lets companies build their own platforms on Vercel, from AI app builders and coding agents to SaaS products serving thousands of customers. The team is intentionally small, and its scope spans deployment infrastructure, domains, tenant isolation, identity, billing, observability, and developer tooling. You\u2019ll evolve the platform to support millions of tenants and applications while keeping that complexity out of your customers\u2019 way, combining cross-team coordination, technical direction, and product judgment to shape a strategic growth engine for Vercel. Winning a platform means powering the applications and businesses built on top of it. This is a hybrid role based in San Francisco, in the office on Monday, Tuesday, and Friday.&lt;/p&gt;\n&lt;h2&gt;What you&#39;ll do:&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Build and grow the team through hiring, coaching, and career development, and hold a high bar for engineering standards&lt;/li&gt;\n&lt;li&gt;Partner with Product, Design, and other engineering teams to set roadmap priorities and deliver against product goals&lt;/li&gt;\n&lt;li&gt;Balance short-term product delivery with long-term investment in technical quality and platform scalability, so the platform holds up at millions of tenants and applications&lt;/li&gt;\n&lt;li&gt;Run operational excellence through engineering processes, incident management, and continuous improvement&lt;/li&gt;\n&lt;li&gt;Review and contribute code to stay close to the technology and unblock the team&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;What you need:&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;8+ years building and operating large-scale platforms or multi-tenant systems&lt;/li&gt;\n&lt;li&gt;5+ years managing engineers&lt;/li&gt;\n&lt;li&gt;Reviewed system designs and evaluated infrastructure tradeoffs, including data model challenges&lt;/li&gt;\n&lt;li&gt;Translated business goals into technical strategy and aligned multiple orgs around it&lt;/li&gt;\n&lt;li&gt;Resolved technical conflicts by weighing the options, making the call, and bringing the team along&lt;/li&gt;\n&lt;li&gt;Set clear expectations and gave direct, timely feedback to engineers&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;Benefits &amp;amp; Compensation:&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Competitive compensation package and stock options.&lt;/li&gt;\n&lt;li&gt;Comprehensive, inclusive healthcare package.&lt;/li&gt;\n&lt;li&gt;Opportunities for mentorship and professional growth, including attendance at industry events.&lt;/li&gt;\n&lt;li&gt;Flexible Time Off with a recommended minimum of four weeks per year, plus paid holidays.&lt;/li&gt;\n&lt;li&gt;Remote-friendly culture with teammates across multiple time zones.&lt;/li&gt;\n&lt;li&gt;Dedicated equipment and work-from-home budget to help you create an effective workspace.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;The San Francisco, CA base pay range for this role is 262,000-348,000. Actual salary will be based on job-related skills, experience, and location. Compensation outside of San Francisco may be adjusted based on employee location. The total compensation package may include benefits, equity-based compensation, and eligibility for a company bonus or variable pay program depending on the role. Your recruiter can share more details during the hiring process.&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;h2&gt;&lt;strong&gt;Disclosures:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Privacy: &lt;/strong&gt;Please review our &lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;a href=&quot;https://vercel.com/legal/job-applicant-privacy-notice&quot;&gt;Job Applicant Privacy Policy&lt;/a&gt;&lt;/span&gt; for more information on how we handle your data.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Equal Opportunity:&amp;nbsp;&lt;/strong&gt;Vercel is committed to fostering and empowering an inclusive community within our organization. We do not discriminate on the basis of race, religion, color, gender expression or identity, sexual orientation, national origin, citizenship, age, marital status, veteran status, disability status, or any other characteristic protected by law. Vercel encourages everyone to apply for our available positions, even if they don&#39;t necessarily check every box on the job description.&lt;/li&gt;\n&lt;/ul&gt;&lt;/div&gt;",
+   "departments": [
+    {
+     "id": 4042495004,
+     "name": "Engineering",
+     "child_ids": [],
+     "parent_id": null
+    }
+   ],
+   "offices": [
+    {
+     "id": 4091065004,
+     "name": "Office - San Francisco",
+     "location": "San Francisco, California, United States",
+     "child_ids": [],
+     "parent_id": 4014159004
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": "http://app4.greenhouse.io/ai_opt_out_request/job_post/6231045004/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://job-boards.greenhouse.io/vercel/jobs/6115908004",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 5187492004,
+   "location": {
+    "name": "Hybrid - San Francisco"
+   },
+   "metadata": [
+    {
+     "id": 18783104004,
+     "name": "Career Site Categories",
+     "value": "Engineering",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 6115908004,
+   "updated_at": "2026-11-04T18:18:19-05:00",
+   "requisition_id": "1279",
+   "title": "Engineering Manager, Dashboard",
+   "company_name": "Vercel",
+   "first_published": "2026-09-22T16:38:55-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;About Vercel:&lt;/h2&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Vercel is the agentic infrastructure company, freeing people and agents to ship what&#39;s next. For more than a decade we&#39;ve helped builders move from idea to production with speed, security, and exceptional developer experience.&lt;/span&gt;&lt;/p&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Now we&#39;re scaling our products for both agents and people to ship and run software, built in the open and trusted by OpenAI, PayPal, Ramp, Supreme, and millions of developers worldwide.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;h2&gt;About the role:&lt;/h2&gt;\n&lt;p&gt;As an Engineering Manager on the Dashboard team, you\u2019ll lead the engineers behind the primary interface developers use to build, deploy, and manage applications on Vercel. The Dashboard is where customers experience the platform every day, from onboarding new projects to managing deployments, observability, billing, security, AI, and team collaboration. You\u2019ll partner with Product, Design, Data, and other engineering teams to deliver polished product experiences and help shape the long-term architecture of one of Vercel\u2019s most important customer-facing surfaces. The role balances technical leadership, product thinking, and people management, so the team ships quickly without compromising quality. This is a hybrid role based in San Francisco, in the office on Monday, Tuesday, and Friday.&lt;/p&gt;\n&lt;h2&gt;What you&#39;ll do:&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Build and grow the team through hiring, coaching, mentorship, and career development, and hold a high bar for engineering standards&lt;/li&gt;\n&lt;li&gt;Partner with Product, Design, Data, and other engineering teams to set roadmap priorities and deliver against product goals&lt;/li&gt;\n&lt;li&gt;Guide technical decisions on frontend architecture, performance, reliability, and developer experience, so the Dashboard stays fast and intuitive for developers of all sizes&lt;/li&gt;\n&lt;li&gt;Run engineering processes, incident management, and continuous improvement, and balance short-term delivery with long-term investment in technical quality and platform scalability&lt;/li&gt;\n&lt;li&gt;Review and contribute code to stay close to the technology and unblock the team&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;What you need:&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;3+ years of leadership experience&lt;/li&gt;\n&lt;li&gt;8+ years of engineering experience&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Built and operated large-scale customer-facing web applications or developer products&lt;/li&gt;\n&lt;li&gt;Built modern web applications with React, Next.js, and TypeScript&lt;/li&gt;\n&lt;li&gt;Hands-on experience with frontend architecture, performance optimization, accessibility, and design systems&lt;/li&gt;\n&lt;li&gt;Partnered with product managers and designers to ship user-facing products, and built alignment across technical and non-technical teams&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;Benefits &amp;amp; Compensation:&amp;nbsp;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Competitive compensation package and stock options.&lt;/li&gt;\n&lt;li&gt;Comprehensive, inclusive healthcare package.&lt;/li&gt;\n&lt;li&gt;Opportunities for mentorship and professional growth, including attendance at industry events.&lt;/li&gt;\n&lt;li&gt;Flexible Time Off with a recommended minimum of four weeks per year, plus paid holidays.&lt;/li&gt;\n&lt;li&gt;Remote-friendly culture with teammates across multiple time zones.&lt;/li&gt;\n&lt;li&gt;Dedicated equipment and work-from-home budget to help you create an effective workspace.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;The San Francisco, CA base pay range for this role is $226,000-$325,000. Actual salary will be based on job-related skills, experience, and location. Compensation outside of San Francisco may be adjusted based on employee location. The total compensation package may include benefits, equity-based compensation, and eligibility for a company bonus or variable pay program depending on the role. Your recruiter can share more details during the hiring process.&amp;nbsp;&lt;/p&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;h2&gt;&lt;strong&gt;Disclosures:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Privacy: &lt;/strong&gt;Please review our &lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;a href=&quot;https://vercel.com/legal/job-applicant-privacy-notice&quot;&gt;Job Applicant Privacy Policy&lt;/a&gt;&lt;/span&gt; for more information on how we handle your data.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Equal Opportunity:&amp;nbsp;&lt;/strong&gt;Vercel is committed to fostering and empowering an inclusive community within our organization. We do not discriminate on the basis of race, religion, color, gender expression or identity, sexual orientation, national origin, citizenship, age, marital status, veteran status, disability status, or any other characteristic protected by law. Vercel encourages everyone to apply for our available positions, even if they don&#39;t necessarily check every box on the job description.&lt;/li&gt;\n&lt;/ul&gt;&lt;/div&gt;",
+   "departments": [
+    {
+     "id": 4042495004,
+     "name": "Engineering",
+     "child_ids": [],
+     "parent_id": null
+    }
+   ],
+   "offices": [
+    {
+     "id": 4091065004,
+     "name": "Office - San Francisco",
+     "location": "San Francisco, California, United States",
+     "child_ids": [],
+     "parent_id": 4014159004
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": "http://app4.greenhouse.io/ai_opt_out_request/job_post/6115908004/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://job-boards.greenhouse.io/vercel/jobs/5778418004",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 5039984004,
+   "location": {
+    "name": "Hybrid - London, Berlin"
+   },
+   "metadata": [
+    {
+     "id": 18783104004,
+     "name": "Career Site Categories",
+     "value": "Field Engineering",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 5778418004,
+   "updated_at": "2026-11-04T20:36:36-05:00",
+   "requisition_id": "1099",
+   "title": "Forward-Deployed Engineer",
+   "company_name": "Vercel",
+   "first_published": "2026-01-22T11:37:20-05:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;About Vercel:&lt;/h2&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Vercel is the agentic infrastructure company, freeing people and agents to ship what&#39;s next. For more than a decade we&#39;ve helped builders move from idea to production with speed, security, and exceptional developer experience.&lt;/span&gt;&lt;/p&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Now we&#39;re scaling our products for both agents and people to ship and run software, built in the open and trusted by OpenAI, PayPal, Ramp, Supreme, and millions of developers worldwide.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;About the role&lt;/strong&gt;&lt;/p&gt;\n&lt;p&gt;As a Forward Deployed Engineer on the Professional Services team, you\u2019ll work hands-on-keyboard inside strategic enterprise customers, modernizing legacy frontends to Next.js and building production AI agents. You\u2019ll own the work from technical discovery to shipped TypeScript, whether that\u2019s moving a React app to App Router, auditing a codebase for performance, or deploying agents with Vercel\u2019s eve framework and AI SDK. The role has two profiles: Next.js experts focus on code optimization, performance audits, and SEO and AEO (answer engine optimization), while AI builders scope, design, and ship agents that prove their value. This is a hybrid role with 3 in-office days per week in London or Berlin.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;What you\u2019ll do&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Build production AI agents, MCP servers, and agentic workflows with Vercel\u2019s eve framework, AI SDK, and AI Cloud&lt;/li&gt;\n&lt;li&gt;Lead migrations from legacy React, Vue, and other frameworks to Next.js, including Pages Router to App Router, and automate them where possible&lt;/li&gt;\n&lt;li&gt;Audit customer codebases for performance bottlenecks and anti-patterns, and deliver roadmaps with measurable improvements&lt;/li&gt;\n&lt;li&gt;Architect Next.js applications with App Router, Server Components, streaming, and ISR for enterprise scale&lt;/li&gt;\n&lt;li&gt;Run workshops and pair programming so customer teams can maintain what you ship&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;strong&gt;What you need&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;6+ years of software engineering experience, including 2+ years in a customer-facing technical role (consulting, solutions architecture, forward deployed engineering, or technical founder)&lt;/li&gt;\n&lt;li&gt;Built and deployed web applications, backend systems, or agentic workflows using AI tooling such as harnesses, skills, and MCP servers&lt;/li&gt;\n&lt;li&gt;Expert-level TypeScript and React experience shipping production applications&lt;/li&gt;\n&lt;li&gt;Next.js experts: Led a legacy frontend migration to Next.js, or shipped a production Next.js application using App Router and Server Components&lt;/li&gt;\n&lt;li&gt;AI builders: Built production LLM agents, including sandbox and filesystem agent patterns and human-in-the-loop flows&lt;/li&gt;\n&lt;li&gt;Ran technical discovery and presented to executives at enterprise customers, with occasional travel to customer sites&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;strong&gt;Bonus if you&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Led an enterprise AI initiative that shipped production agents replacing manual processes or legacy systems&lt;/li&gt;\n&lt;li&gt;Diagnosed and fixed LCP, CLS, and INP issues at scale&lt;/li&gt;\n&lt;li&gt;Contributed to Next.js, React, or AI SDK open source&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;Benefits:&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Great compensation package and stock options.&lt;/li&gt;\n&lt;li&gt;Inclusive Healthcare Package.&lt;/li&gt;\n&lt;li&gt;Learn and Grow - we provide mentorship and send you to events that help you build your network and skills.&lt;/li&gt;\n&lt;li&gt;Flexible Time Off - Flexible vacation policy with a recommended 4-weeks per year, and paid holidays.&lt;/li&gt;\n&lt;li&gt;We will provide you the gear you need to do your role, and a WFH budget for you to outfit your space as needed.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;div id=&quot;te-floating-button-container&quot;&gt;&lt;/div&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;h2&gt;&lt;strong&gt;Disclosures:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Privacy: &lt;/strong&gt;Please review our &lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;a href=&quot;https://vercel.com/legal/job-applicant-privacy-notice&quot;&gt;Job Applicant Privacy Policy&lt;/a&gt;&lt;/span&gt; for more information on how we handle your data.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Equal Opportunity:&amp;nbsp;&lt;/strong&gt;Vercel is committed to fostering and empowering an inclusive community within our organization. We do not discriminate on the basis of race, religion, color, gender expression or identity, sexual orientation, national origin, citizenship, age, marital status, veteran status, disability status, or any other characteristic protected by law. Vercel encourages everyone to apply for our available positions, even if they don&#39;t necessarily check every box on the job description.&lt;/li&gt;\n&lt;/ul&gt;&lt;/div&gt;",
+   "departments": [
+    {
+     "id": 4147568004,
+     "name": "Professional Services",
+     "child_ids": [],
+     "parent_id": null
+    }
+   ],
+   "offices": [
+    {
+     "id": 4014161004,
+     "name": "EMEA",
+     "location": "EMEA",
+     "child_ids": [
+      4035415004,
+      4035435004,
+      4035434004,
+      4035416004,
+      4091068004,
+      4091069004
+     ],
+     "parent_id": null
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": "http://app4.greenhouse.io/ai_opt_out_request/job_post/5778418004/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://job-boards.greenhouse.io/vercel/jobs/5752684004",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 5027514004,
+   "location": {
+    "name": "Hybrid - San Francisco, New York City, Austin"
+   },
+   "metadata": [
+    {
+     "id": 18783104004,
+     "name": "Career Site Categories",
+     "value": "Field Engineering",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 5752684004,
+   "updated_at": "2026-11-04T20:33:49-05:00",
+   "requisition_id": "1087",
+   "title": "Forward-Deployed Engineer\u00a0",
+   "company_name": "Vercel",
+   "first_published": "2026-01-07T15:45:38-05:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;About Vercel:&lt;/h2&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Vercel is the agentic infrastructure company, freeing people and agents to ship what&#39;s next. For more than a decade we&#39;ve helped builders move from idea to production with speed, security, and exceptional developer experience.&lt;/span&gt;&lt;/p&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Now we&#39;re scaling our products for both agents and people to ship and run software, built in the open and trusted by OpenAI, PayPal, Ramp, Supreme, and millions of developers worldwide.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;About the role&lt;/strong&gt;&lt;/p&gt;\n&lt;p&gt;As a Forward Deployed Engineer on the Professional Services team, you\u2019ll work hands-on-keyboard inside strategic enterprise customers, modernizing legacy frontends to Next.js and building production AI agents. You\u2019ll own the work from technical discovery to shipped TypeScript, whether that\u2019s moving a React app to App Router, auditing a codebase for performance, or deploying agents with Vercel\u2019s eve framework and AI SDK. The role has two profiles: Next.js experts focus on code optimization, performance audits, and SEO and AEO (answer engine optimization), while AI builders scope, design, and ship agents that prove their value. This is a hybrid role with 3 in-office days per week in San Francisco, New York City, or Austin.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;What you\u2019ll do&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Build production AI agents, MCP servers, and agentic workflows with Vercel\u2019s eve framework, AI SDK, and AI Cloud&lt;/li&gt;\n&lt;li&gt;Lead migrations from legacy React, Vue, and other frameworks to Next.js, including Pages Router to App Router, and automate them where possible&lt;/li&gt;\n&lt;li&gt;Audit customer codebases for performance bottlenecks and anti-patterns, and deliver roadmaps with measurable improvements&lt;/li&gt;\n&lt;li&gt;Architect Next.js applications with App Router, Server Components, streaming, and ISR for enterprise scale&lt;/li&gt;\n&lt;li&gt;Run workshops and pair programming so customer teams can maintain what you ship&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;strong&gt;What you need&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;6+ years of software engineering experience, including 2+ years in a customer-facing technical role (consulting, solutions architecture, forward deployed engineering, or technical founder)&lt;/li&gt;\n&lt;li&gt;Built and deployed web applications, backend systems, or agentic workflows using AI tooling such as harnesses, skills, and MCP servers&lt;/li&gt;\n&lt;li&gt;Expert-level TypeScript and React experience shipping production applications&lt;/li&gt;\n&lt;li&gt;Next.js experts: Led a legacy frontend migration to Next.js, or shipped a production Next.js application using App Router and Server Components&lt;/li&gt;\n&lt;li&gt;AI builders: Built production LLM agents, including sandbox and filesystem agent patterns and human-in-the-loop flows&lt;/li&gt;\n&lt;li&gt;Ran technical discovery and presented to executives at enterprise customers, with occasional travel to customer sites&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;strong&gt;Bonus if you&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Led an enterprise AI initiative that shipped production agents replacing manual processes or legacy systems&lt;/li&gt;\n&lt;li&gt;Diagnosed and fixed LCP, CLS, and INP issues at scale&lt;/li&gt;\n&lt;li&gt;Contributed to Next.js, React, or AI SDK open source&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;The San Francisco, CA base pay range for this role is $137,000.00 - $207,000.00.&amp;nbsp; This salary range is an estimate. Actual salary will be based on job related skills, experience and location. Pay ranges outside San Francisco may be&amp;nbsp; adjusted based on employee location.&amp;nbsp; The total compensation package also includes benefits and equity-based compensation. Your recruiter can share more about the specific pay range for your location during the hiring process.&lt;/p&gt;\n&lt;div id=&quot;te-floating-button-container&quot;&gt;&lt;/div&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;h2&gt;&lt;strong&gt;Disclosures:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Privacy: &lt;/strong&gt;Please review our &lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;a href=&quot;https://vercel.com/legal/job-applicant-privacy-notice&quot;&gt;Job Applicant Privacy Policy&lt;/a&gt;&lt;/span&gt; for more information on how we handle your data.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Equal Opportunity:&amp;nbsp;&lt;/strong&gt;Vercel is committed to fostering and empowering an inclusive community within our organization. We do not discriminate on the basis of race, religion, color, gender expression or identity, sexual orientation, national origin, citizenship, age, marital status, veteran status, disability status, or any other characteristic protected by law. Vercel encourages everyone to apply for our available positions, even if they don&#39;t necessarily check every box on the job description.&lt;/li&gt;\n&lt;/ul&gt;&lt;/div&gt;",
+   "departments": [
+    {
+     "id": 4147568004,
+     "name": "Professional Services",
+     "child_ids": [],
+     "parent_id": null
+    }
+   ],
+   "offices": [
+    {
+     "id": 4014159004,
+     "name": "AMER",
+     "location": "Remote - AMER",
+     "child_ids": [
+      4035429004,
+      4035428004,
+      4091066004,
+      4091067004,
+      4091065004
+     ],
+     "parent_id": null
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": "http://app4.greenhouse.io/ai_opt_out_request/job_post/5752684004/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://job-boards.greenhouse.io/vercel/jobs/6231864004",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": true
+    }
+   ],
+   "internal_job_id": 5231382004,
+   "location": {
+    "name": "Remote - Germany"
+   },
+   "metadata": [
+    {
+     "id": 18783104004,
+     "name": "Career Site Categories",
+     "value": "Sales",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 6231864004,
+   "updated_at": "2026-11-18T17:45:48-05:00",
+   "requisition_id": "R-00010",
+   "title": "Account Executive, Commercial",
+   "company_name": "Vercel",
+   "first_published": "2026-10-22T11:22:01-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;About Vercel:&lt;/h2&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Vercel is the agentic infrastructure company, freeing people and agents to ship what&#39;s next. For more than a decade we&#39;ve helped builders move from idea to production with speed, security, and exceptional developer experience.&lt;/span&gt;&lt;/p&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Now we&#39;re scaling our products for both agents and people to ship and run software, built in the open and trusted by OpenAI, PayPal, Ramp, Supreme, and millions of developers worldwide.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;\n&lt;h2&gt;About the role&lt;/h2&gt;\n&lt;p&gt;As an Account Executive, Commercial, you\u2019ll win net-new logos by selling Vercel\u2019s frontend cloud to developers and engineering leaders at digital-native companies at the leading edge of modern web and AI, tying it to outcomes such as speed, conversion, productivity, and reliability. You\u2019ll run full-cycle deals alongside Solutions Architects, Marketing, Product, and Customer Success, helping teams adopt Vercel and expand as they scale, and help shape how Vercel goes to market as the Commercial segment grows. Success means consistent new logo acquisition and hitting your revenue and pipeline targets. We prefer to grow talent internally, with a path to larger scopes and leadership over time.&lt;/p&gt;\n&lt;p&gt;For candidates in Berlin, this is a hybrid role with 3 in-office days per week in our Berlin hub.&amp;nbsp;&lt;/p&gt;\n&lt;h2&gt;What you&#39;ll do&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Own a net-new revenue number by building and progressing pipeline from first meeting through close&lt;/li&gt;\n&lt;li&gt;Generate your own pipeline through outbound prospecting, multi-threading, and account research, and partner with your BDR on top-of-funnel&lt;/li&gt;\n&lt;li&gt;Run full-cycle deals with Solutions Architects and Customer Success: discovery, qualification, deal strategy, technical evaluation, stakeholder alignment, negotiation, and close&lt;/li&gt;\n&lt;li&gt;Build and execute territory and account plans that drive consistent new logo acquisition&lt;/li&gt;\n&lt;li&gt;Lead a weekly forecast, keep Salesforce stages, next steps, and close plans accurate, and track leading indicators such as meetings and pipeline creation&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;What you need&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;3+ years of full-cycle B2B sales experience&lt;/li&gt;\n&lt;li&gt;Track record of generating your own pipeline through outbound prospecting&lt;/li&gt;\n&lt;li&gt;Closed net-new customers, from discovery through negotiation&lt;/li&gt;\n&lt;li&gt;Sold to technical buyers such as developers and engineering leaders&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;Bonus if you&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Have sold into teams at Mid-Enterprise level&lt;/li&gt;\n&lt;li&gt;Have sales experience at a product-led growth (PLG) company&lt;/li&gt;\n&lt;li&gt;Have hands-on frontend development experience&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;&lt;strong&gt;Benefits:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Competitive compensation package, including equity.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Inclusive Healthcare Package.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Learn and Grow - we provide mentorship and send you to events that help you build your network and skills.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Flexible Time Off.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;We will provide you the gear you need to do your role, and a WFH budget for you to outfit your space as needed.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;div id=&quot;te-floating-button-container&quot;&gt;&lt;/div&gt;\n&lt;/div&gt;\n&lt;div&gt;\n&lt;h2&gt;&lt;strong&gt;Disclosures:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Privacy: &lt;/strong&gt;Please review our &lt;a href=&quot;https://vercel.com/legal/job-applicant-privacy-notice&quot;&gt;Job Applicant Privacy Policy&lt;/a&gt; for more information on how we handle your data.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Equal Opportunity:&amp;nbsp;&lt;/strong&gt;Vercel is committed to fostering and empowering an inclusive community within our organization. We do not discriminate on the basis of race, religion, color, gender expression or identity, sexual orientation, national origin, citizenship, age, marital status, veteran status, disability status, or any other characteristic protected by law. Vercel encourages everyone to apply for our available positions, even if they don&#39;t necessarily check every box on the job description.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/div&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;div id=&quot;te-floating-button-container&quot;&gt;&lt;/div&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;h2&gt;&lt;strong&gt;Disclosures:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Privacy: &lt;/strong&gt;Please review our &lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;a href=&quot;https://vercel.com/legal/job-applicant-privacy-notice&quot;&gt;Job Applicant Privacy Policy&lt;/a&gt;&lt;/span&gt; for more information on how we handle your data.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Equal Opportunity:&amp;nbsp;&lt;/strong&gt;Vercel is committed to fostering and empowering an inclusive community within our organization. We do not discriminate on the basis of race, religion, color, gender expression or identity, sexual orientation, national origin, citizenship, age, marital status, veteran status, disability status, or any other characteristic protected by law. Vercel encourages everyone to apply for our available positions, even if they don&#39;t necessarily check every box on the job description.&lt;/li&gt;\n&lt;/ul&gt;&lt;/div&gt;",
+   "departments": [
+    {
+     "id": 4085775004,
+     "name": "Account Executive",
+     "child_ids": [],
+     "parent_id": null
+    }
+   ],
+   "offices": [
+    {
+     "id": 4035415004,
+     "name": "Remote - Germany",
+     "location": "Berlin, Berlin, Germany",
+     "child_ids": [],
+     "parent_id": 4014161004
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": "http://app4.greenhouse.io/ai_opt_out_request/job_post/6231864004/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://job-boards.greenhouse.io/vercel/jobs/5999792004",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": true
+    }
+   ],
+   "internal_job_id": 5156316004,
+   "location": {
+    "name": "Hybrid - London"
+   },
+   "metadata": [
+    {
+     "id": 18783104004,
+     "name": "Career Site Categories",
+     "value": "Sales",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 5999792004,
+   "updated_at": "2026-11-16T11:12:32-05:00",
+   "requisition_id": "1240",
+   "title": "Account Executive, Majors",
+   "company_name": "Vercel",
+   "first_published": "2026-05-21T09:26:09-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;About Vercel:&lt;/h2&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Vercel is the agentic infrastructure company, freeing people and agents to ship what&#39;s next. For more than a decade we&#39;ve helped builders move from idea to production with speed, security, and exceptional developer experience.&lt;/span&gt;&lt;/p&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;Now we&#39;re scaling our products for both agents and people to ship and run software, built in the open and trusted by OpenAI, PayPal, Ramp, Supreme, and millions of developers worldwide.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;h4&gt;About the role&lt;/h4&gt;\n&lt;p&gt;As an Enterprise Account Executive, you\u2019ll own a curated book of named enterprise accounts across key EMEA markets and be the primary driver of net-new revenue and platform expansion. You\u2019ll bring Vercel\u2019s platform into some of the region\u2019s most digitally ambitious companies, working alongside Solutions Engineers, a Partner Manager, and cross-functional teams at Vercel. This is a hybrid role with 3 in-office days per week in London.&lt;/p&gt;\n&lt;h4&gt;What you\u2019ll do&lt;/h4&gt;\n&lt;ul&gt;\n&lt;li&gt;Build and execute multi-year account plans across named enterprise accounts, with hyperscalers, systems integrators, and agency partners involved from day one&lt;/li&gt;\n&lt;li&gt;Drive net-new revenue through outbound prospecting, rigorous discovery, executive alignment, and multi-threaded deals across engineering, product, procurement, legal, and the C-suite&lt;/li&gt;\n&lt;li&gt;Translate Vercel\u2019s platform into board-level business cases built on developer velocity, infrastructure consolidation, and AI-driven transformation, with measurable outcomes&lt;/li&gt;\n&lt;li&gt;Own complex commercial negotiations and position Vercel as a long-term strategic infrastructure partner in your accounts\u2019 web and AI roadmaps&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h4&gt;What you need&lt;/h4&gt;\n&lt;ul&gt;\n&lt;li&gt;5+ years selling enterprise SaaS, including closing six- and seven-figure deals in major or strategic accounts&lt;/li&gt;\n&lt;li&gt;Activated hyperscaler, systems integrator, or independent software vendor (ISV) partners in co-sell motions to open accounts and accelerate deals&lt;/li&gt;\n&lt;li&gt;Led technical discovery with CTOs and senior engineering and product leaders, and total cost of ownership discussions with CFOs&lt;/li&gt;\n&lt;li&gt;Built multi-year account plans for named accounts and developed executive relationships from scratch&lt;/li&gt;\n&lt;li&gt;Forecast deals using MEDDPICC and kept CRM data current&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h4&gt;Bonus if you&lt;/h4&gt;\n&lt;ul&gt;\n&lt;li&gt;Have worked in web development, developer tooling, web infrastructure, cloud platforms, or AI/ML&lt;/li&gt;\n&lt;li&gt;Hold existing relationships at AWS, GCP, Azure, or systems integrators and ISVs active in the UK and Northern Europe&lt;/li&gt;\n&lt;li&gt;Have negotiated enterprise license agreements (ELAs), global framework agreements, or enterprise procurement in regulated industries&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;Benefits &amp;amp; Compensation:&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Competitive compensation package, including equity.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Inclusive Healthcare Package.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Learn and Grow - we provide mentorship and send you to events that help you build your network and skills.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;Flexible Time Off.&lt;/li&gt;\n&lt;li data-stringify-indent=&quot;0&quot; data-stringify-border=&quot;0&quot;&gt;We will provide you the gear you need to do your role, and a WFH budget for you to outfit your space as needed.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;span data-sheets-root=&quot;1&quot;&gt;The London based pay range for this role is 200,000 - 270,000 GBP OTE. Actual salary will be based on job-related skills, experience, and location. Compensation outside of San Francisco may be adjusted based on employee location. The total compensation package may include benefits, equity-based compensation, and eligibility for a company bonus or variable pay program depending on the role. Your recruiter can share more details during the hiring process.&amp;nbsp;&lt;/span&gt;&lt;/p&gt;\n&lt;div id=&quot;te-floating-button-container&quot;&gt;&lt;/div&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;h2&gt;&lt;strong&gt;Disclosures:&lt;/strong&gt;&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Privacy: &lt;/strong&gt;Please review our &lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;a href=&quot;https://vercel.com/legal/job-applicant-privacy-notice&quot;&gt;Job Applicant Privacy Policy&lt;/a&gt;&lt;/span&gt; for more information on how we handle your data.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Equal Opportunity:&amp;nbsp;&lt;/strong&gt;Vercel is committed to fostering and empowering an inclusive community within our organization. We do not discriminate on the basis of race, religion, color, gender expression or identity, sexual orientation, national origin, citizenship, age, marital status, veteran status, disability status, or any other characteristic protected by law. Vercel encourages everyone to apply for our available positions, even if they don&#39;t necessarily check every box on the job description.&lt;/li&gt;\n&lt;/ul&gt;&lt;/div&gt;",
+   "departments": [
+    {
+     "id": 4085775004,
+     "name": "Account Executive",
+     "child_ids": [],
+     "parent_id": null
+    }
+   ],
+   "offices": [
+    {
+     "id": 4091069004,
+     "name": "Office - London",
+     "location": "London, England, United Kingdom",
+     "child_ids": [],
+     "parent_id": 4014161004
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": "http://app4.greenhouse.io/ai_opt_out_request/job_post/5999792004/ai_opt_out"
+  }
+ ],
+ "meta": {
+  "total": 8
+ }
+}

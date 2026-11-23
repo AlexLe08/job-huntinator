@@ -1,0 +1,135 @@
+{
+ "id": "744000162954819",
+ "name": "Solution Marketing Campaign Director, Employee Experience ",
+ "uuid": "73b6eb78-48a3-470a-9b31-49af559690d2",
+ "jobId": "4266ce0c-cb9b-41c2-9bdc-096d6f4b415b",
+ "jobAdId": "a25f9d3b-8eb9-4604-9289-90c06b974ecf",
+ "defaultJobAd": true,
+ "refNumber": "JB0077218",
+ "company": {
+  "name": "ServiceNow",
+  "identifier": "ServiceNow"
+ },
+ "location": {
+  "city": "Santa Clara",
+  "region": "CALIFORNIA",
+  "country": "us",
+  "address": "Building A,B,C 2225 Lawson Lane",
+  "postalCode": "95054",
+  "remote": true,
+  "hybrid": false,
+  "fullLocation": "Santa Clara, CALIFORNIA, United States"
+ },
+ "customField": [
+  {
+   "fieldId": "60345fa28b4ba8595bef1863",
+   "fieldLabel": "Recruiting Team",
+   "valueId": "professional",
+   "valueLabel": "Professional"
+  },
+  {
+   "fieldId": "60345e1a0b24a127cbdfa148",
+   "fieldLabel": "Employee Type",
+   "valueId": "0082f6cbe6154da19322cbab1f6aa5af",
+   "valueLabel": "Regular"
+  },
+  {
+   "fieldId": "5f63a78f1dae5c5c4e54ba2b",
+   "fieldLabel": "Department",
+   "valueId": "2294157",
+   "valueLabel": "Marketing, Communications, and Brand"
+  },
+  {
+   "fieldId": "COUNTRY",
+   "fieldLabel": "Country/Region",
+   "valueId": "us",
+   "valueLabel": "United States"
+  },
+  {
+   "fieldId": "5f63a78f1dae5c5c4e54ba2a",
+   "fieldLabel": "Brands",
+   "valueId": "default",
+   "valueLabel": "ServiceNow"
+  },
+  {
+   "fieldId": "60345d5c5165a31b17288279",
+   "fieldLabel": "Region",
+   "valueId": "722a833b93e4437798309f43c0d25990",
+   "valueLabel": "AMS - North America and Canada"
+  },
+  {
+   "fieldId": "603462175165a31b1728827d",
+   "fieldLabel": "Cost Center",
+   "valueId": "CC4750",
+   "valueLabel": "4750 Integrated Marketing"
+  },
+  {
+   "fieldId": "6034601b43915a29a4b3389b",
+   "fieldLabel": "Job Location",
+   "valueId": "L_SJC005",
+   "valueLabel": "2225 Lawson Lane, Santa Clara, California, 95054, United States of America(L_SJC005)"
+  },
+  {
+   "fieldId": "618ed92b8f5e5f110e5bfb95",
+   "fieldLabel": "Work Persona",
+   "valueId": "5530c877-6b63-4bf5-bde8-215ef35bf172",
+   "valueLabel": "Flexible or Remote"
+  },
+  {
+   "fieldId": "690cc0e8c682c3dbadaa7d73",
+   "fieldLabel": "Job Posting Type",
+   "valueId": "professional",
+   "valueLabel": "Professional"
+  }
+ ],
+ "releasedDate": "2026-11-21T08:54:45.896Z",
+ "postingUrl": "https://jobs.smartrecruiters.com/ServiceNow/744000162954819-solution-marketing-campaign-director-employee-experience-",
+ "applyUrl": "https://jobs.smartrecruiters.com/ServiceNow/744000162954819-solution-marketing-campaign-director-employee-experience-?oga=true",
+ "jobAd": {
+  "sections": {
+   "companyDescription": {
+    "title": "Company Description",
+    "text": "<p>It all started when engineer Fred Luddy wrote code that automated a tedious task for his coworker, Phyllis. She cried tears of joy. That moment inspired Fred to build a company that could do that for everyone\u2014freeing people from busywork so they could focus on meaningful work. Today, ServiceNow is the AI control tower for business reinvention. Our ServiceNow AI platform brings together any AI, any data, and any workflow\u2014 helping 85% of the Fortune 500\u00ae work smarter, faster, and better. We're building an AI-native culture where technology and talent are unstoppable together. And we're just getting started.</p><p>Join us to put AI to work for people.</p><p>&#xa0;</p>"
+   },
+   "jobDescription": {
+    "title": "Job Description",
+    "text": "<p><strong>Role Overview&#xa0;</strong></p><p>We are seeking a strategic, results-oriented Solution Marketing Campaign Director to partner with our VP of Solution Marketing and drive the campaign function for ServiceNow\u2019s Employee Experience portfolio, connecting full-funnel awareness-to-demand strategy to delivery across the Employee Experience space. The Employee Experience business at ServiceNow is on an explosive growth trajectory and this individual will be at the center of driving ambitious targets. This individual contributor role ensures seamless integration across teams and regions for Employee Experience program campaigns, drives alignment across diverse stakeholders, and sets the standard for how these campaigns are planned, governed, and measured. The ideal candidate is a campaign expert who understands the end-to-end lifecycle of integrated marketing programs, influences through expertise, and brings cross-functional organizations along to deliver impactful, measurable results.&#xa0;</p><p><strong>Campaign Strategy &amp; Execution&#xa0;</strong></p><ul><li>Partner with the VP of Solution Marketing to shape and deliver integrated marketing campaign strategy for Employee Experience aligned to business priorities, program objectives, and persona-driven go-to-market plans&#xa0;</li><li>Serve as the senior subject matter expert on Employee Experience campaign development and delivery, ensuring all touchpoints deliver a cohesive buyer experience across channels and regions&#xa0;</li><li>Own campaign planning frameworks and governance for Employee Experience, including goals, expected outcomes, budgets, timelines, and KPIs, integrating input from across marketing&#xa0;</li><li>Set quality standards and ensure Employee Experience campaigns deliver exceptional work that meets brand standards and in-market goals across regions&#xa0;</li><li>Guide and mentor campaign managers and cross-functional partners, sharing best practices and building capability across the team&#xa0;</li><li>Partner with Program Management &amp; Operations to align Employee Experience campaign timelines with program milestones and resource plans&#xa0;</li></ul><p>Stakeholder Collaboration &amp; Influence&#xa0;</p><ul><li>Build and maintain strong executive relationships across marketing, sales, product, and other ServiceNow organizations to align on shared goals and drive decisions in the Employee Experience space&#xa0;</li><li>Influence and drive adoption of campaign standards an"
+   },
+   "qualifications": {
+    "title": "Qualifications",
+    "text": "<p><strong>To be successful in this role you have:</strong></p><p><strong>Experience &amp; Skills&#xa0;</strong></p><ul><li>8+ years of experience in marketing campaign planning and delivery, with at least 3 years of experience driving campaigns at a senior, cross-functional level, ideally in B2B SaaS or technology with exposure to HR and IT audiences&#xa0;</li><li>Proven track record leading complex, multi-channel campaigns with multiple stakeholders and significant budgets, including launches targeting buyers and line-of-business leaders&#xa0;</li><li>Deep familiarity with full-funnel marketing across digital, email, content, and field marketing, applied to buying journeys&#xa0;</li><li>Demonstrated ability to drive cross-functional campaign work, influence without direct authority, and build capability across teams supporting go-to-market&#xa0;</li><li>Strong organizational skills, with the ability to manage multiple priorities and balance strategic direction with operational excellence&#xa0;</li></ul><p>&#xa0;</p><p><strong>Personal Attributes&#xa0;</strong></p><ul><li>Business outcome obsessed and motivated by ambitious goals&#xa0;</li><li>Functional understanding of AI-native campaigns, including how AI reshapes campaign planning, content production, audience targeting, and performance optimization, and a drive to build and apply these capabilities in practice&#xa0;</li><li>Highly collaborative professional with excellent communication, influence, and interpersonal skills&#xa0;</li><li>Results-oriented, with a proactive approach to problem-solving and a commitment to high-quality work that meets brand standards&#xa0;</li><li>Strategic thinker who can connect tactical execution to long-term business objectives&#xa0;</li><li>Eager to learn, grow, and drive change in a fast-paced marketing organization&#xa0;</li></ul><p>&#xa0;</p><p>JV20</p><p>For positions in this location, we offer a base pay of <strong>$184,100 - $322,200</strong>, plus equity (when applicable), variable/incentive compensation and benefits. Sales positions generally offer a competitive On Target Earnings (OTE) incentive compensation structure. Please note that the base pay shown is a guideline, and individual total compensation will vary based on factors such as qualifications, skill level, competencies, and work location. We also offer health plans, including flexible spending accounts, a 401(k) Plan with company match, ESPP, matching donations, a flexible time away plan and family "
+   },
+   "additionalInformation": {
+    "title": "Additional Information",
+    "text": "<p><strong>Work Personas</strong></p><p>We approach our distributed world of work with flexibility and trust. Work personas (flexible, remote, or required in office) are categories that are assigned to ServiceNow employees depending on the nature of their work and their assigned work location. <a href=\"https://careers.servicenow.com/life-at-servicenow#workpersonas\" rel=\"noopener noreferrer\"><u>Learn more here</u></a>. To determine eligibility for a work persona, ServiceNow may confirm the distance between your primary residence and the closest ServiceNow office using a third-party service.</p><p><strong>Equal Opportunity Employer</strong></p><p>ServiceNow is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, national origin, age, disability, gender identity,&#xa0; veteran status, or any other category protected by law. In addition, all qualified applicants with arrest or conviction records will be considered for employment in accordance with legal requirements.\u202f&#xa0;</p><p><strong>Accommodations</strong></p><p>We strive to create an accessible and inclusive experience for all candidates. If you require a reasonable accommodation to complete any part of the application process, or are unable to use this online application and need an alternative method to apply, please contact <a href=\"mailto:globaltalentss@servicenow.com\" rel=\"noopener noreferrer\">globaltalentss@servicenow.com </a>for assistance.&#xa0;</p><p><strong>Export Control Regulations</strong></p><p>For positions requiring access to controlled technology subject to export control regulations, including the U.S. Export Administration Regulations (EAR), ServiceNow may be required to obtain export control approval from government authorities for certain individuals. All employment is contingent upon ServiceNow obtaining any export license or other approval that may be required by relevant export control authorities.&#xa0;</p><p>From Fortune. \u00a92026 Fortune Media IP Limited. All rights reserved. Used under license.</p>"
+   }
+  }
+ },
+ "active": true,
+ "visibility": "PUBLIC",
+ "industry": {
+  "id": "it_and_services",
+  "label": "Information Technology And Services"
+ },
+ "function": {
+  "id": "marketing",
+  "label": "Marketing"
+ },
+ "department": {
+  "id": 2294157,
+  "label": "Marketing, Communications, and Brand"
+ },
+ "experienceLevel": {
+  "id": "not_applicable",
+  "label": "Not Applicable"
+ },
+ "typeOfEmployment": {
+  "id": "permanent",
+  "label": "Full-time"
+ },
+ "language": {
+  "code": "en",
+  "label": "English",
+  "labelNative": "English (US)"
+ }
+}

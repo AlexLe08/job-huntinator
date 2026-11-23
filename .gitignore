@@ -1,0 +1,21 @@
+# local env / secrets
+.venv/
+.env
+*.env
+service_account*.json
+credentials*.json
+client_secret*.json
+token*.json
+
+# runtime state & outputs (kept in Actions cache / artifacts, never committed)
+state/
+data/
+
+# python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+.DS_Store
