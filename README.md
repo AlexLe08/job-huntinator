@@ -191,6 +191,11 @@ Each request carries a `job-huntinator/0.1` User-Agent and a 15s timeout, with u
 polite client. Aggregator terms are respected: Remotive and RemoteOK links point back to their listings, and Remotive is
 polled 2×/day (they ask for ≤4).
 
+## Next steps
+
+Queued follow-up work (credentials, scheduled-task rewrite, Gmail tuning, coverage, filter tuning) is in
+[`docs/tasks/`](docs/tasks/README.md). Each file is a self-contained brief for a new Claude Code session.
+
 ## Layout
 
 ```
