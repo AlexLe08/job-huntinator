@@ -211,7 +211,7 @@ polled 2×/day (they ask for ≤4).
 
 ## Next steps
 
-Queued follow-up work (credentials, scheduled-task rewrite, Gmail tuning, coverage, filter tuning) is in
+Queued follow-up work (credentials, Gmail tuning, coverage, filter tuning) is in
 [`docs/tasks/`](docs/tasks/README.md). Each file is a self-contained brief for a new Claude Code session.
 
 ## Layout
@@ -231,22 +231,42 @@ tests/fixtures/              trimmed real API responses
 
 ## Claude scheduled task (paste this)
 
-> **Job lead screening (reads the scraper's output; no web searching).**
+This is the lead-screening part of Alex's scheduled Claude task (a Claude app scheduled task that runs at 8:45am and 2:45pm
+US Eastern, after the scrapes, with push notifications on). The deployed prompt also has sheet/file IDs and a resume-drafting
+part that runs when Alex replies in the session; those stay out of this public repo. To change the prompt, edit it in the
+Claude app: a `RemoteTrigger` API update replaces the task's whole session config.
+
+> **Job lead screening (reads the scraper's output; no web searching for discovery).**
 >
-> 1. Open the Google Sheet "Job Applications Tracker" → **Scraper** tab. Columns: Date Found | Company | Role |
->    Location | Link | Posted | Comp | ATS | Tier | Flags. Take rows whose **Date Found** (US Eastern) is within the
->    last 24 hours. If there are none, stop without notifying.
-> 2. Skip any row whose Link, or Company + a near-identical Role, is already in **Leads**, **Applications**, or **Archive**.
-> 3. Screen each remaining row against Alex's profile. Open the Link (the employer's ATS page) for the top candidates
->    to confirm the posting is live and to read the requirements. Profile: frontend engineer, ~4 years at CVS Health
->    building Stencil.js web-component libraries (global header/navigation, Search) consumed by Next.js apps;
->    personal work in React, Next.js, TypeScript, FastAPI, LLM apps; based in Worcester, MA, open to relocating.
->    - Prefer Tier **T1** over **T2**; prefer MA / NC / US-remote.
+> 1. Open the Google Sheet "Job Applications Tracker" → **Scraper** tab. Columns: Date Found (`YYYY-MM-DD H:MM`, US
+>    Eastern; the hour may lack a leading zero) | Company | Role | Location | Link | Posted | Comp | ATS | Tier | Flags.
+>    Take rows whose **Date Found** is within the last 24 hours. If there are none, find the newest Date Found in the
+>    whole tab: if it is 48+ hours old, send a push notification "Scraper tab has no new rows since <date> – check the
+>    GitHub Actions scrape." and stop; otherwise stop without notifying.
+> 2. Read Applications / Archive / Leads columns A:F only. Skip any row whose Link, or Company + a near-identical Role,
+>    is already in **Leads**, **Applications**, or **Archive** (runs overlap, so many rows will already be in Leads).
+> 3. Screen each remaining row against Alex's profile: frontend engineer, ~4 years at CVS Health building Stencil.js
+>    web-component libraries (global header/navigation, Search) consumed by Next.js apps; personal work in React, Next.js,
+>    TypeScript, FastAPI, LLM apps; game development degree (RPI); based in Worcester, MA, open to relocating. Good fits:
+>    frontend, frontend-leaning full-stack, UI / design-systems / web-components, general SWE; mid-level or
+>    early-career-friendly.
+>    - Tier is `T1`/`T2` (how closely the title matched; prefer T1) `·` the source: a company group (`frontend-product`,
+>      `boston`, `rtp`, `remote-first`) or a feed (`himalayas`, `weworkremotely`, `remoteok`, `remotive`, `adzuna`, `hn`,
+>      `linkedin-alert`, `indeed-alert`).
+>    - Prefer Worcester/Central MA, Boston, Raleigh–Durham or US-remote; on-site/hybrid anywhere in the US is fine.
 >    - Flags: `senior` is OK if the posting asks for ≤5–6 years; `loc?` means confirm the role is open to US
 >      candidates; `no-desc` means the description wasn't fetched, so read the posting.
->    - Reject 8+ years required, active clearance, or non-US-only roles if the scraper missed them.
+>    - Reject 8+ years required, active clearance, non-US-only, closed, spam or scams, if the scraper missed them.
+>    - Shortlist from the row data, then open the posting for the top candidates (at most 8 fetches) to confirm it is
+>      live and read the requirements.
+>    - Feed rows (Tier ends in a feed name) don't link to the employer. Never fetch LinkedIn or Indeed. For a shortlisted
+>      feed row, find the same posting on the employer's own ATS/careers page (their board URL, or one targeted
+>      WebSearch) and use that link; if it isn't there, drop the row. WebSearch is only for this lookup.
 > 4. Rank and pick the **top 5** (fewer if fewer are good). For each, append a row to **Leads**:
->    Date Found = today | Company | Role | Location | Job Posting Link = the Link | Status = `New lead` |
->    Notes = one line on why it fits and anything to watch (e.g. "Senior, asks 5+ yrs; Stencil/design-system match").
-> 5. Send a push notification: "N new leads: Company – Role; Company – Role; …". If nothing qualified, don't notify.
-> 6. Never edit or delete rows in the Scraper, Applications, or Archive tabs.
+>    Date Found = today (MM/DD/YYYY) | Company | Role | Location | Job Posting Link = the employer link |
+>    Status = `New lead` | Notes = one line (under ~200 chars) on why it fits and anything to watch
+>    (e.g. "Senior, asks 5+ yrs; Stencil/design-system match; $150–180k").
+> 5. Send a push notification: "N new leads: Company – Role; Company – Role; …". Then reply with a numbered list (best
+>    first: company – role, location, posting age, link, why it fits, biggest gap). If nothing qualified, say so in one
+>    line, add no rows, and don't notify.
+> 6. In this part, only append to Leads: never edit or delete rows in the Scraper, Applications, or Archive tabs.
