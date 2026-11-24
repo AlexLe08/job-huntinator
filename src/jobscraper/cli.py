@@ -174,7 +174,9 @@ def cmd_gmail_auth(args: argparse.Namespace) -> int:
     from .sources.gmail_alerts import run_auth_flow
 
     token = run_auth_flow(args.client_secret)
-    print("\nSuccess. Store these as GitHub Actions secrets (Settings -> Secrets and variables -> Actions):")
+    print(
+        "\nSuccess. Store these as secrets in the GitHub `production` environment (Settings -> Environments -> production):"
+    )
     print("  GMAIL_OAUTH_CLIENT_JSON = <the full contents of", args.client_secret + ">")
     print("  GMAIL_REFRESH_TOKEN     =", token)
     print("For local runs, put the same two values in .env (never commit it).")

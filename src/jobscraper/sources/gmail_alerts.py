@@ -182,25 +182,29 @@ def _job_ref(href: str, kind: str | None) -> tuple[str, str, str] | None:
 def parse_alert_html(html: str, kind: str | None, received: datetime | None) -> list[Job]:
     p = _Flatten()
     p.feed(html)
-    toks = p.tokens
-    jobs: dict[str, Job] = {}
-    for i, (_typ, href, text) in enumerate(toks):
-        ref = _job_ref(href or "", kind)
-        if not ref or not text or SKIP_TEXT.match(text):
+    # Group text into job cards. A card is every text token under one job-view link plus the plain
+    # (link-less) text right after it, until another link starts. This covers both layouts seen:
+    #   real LinkedIn: one <a> wraps the whole card (title, then "Company · Location" line)
+    #   Indeed / older LinkedIn: <a>Title</a> followed by plain-text company and location rows
+    cards: dict[str, tuple[tuple[str, str, str], list[str]]] = {}
+    current: str | None = None
+    for _typ, href, text in p.tokens:
+        if href:
+            ref = _job_ref(href, kind)
+            current = f"{ref[0]}:{ref[1]}" if ref else None
+            if ref:
+                cards.setdefault(current, (ref, []))
+        if current is None or not text or SKIP_TEXT.match(text):
             continue
-        source, native, url = ref
-        key = f"{source}:{native}"
-        if key in jobs:
-            continue
-        # The next few text tokens (not belonging to another job link) hold company / location.
-        info: list[str] = []
-        for _typ2, href2, text2 in toks[i + 1 : i + 6]:
-            if _job_ref(href2 or "", kind):
-                break
-            if text2 and not SKIP_TEXT.match(text2) and text2 != text:
-                info.append(text2)
-            if len(info) >= 2:
-                break
+        texts = cards[current][1]
+        if text not in texts and len(texts) < 3:
+            texts.append(text)
+
+    jobs: list[Job] = []
+    for key, ((source, _native, url), texts) in cards.items():
+        if not texts:
+            continue  # e.g. an image-only link
+        title, info = texts[0], texts[1:]
         company, location = "", ""
         if info:
             if "·" in info[0]:
@@ -208,16 +212,18 @@ def parse_alert_html(html: str, kind: str | None, received: datetime | None) -> 
             else:
                 company = info[0]
                 location = info[1] if len(info) > 1 else ""
-        jobs[key] = Job(
-            id=key,
-            source=source,
-            company=company,
-            title=text,
-            location=location,
-            url=url,
-            remote=True if "remote" in location.lower() else None,
-            posted_at=received,
-            description="",
-            tier=f"{source}-alert",
+        jobs.append(
+            Job(
+                id=key,
+                source=source,
+                company=company,
+                title=title,
+                location=location,
+                url=url,
+                remote=True if "remote" in location.lower() else None,
+                posted_at=received,
+                description="",
+                tier=f"{source}-alert",
+            )
         )
-    return list(jobs.values())
+    return jobs
