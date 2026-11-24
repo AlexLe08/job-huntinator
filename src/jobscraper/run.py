@@ -110,7 +110,9 @@ def select(
         if not f.error and f.company.ats in COMPANY_SOURCES:
             for job in f.jobs:
                 ats_index.add(job.company, job.title, job.url)
-    kept_index = TrackerIndex()
+    # Aggregator jobs kept so far, per feed. A feed's own jobs have distinct IDs, so they are distinct
+    # postings even when titles are near-identical ("Engineer I" vs "Engineer II"): only compare across feeds.
+    kept_by_feed: dict[str, TrackerIndex] = {}
     for f in feeds:
         if f.error:
             continue
@@ -142,11 +144,12 @@ def select(
                 reasons[f"already-tracked:{why}"] += 1
                 continue
             if is_aggregator and (
-                ats_index.match(job, cfg.title_similarity) or kept_index.match(job, cfg.title_similarity)
+                ats_index.match(job, cfg.title_similarity)
+                or any(idx.match(job, cfg.title_similarity) for feed, idx in kept_by_feed.items() if feed != f.feed)
             ):
                 reasons["duplicate-of-other-source"] += 1
                 continue
-            kept_index.add(job.company, job.title, job.url)
+            kept_by_feed.setdefault(f.feed, TrackerIndex()).add(job.company, job.title, job.url)
             matches.append(Match(job, v.location_class))
     matches.sort(key=lambda m: (m.job.match_tier or 9, "senior" in m.job.flags, m.job.company.lower()))
     return RunResult(feeds, matches, reasons, tracked)

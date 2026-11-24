@@ -77,3 +77,38 @@ def test_missing_credentials(monkeypatch):
     monkeypatch.delenv("GMAIL_REFRESH_TOKEN", raising=False)
     with pytest.raises(gmail_alerts.MissingCredentials):
         gmail_alerts.access_token()
+
+
+def test_real_linkedin_alert_whole_card_is_one_link():
+    # Real "Jobs you might be interested in" email (Nov 2026), sanitized: one <a> wraps each card.
+    html = (FIXTURES / "gmail" / "linkedin_real_2026-11.html").read_text()
+    jobs = gmail_alerts.parse_message(gmail_message(html, "LinkedIn <jobs-noreply@linkedin.com>"))
+    assert [(j.id, j.title, j.company, j.location) for j in jobs] == [
+        ("linkedin:4475006561", "Senior Software Engineer I - Front End", "Compass", "Boston, MA (Hybrid)"),
+        ("linkedin:4492221237", "Senior Front-End Engineer - CAD", "Mark43", "Boston, MA (Hybrid)"),
+        ("linkedin:4474715207", "Senior Software Engineer II - Front End", "Compass", "Boston, MA (Hybrid)"),
+        (
+            "linkedin:4477709375",
+            "Sr Software Engineer I ( Web Application & Cloud Development)",
+            "Siemens Healthineers",
+            "Newton, MA",
+        ),
+        ("linkedin:4432707829", "Front End Software Engineer", "MORSE Corp", "Cambridge, MA (On-site)"),
+        ("linkedin:4481602154", "Senior Frontend Engineer", "Mobi.AI", "Somerville, MA (Hybrid)"),
+    ]
+    assert all(j.url == f"https://www.linkedin.com/jobs/view/{j.id.split(':')[1]}/" for j in jobs)
+    assert all(j.tier == "linkedin-alert" for j in jobs)
+
+
+def test_card_text_does_not_leak_into_footer_or_skip_links():
+    html = (
+        '<a href="https://www.linkedin.com/comm/jobs/view/1/"><div>Frontend Engineer</div><p>Acme · Remote</p>'
+        "<p>Easy Apply</p></a>"
+        '<a href="https://www.linkedin.com/comm/jobs/search-results/">See all jobs</a>'
+        "<p>This email was intended for Someone</p>"
+        '<a href="https://www.linkedin.com/comm/jobs/view/2/"><img src="logo.png"></a>'
+    )
+    jobs = gmail_alerts.parse_alert_html(html, "linkedin", None)
+    assert [(j.id, j.title, j.company, j.location, j.remote) for j in jobs] == [
+        ("linkedin:1", "Frontend Engineer", "Acme", "Remote", True)
+    ]

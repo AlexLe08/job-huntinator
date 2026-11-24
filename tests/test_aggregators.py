@@ -244,3 +244,23 @@ def test_cli_writes_suggestions_to_github_step_summary(tmp_path, monkeypatch):
     assert cli.main(["run", "--no-sheet", "--quiet", "--companies", str(companies), "--sources", str(sources)]) == 0
     text = summary.read_text()
     assert "token: hooli" in text and "Frontend Engineer" not in text
+
+
+def test_near_identical_titles_within_one_feed_are_not_merged():
+    # Real case from a LinkedIn alert: two distinct Compass postings, "... I - Front End" and "... II - Front End".
+    jobs = [
+        _job(
+            "linkedin", 1, "Compass", "Senior Software Engineer I - Front End", "https://www.linkedin.com/jobs/view/1/"
+        ),
+        _job(
+            "linkedin", 2, "Compass", "Senior Software Engineer II - Front End", "https://www.linkedin.com/jobs/view/2/"
+        ),
+    ]
+    other = [_job("remotive", 3, "Compass", "Senior Software Engineer II - Front End", "https://remotive.com/x")]
+    feeds = [
+        FeedResult("gmail_alerts", Company("gmail_alerts", "gmail_alerts", "gmail_alerts"), jobs),
+        FeedResult("remotive", Company("remotive", "remotive", "remotive"), other),
+    ]
+    r = select(feeds, State(), CFG, NOW)
+    assert sorted(m.job.id for m in r.matches) == ["linkedin:1", "linkedin:2"]
+    assert r.drop_reasons["duplicate-of-other-source"] == 1
