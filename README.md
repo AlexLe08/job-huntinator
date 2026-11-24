@@ -189,7 +189,7 @@ The exit code is 1 if more than half of the boards fail. One failing board is lo
 The scraper never touches LinkedIn or Indeed directly. Instead, it reads the job-alert emails they already send you:
 
 1. On LinkedIn and Indeed, create job alerts for your searches (daily).
-2. In Gmail, add a filter: from `jobalerts-noreply@linkedin.com` OR `alert@indeed.com` → apply label `job-alerts`.
+2. In Gmail, add a filter: from `jobalerts-noreply@linkedin.com` OR `jobs-noreply@linkedin.com` OR `alert@indeed.com` → apply label `job-alerts`.
 3. In Google Cloud (same project is fine), enable the **Gmail API**. Then create an **OAuth client ID** of type *Desktop app*
    and download its JSON. While the consent screen is in "Testing" mode, add yourself as a test user.
    - Testing-mode refresh tokens expire after 7 days. To get a long-lived token, set the app's publishing status to
