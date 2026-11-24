@@ -6,7 +6,7 @@ Each file is a self-contained brief for a fresh Claude Code session. Start the s
 | # | Task | Who | Blocks |
 |---|---|---|---|
 | 01 | [Credentials and first live run](01-credentials-and-first-run.md) | Alex does the Google/GitHub clicks; Claude verifies | everything that writes to the sheet |
-| 02 | [Rewrite the Claude scheduled task](02-rewrite-scheduled-task.md) | Claude | needs 01 (Scraper tab has rows) |
+| 02 | ~~Rewrite the Claude scheduled task~~ ✅ done 2026-11-24 | Claude | needs 01 (Scraper tab has rows) |
 | 03 | [Gmail alerts: tune on real emails](03-gmail-alerts-real-emails.md) | Alex sets up alerts + OAuth; Claude tunes the parser | needs 01 |
 | 04 | [More Workday boards (Boston / RTP coverage)](04-workday-coverage.md) | Claude | none |
 | 05 | [Review the company list](05-company-list-review.md) | Claude proposes, Alex approves | none |
