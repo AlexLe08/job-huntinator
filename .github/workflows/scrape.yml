@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     # Secrets live in the `production` environment, which only `main` may use, so a workflow
-    # on any other branch can't read them. The keepalive job below holds no secrets and stays outside it.
+    # on any other branch can't read them. The maintenance job below holds no secrets and stays outside it.
     environment: production
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -90,17 +90,35 @@ jobs:
           path: state
           key: jobscraper-state-${{ github.run_id }}
 
-  # Public repos: GitHub disables scheduled workflows after 60 days without repository activity.
-  # Re-enabling the workflow through the API resets that timer. Runs once a day, checks nothing out,
-  # holds no secrets, and is the only job with `actions: write`.
-  keepalive:
+  # Daily housekeeping. Runs once a day, checks nothing out, holds no secrets, and is the only job with
+  # `actions: write`. It runs in parallel with `scrape`; keeping the newest 5 caches means the one `scrape`
+  # restores is never pruned out from under it.
+  maintenance:
     if: github.event_name == 'schedule' && github.event.schedule == '30 11 * * *'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
       actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
     steps:
+      # Public repos: GitHub disables scheduled workflows after 60 days without repository activity.
+      # Re-enabling the workflow through the API resets that timer.
       - name: Reset the 60-day inactivity timer
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh api -X PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/scrape.yml/enable"
+        run: gh api -X PUT "repos/${GH_REPO}/actions/workflows/scrape.yml/enable"
+
+      # Every run saves a new immutable jobscraper-state-<run_id> cache. Keep the newest 5 and delete the rest.
+      # Logs show cache IDs only. A delete that fails (e.g. already evicted) warns and moves on.
+      - name: Prune old state caches
+        run: |
+          set -euo pipefail
+          keep=5
+          ids=$(gh cache list --key jobscraper-state- --sort created_at --order desc --limit 100 --json id,key,createdAt \
+            | jq -r --argjson keep "$keep" \
+              '[.[] | select(.key | startswith("jobscraper-state-"))] | sort_by(.createdAt) | reverse | .[$keep:][] | .id')
+          n=0
+          for id in $ids; do
+            if gh cache delete "$id"; then n=$((n + 1)); else echo "::warning::could not delete cache $id"; fi
+          done
+          echo "Pruned $n old state cache(s); kept the newest $keep."

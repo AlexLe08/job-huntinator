@@ -15,10 +15,12 @@ Small items. Pick any; each should come with tests.
   alert from `alert@indeed.com` has arrived yet, so that layout is tested only on synthetic HTML. If one arrives, run it
   through `parse_message` and save a sanitized fixture (it likely uses the same `cts` redirects, which are already decoded).
 
-- **Cache growth:** every run saves a new `jobscraper-state-<run_id>` cache entry. GitHub evicts old ones (10 GB repo limit), but a
-  cleanup step (`gh cache delete` for all but the newest 5, needs `actions: write`) would keep things tidy.
-- **60-day schedule disable:** GitHub disables scheduled workflows in public repos after 60 days without commits. Options are a
-  monthly keep-alive (e.g. auto-commit the regenerated `companies.report.md`) or just a calendar reminder.
+- **Cache growth (addressed):** every run saves a new `jobscraper-state-<run_id>` cache. The daily `maintenance` job in
+  `scrape.yml` (`actions: write`, no checkout, no secrets) deletes all but the newest 5; `tests/test_workflows.py` runs
+  that script against a fake `gh`.
+- **60-day schedule disable (addressed):** the same `maintenance` job calls `PUT .../workflows/scrape.yml/enable` once a
+  day, which resets GitHub's public-repo inactivity timer without commits. If the schedule ever stops anyway, re-enable
+  it from the Actions tab.
 - **Stale postings:** jobs are reported once and never re-checked. Optional: mark Scraper rows whose job disappeared from the
   board (needs a write to the Scraper tab, so get Alex's OK first).
 - **HN parsing:** `sources/hn.py` picks the role from the "Company | Role | Location" first line. Multi-role posts and posts not

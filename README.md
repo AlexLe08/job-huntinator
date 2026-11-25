@@ -87,6 +87,7 @@ A feed whose secrets are missing is skipped with a warning.
 
 **State** lives in the Actions cache: it's restored at the start of each run and saved at the end. Nothing is committed back.
 Caches unused for 7 days are evicted. That won't happen with two runs a day, and if it does, the flood guard keeps the next run sane.
+Every run saves a new `jobscraper-state-<run_id>` cache, so the daily `maintenance` job deletes all but the newest 5.
 
 **Public-repo notes:**
 - Actions logs are public, so the workflow runs with `--quiet`, which logs counts only and never job titles or links.
@@ -95,8 +96,8 @@ Caches unused for 7 days are evicted. That won't happen with two runs a day, and
   extra-args field can't inject shell commands. Every action is pinned to a commit SHA.
 - No artifacts are uploaded (public-repo artifacts can be downloaded by any signed-in GitHub user). In CI, matches
   only go to the sheet; the dated JSON is written for local runs.
-- GitHub **disables scheduled workflows after 60 days without repo activity**. The `keepalive` job in `scrape.yml`
-  re-enables the workflow through the API once a day, which resets that timer. If it ever lapses anyway, re-enable it
+- GitHub **disables scheduled workflows after 60 days without repo activity**. The `maintenance` job in `scrape.yml`
+  re-enables the workflow through the API once a day (11:30 UTC run), which resets that timer. If it ever lapses anyway, re-enable it
   from the Actions tab.
 
 `tests.yml` runs on PRs and pushes to `main`: pytest on Python 3.11 and 3.13, plus a lint + audit job (ruff,
