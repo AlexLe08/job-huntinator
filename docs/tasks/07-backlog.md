@@ -2,6 +2,14 @@
 
 Small items. Pick any; each should come with tests.
 
+- **Workday 429 from GitHub runners (biggest gap):** every scheduled run since 2026-11-23 gets HTTP 429 from Cloudflare on the
+  *first* request to nearly every `*.myworkdayjobs.com` board (only Vertex on wd501 sometimes gets through), while the same boards
+  return 200 from a home connection. So the ~20 Workday boards only work in local runs. More politeness won't fix an IP block,
+  and spoofing a browser to get past it is off the table. Options: run a Workday-only pass from a non-datacenter machine (e.g. a
+  launchd job on Alex's Mac appending to the Scraper tab), or a self-hosted runner. Cheap side fixes: when a later query 429s,
+  keep the jobs from earlier queries instead of discarding the board, and stop retrying the remaining Workday boards after
+  ~3 consecutive first-request 429s (saves ~1 min of pointless backoff per run).
+
 - **Cache growth:** every run saves a new `jobscraper-state-<run_id>` cache entry. GitHub evicts old ones (10 GB repo limit), but a
   cleanup step (`gh cache delete` for all but the newest 5, needs `actions: write`) would keep things tidy.
 - **60-day schedule disable:** GitHub disables scheduled workflows in public repos after 60 days without commits. Options are a
