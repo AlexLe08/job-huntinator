@@ -34,8 +34,11 @@ Small items. Pick any; each should come with tests.
   employer URL (mind the rate limit).
 - **Workday dates:** the list gives "Posted N Days Ago" (approximate); the exact `startDate` only comes from `enrich()`.
   This is fine for freshness (first-seen drives it), but the sheet's Posted column is approximate for non-enriched jobs.
-- **Greenhouse pay ranges:** comp is regex-extracted from the description. Greenhouse's per-job endpoint can return structured
-  pay ranges (`?pay_transparency=true`), but that costs one request per matched job.
+- **Greenhouse pay ranges (addressed):** the *list* endpoint also accepts `?pay_transparency=true`, so the board fetch
+  now gets each job's `pay_input_ranges` with no extra requests (about 5% more bytes). `greenhouse.pay_range()` prefers base
+  ranges to OTE/variable/commission ones and USD to other currencies, and collapses location zones into one span
+  (`$203K–$343K`, `$26.96/hr`, `90K–122K EUR`). The description regex is the fallback. On 40 boards (7.7k jobs), 401 jobs
+  gained comp that the regex missed. Multi-currency boards no longer label CAD/EUR as `$`.
 - **Company suggestions are hard to read back:** discovery writes them only to the run's job summary (and the cached
   `state/suggestions.json`). The REST API doesn't expose job summaries, so a Claude session can't review them; during task 05
   a local feeds-only pass found none. Options: open the latest scrape run page and paste the "Company suggestions" table into

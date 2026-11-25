@@ -1,5 +1,6 @@
 from datetime import UTC, datetime
 
+import pytest
 from conftest import load_fixture
 
 from jobscraper.companies import Company
@@ -45,6 +46,67 @@ class TestGreenhouse:
 
     def test_nbsp_stripped_from_title(self):
         assert all("\xa0" not in j.title for j in self.jobs())
+
+    def test_board_url_asks_for_pay_ranges(self):
+        assert "pay_transparency=true" in greenhouse.board_url("vercel")
+        assert "content=true" in greenhouse.board_url("vercel")
+
+
+class TestGreenhousePayRanges:
+    """Real postings (several boards) from `?pay_transparency=true`; content trimmed to the pay excerpt, blurbs blanked."""
+
+    company = Company("X", "greenhouse", "x")
+
+    def comp(self, job_id):
+        raw = next(r for r in load_fixture("greenhouse_pay_ranges.json")["jobs"] if r["id"] == job_id)
+        return greenhouse.normalize(raw, self.company).compensation
+
+    @pytest.mark.parametrize(
+        ("job_id", "expected", "case"),
+        [
+            (8275002, "$203K–$343K", "three US zones collapse into one span"),
+            (6230246004, "$147K–$204K", "USD ranges win over the CAD range"),
+            (8250324, "$75K–$111K", "state base ranges win over the OTE range"),
+            (6174190004, "$26.96/hr", "hourly rate, min == max"),
+            (8356939, "90K–122K EUR", "non-USD range keeps its currency"),
+            (5624231004, "$170,000 - $240,000", "no structured range: regex over content"),
+            (6231864004, None, "no pay published anywhere"),
+        ],
+    )
+    def test_compensation(self, job_id, expected, case):
+        assert self.comp(job_id) == expected, case
+
+    @pytest.mark.parametrize(
+        ("ranges", "expected"),
+        [
+            (None, None),
+            ([], None),
+            ([{"min_cents": 0, "max_cents": 0, "currency_type": "USD", "title": "Pay"}], None),
+            ([{"min_cents": 15000000, "max_cents": 18000000, "currency_type": None, "title": "Pay"}], None),
+            ([{"min_cents": 15000000, "max_cents": None, "currency_type": "USD", "title": "Pay"}], "$150K"),
+            ([{"min_cents": 15000000, "max_cents": 18000000, "currency_type": "USD", "title": "Base"}], "$150K–$180K"),
+            # Only an OTE range: better than nothing.
+            (
+                [{"min_cents": 20000000, "max_cents": 25000000, "currency_type": "USD", "title": "OTE Range"}],
+                "$200K–$250K",
+            ),
+            (
+                [
+                    {"min_cents": 14000000, "max_cents": 16000000, "currency_type": "USD", "title": "Base salary"},
+                    {"min_cents": 3000000, "max_cents": 5000000, "currency_type": "USD", "title": "Target Variable"},
+                ],
+                "$140K–$160K",
+            ),
+            # "Remote" must not read as "OTE".
+            (
+                [{"min_cents": 12000000, "max_cents": 14000000, "currency_type": "USD", "title": "Remote (US)"}],
+                "$120K–$140K",
+            ),
+            ([{"min_cents": 4000, "max_cents": 5500, "currency_type": "USD", "title": "Hourly"}], "$40–$55/hr"),
+        ],
+    )
+    def test_pay_range(self, ranges, expected):
+        assert greenhouse.pay_range(ranges) == expected
 
 
 class TestLever:
