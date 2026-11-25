@@ -9,7 +9,7 @@ Each file is a self-contained brief for a fresh Claude Code session. Start the s
 | 02 | ~~Rewrite the Claude scheduled task~~ ✅ done 2026-11-24 | Claude | needs 01 (Scraper tab has rows) |
 | 03 | [Gmail alerts: tune on real emails](03-gmail-alerts-real-emails.md) | Alex sets up alerts + OAuth; Claude tunes the parser | needs 01 |
 | 04 | ~~More Workday boards (Boston / RTP coverage)~~ ✅ done 2026-11-24 (local only until the Workday 429 backlog item is fixed) | Claude | none |
-| 05 | [Review the company list](05-company-list-review.md) | Claude proposes, Alex approves | none |
+| 05 | ~~Review the company list~~ ✅ done 2026-11-25 (Alex: add any must-include/exclude companies when reviewing the PR) | Claude proposes, Alex approves | none |
 | 06 | [Tune filters after a week of real data](06-filter-tuning.md) | Claude + Alex | ~1 week after 01 |
 | 07 | [Backlog / known limitations](07-backlog.md) | pick as needed | none |
 

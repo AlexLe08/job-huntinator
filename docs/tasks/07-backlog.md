@@ -24,4 +24,11 @@ Small items. Pick any; each should come with tests.
   This is fine for freshness (first-seen drives it), but the sheet's Posted column is approximate for non-enriched jobs.
 - **Greenhouse pay ranges:** comp is regex-extracted from the description. Greenhouse's per-job endpoint can return structured
   pay ranges (`?pay_transparency=true`), but that costs one request per matched job.
+- **Company suggestions are hard to read back:** discovery writes them only to the run's job summary (and the cached
+  `state/suggestions.json`). The REST API doesn't expose job summaries, so a Claude session can't review them; during task 05
+  a local feeds-only pass found none. Options: open the latest scrape run page and paste the "Company suggestions" table into
+  the session, or print the suggestion count (no names) and keep reviewing via the run page.
+- **Unsupported ATSes worth a source:** after task 05, several disabled companies sit on BambooHR (Aras, Validic, Prometheus
+  Group), Breezy (Adwerx), Gem (Retool) and iCIMS (Atlassian/Loom, Jaggaer). BambooHR and Breezy have public JSON job lists;
+  check their terms before adding one.
 - **Action versions:** bump `actions/*` majors when GitHub deprecates them (watch for warnings on the run pages).
