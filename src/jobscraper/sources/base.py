@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from types import ModuleType
 
-from . import ashby, greenhouse, lever, recruitee, smartrecruiters, workable, workday
+from . import ashby, bamboohr, greenhouse, lever, recruitee, smartrecruiters, workable, workday
 
 COMPANY_SOURCES: dict[str, ModuleType] = {
     "greenhouse": greenhouse,
@@ -22,10 +22,12 @@ COMPANY_SOURCES: dict[str, ModuleType] = {
     "workable": workable,
     "recruitee": recruitee,
     "workday": workday,
+    "bamboohr": bamboohr,
 }
 
 # ATSes the validator may auto-detect by slug guessing. SmartRecruiters answers 200 with zero jobs for any
-# name and Workday needs host/site, so those two must be configured explicitly.
+# name, Workday needs host/site, and an unknown BambooHR subdomain redirects to bamboohr.com's marketing site
+# (guessing slugs would fetch that page hundreds of times), so those must be configured explicitly.
 AUTODETECT = ["greenhouse", "lever", "ashby", "workable", "recruitee"]
 
 

@@ -11,7 +11,7 @@ import yaml
 
 from .companies import Company
 from .http import FetchError, PoliteClient
-from .sources import workday
+from .sources import bamboohr, workday
 from .sources.base import AUTODETECT, COMPANY_SOURCES
 
 # ATSes that rate-limit guessing: probe only the first N slug variants, with wider spacing.
@@ -82,6 +82,8 @@ def probe(client: PoliteClient, ats: str, token: str) -> Probe | None:
             items = data.get("content") or []
             name = ((items[0].get("company") or {}).get("name")) if items else None
             return Probe(ats, token, int(data.get("totalFound", 0)), name)
+        if ats == "bamboohr":
+            return Probe(ats, token, len(bamboohr.get_board(client, token).get("result") or []), None)
     except FetchError as exc:
         if exc.status in (404, 400, 410):
             return None

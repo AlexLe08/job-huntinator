@@ -21,6 +21,7 @@ PATTERNS = [
     ("workable", re.compile(r"https?://apply\.workable\.com/(?!j/|api/)([a-z0-9_-]+)", re.I)),
     ("recruitee", re.compile(r"https?://([a-z0-9-]+)\.recruitee\.com", re.I)),
     ("smartrecruiters", re.compile(r"https?://jobs\.smartrecruiters\.com/([a-z0-9_-]+)", re.I)),
+    ("bamboohr", re.compile(r"https?://(?!www\.)([a-z0-9-]+)\.bamboohr\.com/(?:careers|jobs)", re.I)),
 ]
 URL_RE = re.compile(r"https?://[^\s<>\"')\]]+")
 IGNORE_TOKENS = {"embed", "api", "v1", "jobs", "j", "o"}

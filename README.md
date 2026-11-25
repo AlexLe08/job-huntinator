@@ -17,7 +17,7 @@ sources.yaml  ──┼─> fetch ─> first-seen state ─> filters ─> tracke
 
 | Kind | Sources |
 |---|---|
-| Company boards (`config/companies.yaml`) | Greenhouse, Lever, Ashby, Workable, Recruitee, SmartRecruiters, Workday |
+| Company boards (`config/companies.yaml`) | Greenhouse, Lever, Ashby, Workable, Recruitee, SmartRecruiters, Workday, BambooHR |
 | Aggregator feeds (`config/sources.yaml`) | Hacker News "Who is hiring?", Remotive, RemoteOK, Himalayas, We Work Remotely, Adzuna (free key), LinkedIn/Indeed **alert emails** in your Gmail (optional) |
 
 About 270 company boards and 5–6 feeds take ~3 minutes per run.
@@ -122,6 +122,7 @@ Add one line to `config/companies.yaml`:
 | recruitee | `acme.recruitee.com` | `acme` |
 | smartrecruiters | `jobs.smartrecruiters.com/Acme` | `Acme` (fetches US postings; add `country: null` for all) |
 | workday | `acme.wd5.myworkdayjobs.com/AcmeCareers` | `token: acme, host: acme.wd5.myworkdayjobs.com, site: AcmeCareers` |
+| bamboohr | `acme.bamboohr.com/careers` | `acme` (never auto-detected; set it explicitly) |
 
 `tier` is free-form and shows in the sheet. The seed list uses `frontend-product`, `boston`, `rtp` and `remote-first`.
 
@@ -141,7 +142,7 @@ The validator checks each listed board. If a board is missing or empty, it tries
 - **dead:** no board found. `--fix` sets `disabled: true`.
 
 Single-word names can still collide; for example, `greenhouse/remote` belongs to General Assembly. Check the
-"board:" names in the report. After rejecting a wrong guess, add `no_autodetect: true` to the entry so it isn't suggested again. Workday can't be guessed, so copy `host`/`site` from the company's careers URL.
+"board:" names in the report. After rejecting a wrong guess, add `no_autodetect: true` to the entry so it isn't suggested again. Workday and BambooHR aren't guessed: copy Workday's `host`/`site`, or the BambooHR subdomain, from the company's careers URL.
 
 **Discovery:** aggregator posts that link to an ATS board missing from your list become suggestions with
 ready-to-paste YAML lines. In GitHub Actions they're shown on each run's **summary page** (Actions → scrape → a run),

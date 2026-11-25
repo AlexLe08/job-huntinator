@@ -1,0 +1,147 @@
+{
+ "meta": {
+  "totalCount": 7
+ },
+ "result": [
+  {
+   "id": "231",
+   "jobOpeningName": "Project Manager",
+   "departmentId": "18586",
+   "departmentLabel": "500 - Prof Services - Delivery",
+   "employmentStatusLabel": "Full-Time",
+   "employmentType": null,
+   "location": {
+    "city": "Tokyo",
+    "state": null
+   },
+   "atsLocation": {
+    "country": null,
+    "state": null,
+    "province": null,
+    "city": null
+   },
+   "isRemote": null,
+   "locationType": "2"
+  },
+  {
+   "id": "341",
+   "jobOpeningName": "Senior Fullstack Engineer with AI (f/m/d)",
+   "departmentId": "18583",
+   "departmentLabel": "300 - Development",
+   "employmentStatusLabel": "Full-Time",
+   "employmentType": null,
+   "location": {
+    "city": null,
+    "state": null
+   },
+   "atsLocation": {
+    "country": "Poland",
+    "state": null,
+    "province": "Małopolskie",
+    "city": "Krakow"
+   },
+   "isRemote": null,
+   "locationType": "1"
+  },
+  {
+   "id": "346",
+   "jobOpeningName": "ECAD Solutions Consultant",
+   "departmentId": "18586",
+   "departmentLabel": "500 - Prof Services - Delivery",
+   "employmentStatusLabel": "Full-Time",
+   "employmentType": null,
+   "location": {
+    "city": "Andover",
+    "state": "Massachusetts"
+   },
+   "atsLocation": {
+    "country": null,
+    "state": null,
+    "province": null,
+    "city": null
+   },
+   "isRemote": null,
+   "locationType": "2"
+  },
+  {
+   "id": "390",
+   "jobOpeningName": "Software Developer ECAD (m/f/d)",
+   "departmentId": "18583",
+   "departmentLabel": "300 - Development",
+   "employmentStatusLabel": "Full-Time",
+   "employmentType": null,
+   "location": {
+    "city": "Dresden",
+    "state": "Saxony"
+   },
+   "atsLocation": {
+    "country": null,
+    "state": null,
+    "province": null,
+    "city": null
+   },
+   "isRemote": null,
+   "locationType": "2"
+  },
+  {
+   "id": "397",
+   "jobOpeningName": "Senior PLM Project Manager",
+   "departmentId": "18586",
+   "departmentLabel": "500 - Prof Services - Delivery",
+   "employmentStatusLabel": "Full-Time",
+   "employmentType": null,
+   "location": {
+    "city": null,
+    "state": null
+   },
+   "atsLocation": {
+    "country": "United States",
+    "state": "Massachusetts",
+    "province": null,
+    "city": "Andover"
+   },
+   "isRemote": null,
+   "locationType": "1"
+  },
+  {
+   "id": "400",
+   "jobOpeningName": "Senior Financial Analyst",
+   "departmentId": "18593",
+   "departmentLabel": "800 - Finance",
+   "employmentStatusLabel": "Full-Time",
+   "employmentType": null,
+   "location": {
+    "city": "Andover",
+    "state": "Massachusetts"
+   },
+   "atsLocation": {
+    "country": null,
+    "state": null,
+    "province": null,
+    "city": null
+   },
+   "isRemote": null,
+   "locationType": "2"
+  },
+  {
+   "id": "415",
+   "jobOpeningName": "Senior Software Engineer (m/f/d) - Poland",
+   "departmentId": "18583",
+   "departmentLabel": "300 - Development",
+   "employmentStatusLabel": "Full-Time",
+   "employmentType": null,
+   "location": {
+    "city": null,
+    "state": null
+   },
+   "atsLocation": {
+    "country": "Poland",
+    "state": null,
+    "province": "Remote",
+    "city": "Krakow"
+   },
+   "isRemote": null,
+   "locationType": "1"
+  }
+ ]
+}
