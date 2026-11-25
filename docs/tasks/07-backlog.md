@@ -23,8 +23,13 @@ Small items. Pick any; each should come with tests.
   it from the Actions tab.
 - **Stale postings:** jobs are reported once and never re-checked. Optional: mark Scraper rows whose job disappeared from the
   board (needs a write to the Scraper tab, so get Alex's OK first).
-- **HN parsing:** `sources/hn.py` picks the role from the "Company | Role | Location" first line. Multi-role posts and posts not
-  following the convention are partly missed. Could parse every matching role into separate jobs.
+- **HN parsing (addressed):** `sources/hn.py` now emits one job per relevant role: every header role that passes the title
+  filter, plus short title-like body lines (bullets, `Roles: A, B`, `Title: <link>`; prose is ignored). A role with an ATS
+  link on its own line gets that link. The primary role keeps `hn:<objectID>`; extra roles are `hn:<objectID>:<title-slug>`.
+  It also parses "Acme is hiring a Frontend Engineer in NYC" headers and skips `SEEKING WORK/FREELANCE` posts. On the
+  Nov 2026 thread (30-day lookback) the kept count rose from 39 to 85. Most of the new jobs come from posts whose header
+  says "Multiple roles" and whose body lists them. Remaining gaps: the company is wrong on recruiter posts ("Name | Talent
+  Sourcer @ Co") and on prose headers without "is hiring".
 - **Adzuna:** `redirect_url` points at Adzuna, not the employer. Could follow the redirect once for matched jobs to store the
   employer URL (mind the rate limit).
 - **Workday dates:** the list gives "Posted N Days Ago" (approximate); the exact `startDate` only comes from `enrich()`.

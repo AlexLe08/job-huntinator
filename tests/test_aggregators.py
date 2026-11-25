@@ -1,6 +1,7 @@
 from datetime import UTC, datetime, timedelta
 
 import httpx
+import pytest
 import respx
 from conftest import FIXTURES, load_fixture
 
@@ -70,6 +71,131 @@ def test_hn_link_prefers_ats():
 
 def test_hn_non_post_skipped():
     assert hn.normalize({"objectID": "2", "created_at_i": 1, "comment_text": "Is this still open?"}, CFG) is None
+
+
+def _hit(comment_text: str, oid: str = "9") -> dict:
+    return {"objectID": oid, "created_at_i": 1795000000, "comment_text": comment_text}
+
+
+def test_hn_seeking_work_skipped():
+    hit = _hit("SEEKING FREELANCE - Egypt (UTC+2) - Remote<p>Senior Frontend Engineer, React/Next.js.")
+    assert hn.normalize_all(hit, CFG) == []
+
+
+def test_hn_header_multi_role_one_job_each_primary_id_stable():
+    hit = _hit("Acme | Frontend Engineer, Full Stack Engineer, Data Scientist | Remote (US) | $150k<p>About us.")
+    jobs = hn.normalize_all(hit, CFG)
+    assert [j.title for j in jobs] == ["Frontend Engineer", "Full Stack Engineer"]
+    # The primary role keeps the pre-multi-role ID so existing state stays valid.
+    assert [j.id for j in jobs] == ["hn:9", "hn:9:full-stack-engineer"]
+    assert hn.normalize(hit, CFG).id == "hn:9"
+    assert all(j.company == "Acme" and "Remote" in j.location and j.remote for j in jobs)
+
+
+@pytest.mark.parametrize(
+    "body, expected",
+    [
+        # bullets, with per-role ATS links
+        (
+            "Open roles:<p>- Senior Frontend Engineer: https://jobs.ashbyhq.com/acme/1111"
+            "<p>- Backend Engineer (Go)<p>- Design Engineer https://jobs.ashbyhq.com/acme/2222",
+            ["Senior Frontend Engineer", "Design Engineer"],
+        ),
+        # "Roles: A, B" list
+        ("Roles: Senior Frontend Engineer, Product Designer, UI Engineer", ["Senior Frontend Engineer", "UI Engineer"]),
+        # numbered list
+        ("1. React Developer<p>2. Recruiter", ["React Developer"]),
+        # HN footnote refs, "++" bullets, trailing dash before a link, bracketed stack notes
+        (
+            "[2]Senior Frontend Engineer<p>++ WebApp/FrontEnd Engineer [Tech Stack: React]"
+            "<p>Fullstack Engineer - https://fly.io/jobs/fullstack",
+            ["Senior Frontend Engineer", "WebApp/FrontEnd Engineer", "Fullstack Engineer"],
+        ),
+        # prose that mentions a role is not a role line
+        ("We're looking for a frontend engineer who loves TypeScript.<p>You will own our web app.", []),
+        ("Frontend engineers here ship daily and work with design.", []),
+    ],
+)
+def test_hn_body_roles(body, expected):
+    found = hn.body_roles("Acme | Engineers | NYC<p>" + body, CFG)
+    assert [t for t, _ in found] == expected
+    if expected and "ashbyhq" in body:  # a link on a role's own line belongs to that role
+        assert dict(found) == {
+            "Senior Frontend Engineer": "https://jobs.ashbyhq.com/acme/1111",
+            "Design Engineer": "https://jobs.ashbyhq.com/acme/2222",
+        }
+
+
+def test_hn_body_roles_become_jobs_with_own_links():
+    hit = _hit(
+        "Acme | Multiple roles | New York, NY | Onsite<p>Open roles:"
+        '<p>- Senior Frontend Engineer: <a href="https://jobs.ashbyhq.com/acme/1111">apply</a>'
+        '<p>- Full Stack Engineer: <a href="https://jobs.ashbyhq.com/acme/2222">apply</a>'
+    )
+    jobs = hn.normalize_all(hit, CFG)
+    # The header fallback ("Multiple roles") fails the title filter, so the first body role takes the primary ID.
+    assert [(j.id, j.title, j.url) for j in jobs] == [
+        ("hn:9", "Senior Frontend Engineer", "https://jobs.ashbyhq.com/acme/1111"),
+        ("hn:9:full-stack-engineer", "Full Stack Engineer", "https://jobs.ashbyhq.com/acme/2222"),
+    ]
+    assert all(j.location == "New York, NY / Onsite" for j in jobs)
+
+
+def test_hn_header_role_repeated_in_body_is_one_job_with_body_link():
+    hit = _hit(
+        'Acme | Frontend Engineer | Remote (US)<p>Site: <a href="https://acme.com">acme.com</a>'
+        '<p>- Frontend Engineer - <a href="https://jobs.lever.co/acme/0b6c4a8e-1111-2222-3333-444455556666">x</a>'
+    )
+    jobs = hn.normalize_all(hit, CFG)
+    assert len(jobs) == 1 and jobs[0].id == "hn:9"
+    assert jobs[0].url == "https://jobs.lever.co/acme/0b6c4a8e-1111-2222-3333-444455556666"
+
+
+def test_hn_header_without_match_and_no_body_roles_still_emitted_for_explain():
+    jobs = hn.normalize_all(_hit("Acme | Data Scientist | NYC<p>We do analytics."), CFG)
+    assert [(j.id, j.title) for j in jobs] == [("hn:9", "Data Scientist")]
+
+
+@pytest.mark.parametrize(
+    "first_line, company, titles, loc",
+    [
+        (
+            "Acme (YC W21) is hiring a Senior Frontend Engineer in New York, NY",
+            "Acme",
+            ["Senior Frontend Engineer"],
+            "New York, NY",
+        ),
+        ("Initech is hiring: Frontend Engineer and Full Stack Engineer (remote)", "Initech", None, "remote"),
+    ],
+)
+def test_hn_is_hiring_header(first_line, company, titles, loc):
+    jobs = hn.normalize_all(_hit(first_line + "<p>Details."), CFG)
+    assert jobs and all(j.company == company for j in jobs)
+    assert [j.title for j in jobs] == (titles or ["Frontend Engineer", "Full Stack Engineer"])
+    assert jobs[0].location == loc
+
+
+def test_hn_header_url_part_is_not_a_role():
+    jobs = hn.normalize_all(_hit("Acme | Frontend Engineer | NYC | https://acme.com/jobs/software-engineer"), CFG)
+    assert [j.title for j in jobs] == ["Frontend Engineer"]
+    company, role, _ = hn.parse_header("Acme | https://acme.com/software-engineer | NYC (HYBRID)", CFG)
+    assert not role.startswith("http")
+
+
+@pytest.mark.parametrize(
+    "raw, clean",
+    [
+        ("- Frontend Engineer -", "Frontend Engineer"),
+        (".NET Developer.", ".NET Developer"),
+        ("C++ Developer", "C++ Developer"),
+    ],
+)
+def test_hn_clean_title(raw, clean):
+    assert hn._clean_title(raw) == clean
+
+
+def test_hn_slug_collision_gets_counter():
+    assert hn._slug("frontend engineer", {"hn:9", "hn:9:frontend-engineer"}) == "frontend-engineer-2"
 
 
 # ------------------------------------------------------------------ remote boards
