@@ -38,6 +38,15 @@ python -m jobscraper validate-companies [--fix] [--only NAME]   # full run ~6–
 
 A full live dry-run polls ~270 boards and feeds in ~3 minutes.
 
+Worktrees (each worktree gets its own `.venv`; prefer these over the raw commands above, since they print far less output):
+
+```bash
+scripts/setup-worktree.sh            # once per fresh worktree: .venv + dev extras, copies main's .env (~10 s)
+scripts/check.sh                     # lint + format + tests, one line each; full logs in .logs/<step>.log
+scripts/new-worktree.sh <branch>     # new branch + worktree from origin/main, already set up
+scripts/cleanup-merged.sh [--apply]  # remove worktrees/branches whose PRs merged (dry run by default)
+```
+
 ## Layout
 
 - `config/companies.yaml`: boards (`company, ats, token, tier`, plus `host`/`site` for workday, `disabled`, `no_autodetect`, `notes`)
@@ -49,7 +58,7 @@ A full live dry-run polls ~270 boards and feeds in ~3 minutes.
   (pipeline + cross-source merge), `discovery.py` (suggested boards → GitHub job summary), `cli.py`.
 - `scripts/`: the local launchd Workday-only pass (`workday-local.sh`, plist template, installer). CI runs
   `--skip-ats workday` because Cloudflare 429s Workday from GitHub runners; the Mac runs `--ats workday` with
-  `state/workday/seen.json`.
+  `state/workday/seen.json`. Also the worktree helpers listed under Commands.
 - `tests/fixtures/`: trimmed **real** API responses. When adding a source, save a trimmed real response, and strip personal
   data (recruiter names, personal emails, HN usernames) before committing.
 
