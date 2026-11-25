@@ -231,16 +231,16 @@ companies:
   - {company: Spot AI, ats: ashby, token: spotai, tier: boston, disabled: true, notes: no board found (validator)}
   - {company: Reach Security, ats: ashby, token: reach, tier: boston}
   - {company: Hyperproof, ats: greenhouse, token: hyperproof, tier: boston}
-  - {company: Liberty Mutual, ats: workday, token: libertymutual, tier: boston, disabled: true, notes: workday host/site unknown -- copy from the careers URL (see README)}
+  - {company: Liberty Mutual, ats: other, token: libertymutual, tier: boston, disabled: true, notes: 'not Workday: careers search is searchjobs.libertymutualgroup.com (custom ATS, not supported)'}
   - {company: Fidelity Investments, ats: workday, token: fmr, host: fmr.wd1.myworkdayjobs.com, site: FidelityCareers, tier: boston}
   - {company: athenahealth, ats: workday, token: athenahealth, host: athenahealth.wd1.myworkdayjobs.com, site: External, tier: boston}
   - {company: Boston Dynamics, ats: workday, token: bostondynamics, host: bostondynamics.wd1.myworkdayjobs.com, site: Boston_Dynamics, tier: boston}
   - {company: Vertex Pharmaceuticals, ats: workday, token: vrtx, host: vrtx.wd501.myworkdayjobs.com, site: vertex_careers, tier: boston}
   - {company: MathWorks, ats: other, token: mathworks, tier: boston, disabled: true, notes: 'custom ATS, not supported'}
-  - {company: Cimpress / Vistaprint, ats: workday, token: cimpress, tier: boston, disabled: true, notes: workday host/site unknown -- copy from the careers URL (see README)}
-  - {company: Pegasystems, ats: workday, token: pega, tier: boston, disabled: true, notes: workday host/site unknown -- copy from the careers URL (see README)}
+  - {company: Cimpress / Vistaprint, ats: other, token: cimpress, tier: boston, disabled: true, notes: 'not Workday: jobs.vista.com / Jibe-hosted careers.cimpress.com (not supported)'}
+  - {company: Pegasystems, ats: other, token: pega, tier: boston, disabled: true, notes: 'not Workday: jobs listed on pega.com/about/careers/search (custom, not supported)'}
   - {company: ZoomInfo, ats: greenhouse, token: zoominfo, tier: boston}
-  - {company: Mass General Brigham Digital, ats: workday, token: massgeneralbrigham, tier: boston, disabled: true, notes: workday host/site unknown -- copy from the careers URL (see README)}
+  - {company: Mass General Brigham Digital, ats: workday, token: massgeneralbrigham, host: massgeneralbrigham.wd1.myworkdayjobs.com, site: MGBExternal, tier: boston}
   - {company: Allurion, ats: greenhouse, token: allurion, tier: boston, disabled: true, notes: no board found (validator)}
   - {company: InsightSquared, ats: greenhouse, token: insightsquared, tier: boston, disabled: true, notes: no board found (validator)}
   - {company: Evisort, ats: greenhouse, token: evisort, tier: boston, disabled: true, notes: no board found (validator)}
@@ -256,6 +256,15 @@ companies:
   - {company: Butterfly Network, ats: greenhouse, token: butterflynetwork, tier: boston}
 
   - {company: State Street, ats: workday, token: statestreet, host: statestreet.wd1.myworkdayjobs.com, site: Global, tier: boston}
+  - {company: Biogen, ats: workday, token: biibhr, host: biibhr.wd3.myworkdayjobs.com, site: external, tier: boston, notes: Cambridge + RTP}
+  - {company: BJ's Wholesale Club, ats: workday, token: bjswholesaleclub, host: bjswholesaleclub.wd1.myworkdayjobs.com, site: BJsCareers, tier: boston, notes: HQ Marlborough}
+  - {company: UMass Memorial Health, ats: workday, token: ummh, host: ummh.wd1.myworkdayjobs.com, site: Careers, tier: boston, notes: Worcester; also lists UMass Chan clinical roles}
+  - {company: Beth Israel Lahey Health, ats: workday, token: bilh, host: bilh.wd1.myworkdayjobs.com, site: External, tier: boston}
+  - {company: Boston Medical Center, ats: workday, token: bmc, host: bmc.wd1.myworkdayjobs.com, site: BMC, tier: boston}
+  - {company: Dell Technologies, ats: workday, token: dell, host: dell.wd1.myworkdayjobs.com, site: External, tier: boston, disabled: true, notes: 'retired Workday site: dell.wd1.../External page 500s and CXS returns 422 (2026-11); current ATS unknown'}
+  - {company: Hanover Insurance, ats: other, token: hanover, tier: boston, disabled: true, notes: 'Dayforce (jobs.dayforcehcm.com/thg), not supported'}
+  - {company: Akamai, ats: other, token: akamai, tier: boston, disabled: true, notes: 'Oracle Recruiting (jobs.akamai.com), not supported'}
+  - {company: MassMutual, ats: other, token: massmutual, tier: boston, disabled: true, notes: 'main US careers site not found (massmutual.com/careers timed out); Workday sites found are Ascend (Cincinnati) and India only'}
   # ---- rtp
   - {company: Pendo, ats: greenhouse, token: pendo, tier: rtp}
   - {company: Epic Games, ats: greenhouse, token: epicgames, tier: rtp}
@@ -275,10 +284,10 @@ companies:
   - {company: Diveplane, ats: greenhouse, token: diveplane, tier: rtp, disabled: true, notes: no board found (validator)}
   - {company: Red Hat, ats: workday, token: redhat, host: redhat.wd5.myworkdayjobs.com, site: jobs, tier: rtp}
   - {company: SAS, ats: other, token: sas, tier: rtp, disabled: true, notes: 'custom ATS, not supported'}
-  - {company: Citrix (Cloud Software Group), ats: workday, token: cloudsoftwaregroup, tier: rtp, disabled: true, notes: workday host/site unknown -- copy from the careers URL (see README)}
-  - {company: NetApp, ats: workday, token: netapp, tier: rtp, disabled: true, notes: workday host/site unknown -- copy from the careers URL (see README)}
-  - {company: Avalara, ats: workday, token: avalara, tier: rtp, disabled: true, notes: workday host/site unknown -- copy from the careers URL (see README)}
-  - {company: Veradigm, ats: workday, token: veradigm, tier: rtp, disabled: true, notes: workday host/site unknown -- copy from the careers URL (see README)}
+  - {company: Citrix (Cloud Software Group), ats: workday, token: citrix, host: citrix.wd1.myworkdayjobs.com, site: CitrixCareers, tier: rtp, disabled: true, notes: 'retired Workday site: citrix.wd1.../CitrixCareers page 500s and CXS returns 422 (2026-11); cloud.com/careers 404s'}
+  - {company: NetApp, ats: workday, token: netapp, tier: rtp, disabled: true, notes: 'ATS unknown: netapp.com/company/careers 403s to fetchers and search finds no NetApp Workday site'}
+  - {company: Avalara, ats: workday, token: avalara, tier: rtp, disabled: true, notes: 'ATS unknown: careers page 404s and search finds no Avalara Workday site'}
+  - {company: Veradigm, ats: workday, token: veradigm, host: veradigm.wd12.myworkdayjobs.com, site: VR, tier: rtp}
   - {company: Relias, ats: greenhouse, token: relias, tier: rtp, disabled: true, notes: no board found (validator)}
   - {company: SmartRent, ats: greenhouse, token: smartrent, tier: rtp}
   - {company: Reveal Mobile, ats: greenhouse, token: revealmobile, tier: rtp, disabled: true, notes: no board found (validator)}
@@ -287,6 +296,12 @@ companies:
 
   - {company: IQVIA, ats: workday, token: iqvia, host: iqvia.wd1.myworkdayjobs.com, site: IQVIA, tier: rtp}
   - {company: Cisco, ats: workday, token: cisco, host: cisco.wd5.myworkdayjobs.com, site: Cisco_Careers, tier: rtp}
+  - {company: Merck, ats: workday, token: msd, host: msd.wd5.myworkdayjobs.com, site: SearchJobs, tier: rtp, notes: Durham/Wilson NC + Boston}
+  - {company: Truist, ats: workday, token: truist, host: truist.wd1.myworkdayjobs.com, site: Careers, tier: rtp, notes: Raleigh/Charlotte}
+  - {company: Novartis, ats: workday, token: novartis, host: novartis.wd3.myworkdayjobs.com, site: Novartis_Careers, tier: rtp, notes: Morrisville/Durham + Cambridge}
+  - {company: Lenovo, ats: other, token: lenovo, tier: rtp, disabled: true, notes: 'custom search site (jobs.lenovo.com), not supported'}
+  - {company: MetLife, ats: other, token: metlife, tier: rtp, disabled: true, notes: 'custom search site (metlifecareers.com), not supported'}
+  - {company: Fortinet, ats: other, token: fortinet, tier: rtp, disabled: true, notes: 'Oracle Recruiting Cloud, not supported'}
   # ---- remote-first
   - {company: GitLab, ats: greenhouse, token: gitlab, tier: remote-first}
   - {company: Automattic, ats: greenhouse, token: automatticcareers, tier: remote-first}
