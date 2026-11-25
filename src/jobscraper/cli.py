@@ -53,11 +53,21 @@ def cmd_run(args: argparse.Namespace) -> int:
     if args.company:
         wanted = {c.lower() for c in args.company}
         companies = [c for c in companies if c.company.lower() in wanted or c.token.lower() in wanted]
+    if args.ats:
+        if args.feeds_only:
+            print("error: --ats selects company boards; it can't be combined with --feeds-only", file=sys.stderr)
+            return 2
+        companies = [c for c in companies if c.ats in args.ats]
+    if args.skip_ats:
+        companies = [c for c in companies if c.ats not in args.skip_ats]
     if args.limit:
         companies = companies[: args.limit]
     if args.feeds_only:
         companies = []
-    feed_settings = {} if args.no_feeds else enabled_feeds(load_settings(args.sources), args.feeds)
+    # --ats is a board-only pass (e.g. the local Workday run with its own state file) unless feeds are named
+    # explicitly: polling feeds there too would report their jobs a second time.
+    no_feeds = args.no_feeds or (args.ats and not args.feeds)
+    feed_settings = {} if no_feeds else enabled_feeds(load_settings(args.sources), args.feeds)
     if not companies and not feed_settings:
         print("no companies or feeds selected", file=sys.stderr)
         return 2
@@ -201,6 +211,18 @@ def build_parser() -> argparse.ArgumentParser:
     )
     r.add_argument("--company", nargs="+", help="only these companies (name or token)")
     r.add_argument("--limit", type=int, help="only the first N companies")
+    from .sources.base import COMPANY_SOURCES
+
+    ats_names = sorted(COMPANY_SOURCES)
+    ats = r.add_mutually_exclusive_group()
+    ats.add_argument(
+        "--ats",
+        nargs="+",
+        choices=ats_names,
+        metavar="ATS",
+        help=f"only boards on these ATSes ({', '.join(ats_names)}); implies --no-feeds unless --feeds is given",
+    )
+    ats.add_argument("--skip-ats", nargs="+", choices=ats_names, metavar="ATS", help="skip boards on these ATSes")
     r.add_argument("--hours", type=float, help="override freshness_hours")
     r.add_argument("--companies", default=str(DEFAULT_COMPANIES))
     r.add_argument(
