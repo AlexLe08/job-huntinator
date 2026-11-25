@@ -69,11 +69,17 @@ class State:
         os.replace(tmp, p)
 
     # ------------------------------------------------------------ core
-    def observe(self, feed: str, jobs: list[Job], now: datetime) -> None:
-        """Record a successful poll of `feed` (e.g. "greenhouse:vercel") that returned `jobs`."""
+    def observe(self, feed: str, jobs: list[Job], now: datetime, complete: bool = True) -> None:
+        """Record a poll of `feed` (e.g. "greenhouse:vercel") that returned `jobs`.
+
+        `complete=False` means the poll stopped early (some queries failed). For a feed never polled before, its
+        jobs are still recorded as baseline, but the feed is not marked as polled: otherwise the jobs the partial
+        poll missed would look brand new on the next complete poll and slip past the flood guard.
+        """
         is_new_feed = feed not in self.feeds
-        meta = self.feeds.setdefault(feed, {"first_polled": _iso(now)})
-        meta["last_polled"] = _iso(now)
+        if complete or not is_new_feed:
+            meta = self.feeds.setdefault(feed, {"first_polled": _iso(now)})
+            meta["last_polled"] = _iso(now)
         for job in jobs:
             rec = self.jobs.get(job.id)
             if rec is None:

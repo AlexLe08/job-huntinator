@@ -5,16 +5,25 @@ companies.yaml entry:
 `token` is the tenant (the path segment after /wday/cxs/), `site` is the career-site name in the public URL.
 Large employers have thousands of postings, so we run a few keyword searches instead of paging everything.
 This endpoint may change without notice; failures are logged per company and never stop the run.
+
+Cloudflare in front of *.myworkdayjobs.com rate-limits datacenter IPs (GitHub runners get 429 on the first request
+to nearly every board). Two consequences handled here:
+* if a later query fails, the jobs from earlier queries are kept (`PartialFetch`) instead of dropping the board;
+* after `BLOCK_THRESHOLD` consecutive boards whose first request got 429, the remaining boards on the same client
+  are skipped without a request (`WorkdayBlocked`), instead of burning retry backoff on each.
 """
 
 from __future__ import annotations
 
+import logging
 import re
+import threading
+import weakref
 from datetime import UTC, datetime, timedelta
 from urllib.parse import urlsplit
 
 from ..companies import Company
-from ..http import PoliteClient
+from ..http import FetchError, PartialFetch, PoliteClient
 from ..models import Job
 from ..text import extract_comp, html_to_text, parse_iso
 
@@ -22,6 +31,47 @@ API_NAME = "workday"
 PAGE = 20  # Workday rejects larger pages
 MAX_PAGES_PER_QUERY = 5
 DEFAULT_QUERIES = ["frontend", "front end", "software engineer", "web developer", "ui engineer", "full stack"]
+BLOCK_THRESHOLD = 3  # consecutive first-request 429s before the rest of the Workday boards are skipped
+
+log = logging.getLogger(__name__)
+
+
+class WorkdayBlocked(FetchError):
+    """Skipped without a request: earlier Workday boards on this client all got 429 on their first request."""
+
+
+class _Breaker:
+    """Counts consecutive boards whose first request got HTTP 429. Shared by all boards on one client (= one run)."""
+
+    def __init__(self, threshold: int):
+        self.threshold = threshold
+        self.streak = 0
+        self._lock = threading.Lock()
+
+    @property
+    def tripped(self) -> bool:
+        return self.streak >= self.threshold
+
+    def record(self, first_request_429: bool) -> None:
+        with self._lock:
+            was_tripped = self.tripped
+            self.streak = self.streak + 1 if first_request_429 else 0
+            if self.tripped and not was_tripped:
+                log.warning(
+                    "workday: %d boards in a row got HTTP 429 on their first request; skipping the rest this run",
+                    self.streak,
+                )
+
+
+_breakers: weakref.WeakKeyDictionary = weakref.WeakKeyDictionary()
+_breakers_lock = threading.Lock()
+
+
+def _breaker(client: PoliteClient) -> _Breaker:
+    with _breakers_lock:
+        if client not in _breakers:
+            _breakers[client] = _Breaker(BLOCK_THRESHOLD)
+        return _breakers[client]
 
 
 def _base(company: Company) -> tuple[str, str]:
@@ -51,18 +101,36 @@ def parse_posted_on(text: str | None, now: datetime | None = None) -> datetime |
 
 
 def fetch(client: PoliteClient, company: Company, now: datetime | None = None) -> list[Job]:
+    breaker = _breaker(client)
+    if breaker.tripped:
+        raise WorkdayBlocked(f"skipped: {breaker.streak} Workday boards in a row got HTTP 429", 429)
     queries = company.extra.get("queries") or DEFAULT_QUERIES
     url = board_url(company)
     seen: dict[str, Job] = {}
-    for q in queries:
-        for page in range(MAX_PAGES_PER_QUERY):
-            data = client.post_json(url, {"appliedFacets": {}, "limit": PAGE, "offset": page * PAGE, "searchText": q})
-            postings = data.get("jobPostings") or []
-            for raw in postings:
-                if raw.get("externalPath") and raw["externalPath"] not in seen:
-                    seen[raw["externalPath"]] = normalize(raw, company, now)
-            if len(postings) < PAGE:
-                break
+    first = True
+    try:
+        for q in queries:
+            for page in range(MAX_PAGES_PER_QUERY):
+                body = {"appliedFacets": {}, "limit": PAGE, "offset": page * PAGE, "searchText": q}
+                try:
+                    data = client.post_json(url, body)
+                except FetchError as exc:
+                    if first:
+                        breaker.record(exc.status == 429)
+                    raise
+                if first:
+                    breaker.record(False)
+                    first = False
+                postings = data.get("jobPostings") or []
+                for raw in postings:
+                    if raw.get("externalPath") and raw["externalPath"] not in seen:
+                        seen[raw["externalPath"]] = normalize(raw, company, now)
+                if len(postings) < PAGE:
+                    break
+    except FetchError as exc:
+        if first:
+            raise
+        raise PartialFetch(list(seen.values()), exc) from exc
     return list(seen.values())
 
 

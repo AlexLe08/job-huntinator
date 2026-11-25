@@ -104,7 +104,7 @@ def cmd_run(args: argparse.Namespace) -> int:
         print(output.table(jobs))
     print(
         f"\n{len(jobs)} new matches | {sum(len(f.jobs) for f in feeds)} jobs on {len(feeds)} boards | "
-        f"{len(result.failed)} boards failed",
+        f"{len(result.failed)} boards failed | {len(result.partial)} partial",
         file=sys.stderr,
     )
     if args.explain:
@@ -112,6 +112,8 @@ def cmd_run(args: argparse.Namespace) -> int:
             print(f"  {n:6d}  {reason}", file=sys.stderr)
         for f in result.failed:
             print(f"  FAILED {f.company.company} ({f.feed}): {f.error}", file=sys.stderr)
+        for f in result.partial:
+            print(f"  PARTIAL {f.company.company} ({f.feed}): {len(f.jobs)} jobs, then {f.partial}", file=sys.stderr)
 
     import os
 
