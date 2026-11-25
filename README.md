@@ -201,7 +201,10 @@ boards return 200 from a home connection. So the GitHub workflow skips Workday, 
 - logs to `state/workday/run.log`, writes the UTC time of the last successful run to `state/workday/last-success`, and
   shows a macOS notification if a run fails
 
-Setup, once (needs `.venv` and `.env` in the repo):
+Setup, once (needs `.venv` and `.env` in the repo). The repo must be on the internal disk, outside `~/Documents`,
+`~/Desktop`, `~/Downloads` and iCloud Drive (e.g. `~/Developer/job-huntinator`). macOS privacy controls block launchd
+jobs from reading external drives and those folders, and a background job can't show the "allow access" prompt, so runs
+fail with "Operation not permitted". The installer refuses those locations.
 
 ```bash
 scripts/install-workday-launchd.sh                                 # installs ~/Library/LaunchAgents/com.jobhuntinator.workday.plist
@@ -211,8 +214,9 @@ scripts/install-workday-launchd.sh uninstall                       # remove
 ```
 
 Re-run the installer if the repo moves. If the Mac is asleep at a scheduled time, launchd runs the job once on wake; if it's
-off, the run is skipped. The first run's flood guard only reports Workday jobs posted in the last 48 hours. If the repo
-lives on an external drive, the drive must be mounted, and macOS may ask once to allow `bash` access to removable volumes.
+off, the run is skipped. The first run's flood guard only reports Workday jobs posted in the last 48 hours. If a run
+never starts (`launchctl print gui/$(id -u)/com.jobhuntinator.workday` shows a non-zero `last exit code` and `run.log`
+is empty), launchd's own errors are in `~/Library/Logs/jobhuntinator-workday.log`.
 
 ## LinkedIn / Indeed via Gmail alerts (optional)
 
