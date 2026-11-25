@@ -47,6 +47,9 @@ A full live dry-run polls ~270 boards and feeds in ~3 minutes.
   Register ATS sources in `sources/base.py` and feeds in `sources/aggregators.py`.
 - `filters.py` (title / location / red flags), `state.py` (first-seen and flood guard), `dedupe.py`, `sheets.py`, `run.py`
   (pipeline + cross-source merge), `discovery.py` (suggested boards → GitHub job summary), `cli.py`.
+- `scripts/`: the local launchd Workday-only pass (`workday-local.sh`, plist template, installer). CI runs
+  `--skip-ats workday` because Cloudflare 429s Workday from GitHub runners; the Mac runs `--ats workday` with
+  `state/workday/seen.json`.
 - `tests/fixtures/`: trimmed **real** API responses. When adding a source, save a trimmed real response, and strip personal
   data (recruiter names, personal emails, HN usernames) before committing.
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Template. scripts/install-workday-launchd.sh fills in __SCRIPT__ / __LOGDIR__ and installs it to
+  ~/Library/LaunchAgents. Times are the Mac's local time zone (8:15 and 14:15 assume US Eastern).
+  If the Mac is asleep at a scheduled time, launchd runs the job once on wake.
+-->
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.jobhuntinator.workday</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>__SCRIPT__</string>
+	</array>
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict>
+			<key>Hour</key>
+			<integer>8</integer>
+			<key>Minute</key>
+			<integer>15</integer>
+		</dict>
+		<dict>
+			<key>Hour</key>
+			<integer>14</integer>
+			<key>Minute</key>
+			<integer>15</integer>
+		</dict>
+	</array>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+	</dict>
+	<key>ProcessType</key>
+	<string>Background</string>
+	<!-- Only catches launch failures; the script logs to state/workday/run.log itself. -->
+	<key>StandardOutPath</key>
+	<string>__LOGDIR__/launchd.log</string>
+	<key>StandardErrorPath</key>
+	<string>__LOGDIR__/launchd.log</string>
+</dict>
+</plist>

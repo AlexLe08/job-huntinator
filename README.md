@@ -69,7 +69,8 @@ Dependabot proposes monthly lockfile and action updates.
 
 `.github/workflows/scrape.yml` runs at 11:30 and 17:30 UTC. That's 6:30am/12:30pm in winter (EST) and 7:30am/1:30pm
 in summer (EDT). You can also trigger it from **Actions → scrape → Run workflow**, which has an optional dry-run switch
-and an extra-args field such as `--hours 72` or `--feeds hn`.
+and an extra-args field such as `--hours 72` or `--feeds hn`. It skips Workday boards (`--skip-ats workday`), which
+Cloudflare blocks from GitHub's IPs; those come from the [local Workday pass](#local-workday-pass-launchd).
 
 Secrets go in the **`production` environment** (**Settings → Environments → production → Environment secrets**), not
 as repo secrets. The scrape job runs in that environment, and the environment's deployment branches are limited to
@@ -178,11 +179,40 @@ Add a regression case to `tests/test_filters.py` whenever you change a pattern.
 python -m jobscraper run [--dry-run] [--no-sheet] [--quiet] [--explain]
                          [--company NAME_OR_TOKEN ...] [--limit N] [--hours H]
                          [--feeds hn remotive ...] [--no-feeds] [--feeds-only]
+                         [--ats ATS ... | --skip-ats ATS ...] [--state PATH]
 python -m jobscraper validate-companies [--fix] [--all] [--shallow] [--only NAME ...]
 python -m jobscraper gmail-auth path/to/client_secret.json
 ```
 
 The exit code is 1 if more than half of the boards fail. One failing board is logged and never stops the run.
+
+`--ats workday` polls only boards on those ATSes and, unless `--feeds` is also given, no aggregator feeds. `--skip-ats`
+drops boards on those ATSes. CI uses `--skip-ats workday` (see below).
+
+## Local Workday pass (launchd)
+
+Cloudflare answers HTTP 429 to nearly every Workday board when the request comes from a GitHub runner, while the same
+boards return 200 from a home connection. So the GitHub workflow skips Workday, and a launchd job on the Mac runs
+`scripts/workday-local.sh` at **8:15 and 14:15** (the Mac's local time, so Eastern). The script:
+
+- runs `jobscraper run --ats workday --quiet --explain` with its own state file, `state/workday/seen.json`
+- reads the sheet credentials from the repo's `.env` (same as any local run) and appends to the Scraper tab. The Scraper
+  tab is part of the tracker dedupe, so the CI and local passes never add the same job twice.
+- logs to `state/workday/run.log`, writes the UTC time of the last successful run to `state/workday/last-success`, and
+  shows a macOS notification if a run fails
+
+Setup, once (needs `.venv` and `.env` in the repo):
+
+```bash
+scripts/install-workday-launchd.sh                                 # installs ~/Library/LaunchAgents/com.jobhuntinator.workday.plist
+launchctl kickstart -p gui/$(id -u)/com.jobhuntinator.workday      # run once now to test
+cat state/workday/last-success; tail state/workday/run.log
+scripts/install-workday-launchd.sh uninstall                       # remove
+```
+
+Re-run the installer if the repo moves. If the Mac is asleep at a scheduled time, launchd runs the job once on wake; if it's
+off, the run is skipped. The first run's flood guard only reports Workday jobs posted in the last 48 hours. If the repo
+lives on an external drive, the drive must be mounted, and macOS may ask once to allow `bash` access to removable volumes.
 
 ## LinkedIn / Indeed via Gmail alerts (optional)
 
@@ -226,6 +256,7 @@ src/jobscraper/state.py      first-seen state, freshness, flood guard
 src/jobscraper/dedupe.py     URL / ATS-id / company+title matching
 src/jobscraper/sheets.py     tracker read + Scraper append
 src/jobscraper/run.py        pipeline
+scripts/                     local launchd Workday pass (workday-local.sh + plist template + installer)
 tests/fixtures/              trimmed real API responses
 ```
 

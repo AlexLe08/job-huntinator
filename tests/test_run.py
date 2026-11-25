@@ -4,6 +4,7 @@ import json
 from datetime import UTC, datetime, timedelta
 
 import httpx
+import pytest
 import respx
 from conftest import load_fixture
 
@@ -204,3 +205,99 @@ def test_cli_quiet_failures_leak_no_titles_or_job_links(tmp_path, monkeypatch, c
     assert "enrich failed" in logged and "fetch failed" in logged  # both failure paths were exercised
     assert "Frontend Engineer, Zephyr Team" not in logged
     assert job_url not in logged and "/jobs/7" not in logged
+
+
+def _two_ats_companies(tmp_path):
+    companies = tmp_path / "companies.yaml"
+    companies.write_text(
+        "companies:\n  - {company: Acme, ats: greenhouse, token: acme}\n  - {company: Beta, ats: lever, token: beta}\n"
+    )
+    return companies
+
+
+def _mock_two_boards():
+    gh = respx.get("https://boards-api.greenhouse.io/v1/boards/acme/jobs").mock(
+        return_value=httpx.Response(200, json=gh_board(gh_job(1, "Frontend Engineer")))
+    )
+    lv = respx.get(url__startswith="https://api.lever.co/v0/postings/beta").mock(
+        return_value=httpx.Response(200, json=[])
+    )
+    return gh, lv
+
+
+@respx.mock
+def test_cli_ats_polls_only_that_ats_and_no_feeds(tmp_path, monkeypatch, capsys):
+    monkeypatch.delenv("GOOGLE_SHEET_ID", raising=False)
+    monkeypatch.setattr(cli, "ROOT", tmp_path)
+    monkeypatch.setattr("jobscraper.run.make_clients", clients)
+    monkeypatch.setattr("jobscraper.run.now_utc", lambda: NOW)
+    gh, lv = _mock_two_boards()
+    rc = cli.main(["run", "--dry-run", "--ats", "greenhouse", "--companies", str(_two_ats_companies(tmp_path))])
+    err = capsys.readouterr().err
+    assert rc == 0
+    assert gh.called and not lv.called
+    # A board-only pass: feeds stay with the main (CI) pass so they aren't reported twice.
+    assert "polling 1 boards + feeds: none" in err
+
+
+@respx.mock
+def test_cli_skip_ats_drops_that_ats(tmp_path, monkeypatch, capsys):
+    monkeypatch.delenv("GOOGLE_SHEET_ID", raising=False)
+    monkeypatch.setattr(cli, "ROOT", tmp_path)
+    monkeypatch.setattr("jobscraper.run.make_clients", clients)
+    monkeypatch.setattr("jobscraper.run.now_utc", lambda: NOW)
+    gh, lv = _mock_two_boards()
+    args = [
+        "run",
+        "--dry-run",
+        "--no-feeds",
+        "--skip-ats",
+        "greenhouse",
+        "--companies",
+        str(_two_ats_companies(tmp_path)),
+    ]
+    assert cli.main(args) == 0
+    assert lv.called and not gh.called
+    assert "polling 1 boards" in capsys.readouterr().err
+
+
+@respx.mock
+def test_cli_ats_with_explicit_feeds_keeps_those_feeds(tmp_path, monkeypatch, capsys):
+    monkeypatch.delenv("GOOGLE_SHEET_ID", raising=False)
+    monkeypatch.setattr(cli, "ROOT", tmp_path)
+    monkeypatch.setattr("jobscraper.run.make_clients", clients)
+    monkeypatch.setattr("jobscraper.run.now_utc", lambda: NOW)
+    monkeypatch.setattr("jobscraper.run.fetch_aggregators", lambda feeds, now, cfg: [])
+    _mock_two_boards()
+    sources = tmp_path / "sources.yaml"
+    sources.write_text("remotive: {enabled: true}\n")
+    args = ["run", "--dry-run", "--ats", "lever", "--feeds", "remotive", "--sources", str(sources)]
+    assert cli.main([*args, "--companies", str(_two_ats_companies(tmp_path))]) == 0
+    assert "polling 1 boards + feeds: remotive" in capsys.readouterr().err
+
+
+@pytest.mark.parametrize(
+    "extra",
+    [
+        ["--ats", "workday", "--skip-ats", "lever"],  # mutually exclusive
+        ["--ats", "linkedin"],  # not an ATS source
+        ["--skip-ats", "nope"],
+    ],
+)
+def test_cli_ats_flags_reject_bad_combinations(tmp_path, extra):
+    with pytest.raises(SystemExit) as exc:
+        cli.main(["run", "--dry-run", "--companies", str(_two_ats_companies(tmp_path)), *extra])
+    assert exc.value.code == 2
+
+
+def test_cli_ats_with_feeds_only_is_an_error(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(cli, "ROOT", tmp_path)
+    args = ["run", "--dry-run", "--feeds-only", "--ats", "workday", "--companies", str(_two_ats_companies(tmp_path))]
+    assert cli.main(args) == 2
+    assert "--feeds-only" in capsys.readouterr().err
+
+
+def test_ci_workflow_skips_workday():
+    """Workday is Cloudflare-blocked from GitHub runners; the local launchd pass covers it."""
+    wf = (cli.ROOT / ".github" / "workflows" / "scrape.yml").read_text()
+    assert "--skip-ats workday" in wf

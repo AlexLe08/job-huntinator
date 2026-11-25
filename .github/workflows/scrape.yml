@@ -74,8 +74,10 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run }}
           EXTRA_ARGS: ${{ inputs.extra_args }}
         # --quiet: this repo is public, so Actions logs are public. Print counts only, never titles/links.
+        # --skip-ats workday: Cloudflare 429s Workday from GitHub's datacenter IPs. Those boards are polled by a
+        # local launchd pass instead (scripts/workday-local.sh); the shared Scraper tab dedupes across both.
         run: |
-          args=(--quiet --explain)
+          args=(--quiet --explain --skip-ats workday)
           if [ "$DRY_RUN" = "true" ]; then args+=(--dry-run); fi
           # Split on whitespace only: no globbing, no command substitution.
           read -r -a extra <<< "$EXTRA_ARGS"

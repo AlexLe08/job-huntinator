@@ -2,13 +2,13 @@
 
 Small items. Pick any; each should come with tests.
 
-- **Workday 429 from GitHub runners (biggest gap):** every scheduled run since 2026-11-23 gets HTTP 429 from Cloudflare on the
-  *first* request to nearly every `*.myworkdayjobs.com` board (only Vertex on wd501 sometimes gets through), while the same boards
-  return 200 from a home connection. So the ~20 Workday boards only work in local runs. More politeness won't fix an IP block,
-  and spoofing a browser to get past it is off the table. Options: run a Workday-only pass from a non-datacenter machine (e.g. a
-  launchd job on Alex's Mac appending to the Scraper tab), or a self-hosted runner; still needs Alex's decision. Side fixes
-  done: a 429 on a later query keeps the jobs from earlier queries (`PartialFetch`, shown as "partial" in the run summary),
-  and after 3 consecutive first-request 429s the remaining Workday boards are skipped without a request.
+- **Workday 429 from GitHub runners (addressed):** Cloudflare 429s the first request to nearly every `*.myworkdayjobs.com`
+  board from GitHub runners, while home connections get 200. More politeness won't fix an IP block, and spoofing a browser is
+  off the table. Fix: CI runs with `--skip-ats workday`, and a launchd job on Alex's Mac runs a Workday-only pass
+  (`scripts/workday-local.sh`, see README "Local Workday pass"). A self-hosted runner was rejected (risky on a public repo).
+  Earlier side fixes: `PartialFetch` keeps earlier-query jobs on a later 429, and 3 consecutive first-request 429s skip the
+  remaining Workday boards. Remaining gap: the pass only runs while the Mac is on and the repo's drive is mounted; check
+  `state/workday/last-success` if Workday rows stop appearing.
 
 - **Cache growth:** every run saves a new `jobscraper-state-<run_id>` cache entry. GitHub evicts old ones (10 GB repo limit), but a
   cleanup step (`gh cache delete` for all but the newest 5, needs `actions: write`) would keep things tidy.
