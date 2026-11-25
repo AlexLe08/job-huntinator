@@ -224,6 +224,9 @@ The scraper never touches LinkedIn or Indeed directly. Instead, it reads the job
 
 1. On LinkedIn and Indeed, create job alerts for your searches (daily).
 2. In Gmail, add a filter: from `jobalerts-noreply@linkedin.com` OR `jobs-noreply@linkedin.com` OR `alert@indeed.com` → apply label `job-alerts`.
+   Indeed "job match" emails (`donotreply@match.indeed.com`) are read even without the label: the default query is
+   `{label:job-alerts from:match.indeed.com} newer_than:3d`. Their links are `cts.indeed.com` redirects; the parser
+   decodes the job key from them offline, without following the link.
 3. In Google Cloud (same project is fine), enable the **Gmail API**. Then create an **OAuth client ID** of type *Desktop app*
    and download its JSON. While the consent screen is in "Testing" mode, add yourself as a test user.
    - Testing-mode refresh tokens expire after 7 days. To get a long-lived token, set the app's publishing status to
