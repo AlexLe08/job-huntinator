@@ -27,7 +27,7 @@ API = "https://gmail.googleapis.com/gmail/v1/users/me"
 LINKEDIN_JOB = re.compile(r"linkedin\.com/(?:comm/)?jobs/view/(\d+)", re.I)
 INDEED_HOST = re.compile(r"(^|\.)indeed\.com$", re.I)
 SKIP_TEXT = re.compile(
-    r"^(view job|apply|easy apply|see all jobs|view all|unsubscribe|new|promoted|actively recruiting|\d+ (applicants|connections?).*)$",
+    r"^(view job|apply|easy apply|see all jobs|view all|unsubscribe|new|promoted|actively recruiting|\d+ (applicants|connections?|company alum(ni)?).*)$",
     re.I,
 )
 
