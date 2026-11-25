@@ -254,7 +254,7 @@ companies:
   - {company: Rue Gilt Groupe, ats: greenhouse, token: ruelala, tier: boston}
   - {company: Lexia Learning, ats: greenhouse, token: lexia, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: EverTrue, ats: greenhouse, token: evertrue, tier: boston}
-  - {company: Aras, ats: other, token: aras, tier: boston, disabled: true, notes: 'BambooHR (aras.bamboohr.com), not supported'}
+  - {company: Aras, ats: bamboohr, token: aras, tier: boston}
   - {company: Vestmark, ats: greenhouse, token: vestmark, tier: boston}
   - {company: MineralTree, ats: greenhouse, token: mineraltree, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Butterfly Network, ats: greenhouse, token: butterflynetwork, tier: boston}
@@ -276,14 +276,14 @@ companies:
   - {company: Lulu, ats: greenhouse, token: lulu, tier: rtp, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Spreedly, ats: lever, token: spreedly, tier: rtp, disabled: true, notes: careers page links lever/spreedly; 0 postings as of 2026-11-25}
   - {company: Teamworks, ats: ashby, token: teamworks, tier: rtp}
-  - {company: Adwerx, ats: other, token: adwerx, tier: rtp, disabled: true, notes: 'Breezy HR (adwerx.breezy.hr), not supported'}
+  - {company: Adwerx, ats: other, token: adwerx, tier: rtp, disabled: true, notes: 'careers page still points at adwerx.breezy.hr, but that portal 404s (checked 2026-11-25)'}
   - {company: Levitate, ats: greenhouse, token: levitate, tier: rtp}
   - {company: JupiterOne, ats: greenhouse, token: jupiterone, tier: rtp, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Pryon, ats: lever, token: pryon, tier: rtp}
-  - {company: Validic, ats: other, token: validic, tier: rtp, disabled: true, notes: 'BambooHR (validic.bamboohr.com), not supported'}
+  - {company: Validic, ats: bamboohr, token: validic, tier: rtp}
   - {company: Rithum, ats: greenhouse, token: rithum, tier: rtp}
   - {company: TELUS Digital (WillowTree), ats: ashby, token: telus-digital, tier: rtp, notes: WillowTree careers redirect to TELUS Digital}
-  - {company: Prometheus Group, ats: greenhouse, token: prometheusgroup, tier: rtp, disabled: true, no_autodetect: true, notes: 'BambooHR (prometheusgroup.bamboohr.com), not supported; ashby/prometheus is an unrelated SF AI lab'}
+  - {company: Prometheus Group, ats: bamboohr, token: prometheusgroup, tier: rtp, no_autodetect: true, notes: 'ashby/prometheus is an unrelated SF AI lab'}
   - {company: Brightly Software, ats: other, token: brightly, tier: rtp, disabled: true, notes: part of Siemens (custom ATS)}
   - {company: Howso (Diveplane), ats: workable, token: howso, tier: rtp, notes: Diveplane renamed to Howso}
   - {company: Red Hat, ats: workday, token: redhat, host: redhat.wd5.myworkdayjobs.com, site: jobs, tier: rtp}

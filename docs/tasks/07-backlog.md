@@ -35,7 +35,12 @@ Small items. Pick any; each should come with tests.
   `state/suggestions.json`). The REST API doesn't expose job summaries, so a Claude session can't review them; during task 05
   a local feeds-only pass found none. Options: open the latest scrape run page and paste the "Company suggestions" table into
   the session, or print the suggestion count (no names) and keep reviewing via the run page.
-- **Unsupported ATSes worth a source:** after task 05, several disabled companies sit on BambooHR (Aras, Validic, Prometheus
-  Group), Breezy (Adwerx), Gem (Retool) and iCIMS (Atlassian/Loom, Jaggaer). BambooHR and Breezy have public JSON job lists;
-  check their terms before adding one.
+- **Unsupported ATSes worth a source (BambooHR addressed):** `sources/bamboohr.py` reads `<sub>.bamboohr.com/careers/list`
+  (the JSON the company's own careers page loads; robots.txt allows everything), with `enrich()` from `/careers/<id>/detail`
+  for description, date, comp and country. Aras, Validic and Prometheus Group are enabled. BambooHR is not in the
+  validator's auto-detect list, because an unknown subdomain 302s to bamboohr.com's marketing page. Breezy was dropped: its
+  `/json` endpoint works for other portals, but Adwerx's portal 404s (its careers page still links it), so a Breezy source
+  would cover nobody. Still unsupported: Gem (Retool) and iCIMS (Atlassian/Loom, Jaggaer).
+  For task 06: Prometheus Group's Raleigh board adds tier-2 matches on non-frontend titles ("Implementation Consultant",
+  "Implementation Specialist", "Solution Engineer").
 - **Action versions:** bump `actions/*` majors when GitHub deprecates them (watch for warnings on the run pages).
