@@ -10,6 +10,11 @@ Small items. Pick any; each should come with tests.
   remaining Workday boards. Remaining gap: the pass only runs while the Mac is on and the repo's drive is mounted; check
   `state/workday/last-success` if Workday rows stop appearing.
 
+- **Indeed alert digest (unverified):** real-email fixtures cover LinkedIn (both layouts) and Indeed's single-job
+  "job match" email (`donotreply@match.indeed.com`, `cts.indeed.com/v3` redirect links). No classic multi-job Indeed
+  alert from `alert@indeed.com` has arrived yet, so that layout is tested only on synthetic HTML. If one arrives, run it
+  through `parse_message` and save a sanitized fixture (it likely uses the same `cts` redirects, which are already decoded).
+
 - **Cache growth:** every run saves a new `jobscraper-state-<run_id>` cache entry. GitHub evicts old ones (10 GB repo limit), but a
   cleanup step (`gh cache delete` for all but the newest 5, needs `actions: write`) would keep things tidy.
 - **60-day schedule disable:** GitHub disables scheduled workflows in public repos after 60 days without commits. Options are a

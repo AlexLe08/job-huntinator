@@ -2,13 +2,14 @@
 without scraping them. Auth: OAuth refresh token created once with `python -m jobscraper gmail-auth`.
 
 Alert email layouts change now and then. Parsing therefore keys on the stable part -- the job-view
-link (LinkedIn /jobs/view/<id>, Indeed jk=<id>) -- and reads title/company/location from the text
+link (LinkedIn /jobs/view/<id>, Indeed jk=<id>, also inside cts.indeed.com redirects) -- and reads title/company/location from the text
 around it. If a layout change breaks it, the feed returns fewer jobs; it never fails the run.
 """
 
 from __future__ import annotations
 
 import base64
+import gzip
 import json
 import os
 import re
@@ -26,6 +27,9 @@ API = "https://gmail.googleapis.com/gmail/v1/users/me"
 
 LINKEDIN_JOB = re.compile(r"linkedin\.com/(?:comm/)?jobs/view/(\d+)", re.I)
 INDEED_HOST = re.compile(r"(^|\.)indeed\.com$", re.I)
+# Indeed "job match" emails wrap every link in cts.indeed.com/v3/<blob>, where blob is urlsafe-base64
+# gzip JSON like {"u": "https://www.indeed.com/rc/clk?jk=...", "m": {...tracking}}.
+INDEED_REDIRECT = re.compile(r"^https?://cts\.indeed\.com/v3/([A-Za-z0-9_-]{16,8192})", re.I)
 SKIP_TEXT = re.compile(
     r"^(view job|apply|easy apply|see all jobs|view all|unsubscribe|new|promoted|actively recruiting|\d+ (applicants|connections?|company alum(ni)?).*)$",
     re.I,
@@ -77,7 +81,7 @@ def fetch(client: PoliteClient, settings: dict, now: datetime, token: str | None
     headers = {"Authorization": f"Bearer {token}"}
     q = urlencode(
         {
-            "q": settings.get("query", "label:job-alerts newer_than:3d"),
+            "q": settings.get("query", "{label:job-alerts from:match.indeed.com} newer_than:3d"),
             "maxResults": int(settings.get("max_messages", 50)),
         }
     )
@@ -164,6 +168,20 @@ class _Flatten(HTMLParser):
             self.tokens.append(("t", self._href, text))
 
 
+def _unwrap_indeed_redirect(href: str) -> str | None:
+    """Target URL of an Indeed cts.indeed.com/v3 tracking link, decoded offline (no request)."""
+    m = INDEED_REDIRECT.match(href)
+    if not m:
+        return None
+    blob = m.group(1)
+    try:
+        raw = gzip.decompress(base64.urlsafe_b64decode(blob + "=" * (-len(blob) % 4)))
+        target = json.loads(raw).get("u")
+    except (ValueError, OSError, EOFError, AttributeError):
+        return None
+    return target if isinstance(target, str) else None
+
+
 def _job_ref(href: str, kind: str | None) -> tuple[str, str, str] | None:
     """-> (source, native id, canonical url) if href is a job-view link."""
     if not href:
@@ -171,6 +189,7 @@ def _job_ref(href: str, kind: str | None) -> tuple[str, str, str] | None:
     if kind in (None, "linkedin") and (m := LINKEDIN_JOB.search(href)):
         return "linkedin", m.group(1), f"https://www.linkedin.com/jobs/view/{m.group(1)}/"
     if kind in (None, "indeed"):
+        href = _unwrap_indeed_redirect(href) or href
         u = urlsplit(href)
         if INDEED_HOST.search(u.hostname or ""):
             jk = (parse_qs(u.query).get("jk") or parse_qs(u.query).get("vjk") or [None])[0]

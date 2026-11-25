@@ -37,5 +37,5 @@ adzuna:                      # api.adzuna.com -- needs ADZUNA_APP_ID / ADZUNA_AP
 
 gmail_alerts:                # LinkedIn / Indeed alert emails in the project Gmail (read-only OAuth; see README)
   enabled: true
-  query: 'label:job-alerts newer_than:3d'
+  query: '{label:job-alerts from:match.indeed.com} newer_than:3d'
   max_messages: 50

@@ -1,4 +1,6 @@
 import base64
+import gzip
+import json
 from datetime import UTC, datetime
 
 from conftest import FIXTURES
@@ -142,3 +144,34 @@ def test_card_text_does_not_leak_into_footer_or_skip_links():
     assert [(j.id, j.title, j.company, j.location, j.remote) for j in jobs] == [
         ("linkedin:1", "Frontend Engineer", "Acme", "Remote", True)
     ]
+
+
+def test_real_indeed_job_match_email():
+    # Real Indeed "job match" email from donotreply@match.indeed.com (Nov 2026), sanitized: every link is a
+    # cts.indeed.com/v3/<gzip+base64 JSON> redirect, re-encoded here with only the target URL kept.
+    html = (FIXTURES / "gmail" / "indeed_match_real_2026-11.html").read_text()
+    jobs = gmail_alerts.parse_message(gmail_message(html, "Indeed <donotreply@match.indeed.com>"))
+    assert [(j.id, j.title, j.company, j.location, j.remote) for j in jobs] == [
+        ("indeed:5c1f6cd011f053a0", "Software Engineer II", "Indeed", "Remote", True)
+    ]
+    assert jobs[0].url == "https://www.indeed.com/viewjob?jk=5c1f6cd011f053a0"
+    assert jobs[0].tier == "indeed-alert"
+
+
+def _cts(target: str) -> str:
+    data = gzip.compress(json.dumps({"u": target, "m": {"tk": "x"}}).encode())
+    return "https://cts.indeed.com/v3/" + base64.urlsafe_b64encode(data).decode().rstrip("=")
+
+
+def test_indeed_redirect_unwrap():
+    assert gmail_alerts._unwrap_indeed_redirect(_cts("https://www.indeed.com/rc/clk?jk=abc")) == (
+        "https://www.indeed.com/rc/clk?jk=abc"
+    )
+    # not a redirect, or a corrupt / non-gzip / non-JSON-object blob: no crash, no target
+    assert gmail_alerts._unwrap_indeed_redirect("https://www.indeed.com/viewjob?jk=abc") is None
+    assert gmail_alerts._unwrap_indeed_redirect("https://cts.indeed.com/v3/H4sIAAAAAAAA_notreallygzip") is None
+    junk = base64.urlsafe_b64encode(gzip.compress(b"[1, 2]")).decode().rstrip("=")
+    assert gmail_alerts._unwrap_indeed_redirect("https://cts.indeed.com/v3/" + junk) is None
+    # a redirect to a non-job page never becomes a job
+    html = f'<a href="{_cts("https://match.indeed.com/invitations/pause")}">Pause these emails</a>'
+    assert gmail_alerts.parse_alert_html(html, "indeed", None) == []
