@@ -13,7 +13,7 @@ from pathlib import Path
 from .companies import Company
 from .dedupe import TrackerIndex
 from .filters import FilterConfig, classify_location, classify_title, evaluate
-from .http import PoliteClient
+from .http import PartialFetch, PoliteClient
 from .models import Job
 from .sources.base import COMPANY_SOURCES, get_company_source
 from .state import State
@@ -27,6 +27,7 @@ class FeedResult:
     company: Company
     jobs: list[Job] = field(default_factory=list)
     error: str | None = None
+    partial: str | None = None  # set when a later request failed: `jobs` holds what was fetched before it
 
 
 @dataclass
@@ -46,12 +47,20 @@ class RunResult:
     def failed(self) -> list[FeedResult]:
         return [f for f in self.feeds if f.error]
 
+    @property
+    def partial(self) -> list[FeedResult]:
+        return [f for f in self.feeds if f.partial]
+
 
 def fetch_company(client: PoliteClient, company: Company) -> FeedResult:
     feed = f"{company.ats}:{company.token}"
     try:
         jobs = get_company_source(company.ats).fetch(client, company)
         return FeedResult(feed, company, jobs)
+    except PartialFetch as exc:
+        status = f"HTTP {exc.status}" if exc.status else "error"
+        log.warning("partial fetch for %s (%s): kept %d jobs, then %s", company.company, feed, len(exc.jobs), status)
+        return FeedResult(feed, company, exc.jobs, partial=status)
     except Exception as exc:  # one bad board must never kill the run
         log.warning("fetch failed for %s (%s): %s", company.company, feed, exc)
         return FeedResult(feed, company, error=str(exc))
@@ -117,7 +126,7 @@ def select(
         if f.error:
             continue
         is_aggregator = f.company.ats not in COMPANY_SOURCES
-        state.observe(f.feed, f.jobs, now)
+        state.observe(f.feed, f.jobs, now, complete=not f.partial)
         for job in f.jobs:
             if job.id in seen_ids:
                 continue

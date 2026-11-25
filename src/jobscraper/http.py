@@ -22,6 +22,15 @@ class FetchError(Exception):
         self.status = status
 
 
+class PartialFetch(Exception):
+    """A board returned some jobs before a later request failed. Carries the jobs fetched so far."""
+
+    def __init__(self, jobs: list, cause: FetchError):
+        super().__init__(f"partial: {cause}")
+        self.jobs = jobs
+        self.status = cause.status
+
+
 class PoliteClient:
     def __init__(
         self,
