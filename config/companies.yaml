@@ -22,7 +22,7 @@ companies:
   - {company: Dropbox, ats: greenhouse, token: dropbox, tier: frontend-product}
   - {company: Pinterest, ats: greenhouse, token: pinterest, tier: frontend-product}
   - {company: Asana, ats: greenhouse, token: asana, tier: frontend-product}
-  - {company: Retool, ats: ashby, token: retool, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Retool, ats: other, token: retool, tier: frontend-product, disabled: true, notes: 'Gem (jobs.gem.com/retool), not supported'}
   - {company: Supabase, ats: ashby, token: supabase, tier: frontend-product}
   - {company: Clerk, ats: ashby, token: clerk, tier: frontend-product}
   - {company: Sanity, ats: ashby, token: sanity, tier: frontend-product}
@@ -31,7 +31,7 @@ companies:
   - {company: Raycast, ats: ashby, token: raycast, tier: frontend-product}
   - {company: Miro, ats: ashby, token: miro, tier: frontend-product}
   - {company: Calendly, ats: greenhouse, token: calendly, tier: frontend-product}
-  - {company: Grammarly, ats: greenhouse, token: grammarly, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Grammarly, ats: greenhouse, token: grammarly, tier: frontend-product, disabled: true, no_autodetect: true, notes: now Superhuman (listed)}
   - {company: Plaid, ats: ashby, token: plaid, tier: frontend-product}
   - {company: Ramp, ats: ashby, token: ramp, tier: frontend-product}
   - {company: Brex, ats: greenhouse, token: brex, tier: frontend-product}
@@ -50,7 +50,7 @@ companies:
   - {company: MongoDB, ats: greenhouse, token: mongodb, tier: frontend-product}
   - {company: Okta, ats: greenhouse, token: okta, tier: frontend-product}
   - {company: PlanetScale, ats: greenhouse, token: planetscale, tier: frontend-product}
-  - {company: Postman, ats: greenhouse, token: postman, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Postman, ats: other, token: postman, tier: frontend-product, disabled: true, notes: custom ATS (postman.com/company/careers); greenhouse/postman retired}
   - {company: Contentful, ats: greenhouse, token: contentful, tier: frontend-product}
   - {company: Algolia, ats: greenhouse, token: algolia, tier: frontend-product}
   - {company: Amplitude, ats: ashby, token: amplitude, tier: frontend-product}
@@ -62,20 +62,20 @@ companies:
   - {company: Benchling, ats: ashby, token: benchling, tier: frontend-product}
   - {company: Gusto, ats: greenhouse, token: gusto, tier: frontend-product}
   - {company: Deel, ats: ashby, token: deel, tier: frontend-product}
-  - {company: Framer, ats: ashby, token: framer, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Framer, ats: other, token: framer, tier: frontend-product, disabled: true, notes: custom ATS (framer.com/careers)}
   - {company: Descript, ats: greenhouse, token: descript, tier: frontend-product}
   - {company: Runway, ats: ashby, token: runway, tier: frontend-product}
   - {company: Anthropic, ats: greenhouse, token: anthropic, tier: frontend-product}
   - {company: OpenAI, ats: ashby, token: openai, tier: frontend-product}
-  - {company: Anysphere (Cursor), ats: ashby, token: anysphere, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Cursor, ats: ashby, token: cursor, tier: frontend-product, notes: cursor.com/careers board; postings carry SpaceX boilerplate after the acquisition}
   - {company: Perplexity, ats: ashby, token: perplexity, tier: frontend-product}
   - {company: Scale AI, ats: greenhouse, token: scaleai, tier: frontend-product}
   - {company: Databricks, ats: greenhouse, token: databricks, tier: frontend-product}
   - {company: Squarespace, ats: greenhouse, token: squarespace, tier: frontend-product}
-  - {company: Etsy, ats: greenhouse, token: etsy, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Etsy, ats: other, token: etsy, tier: frontend-product, disabled: true, notes: custom ATS (careers.etsy.com)}
   - {company: Spotify, ats: lever, token: spotify, tier: frontend-product}
   - {company: Duolingo, ats: greenhouse, token: duolingo, tier: frontend-product}
-  - {company: Quizlet, ats: greenhouse, token: quizlet, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Quizlet, ats: greenhouse, token: quizlet, tier: frontend-product, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Chime, ats: greenhouse, token: chime, tier: frontend-product}
   - {company: SoFi, ats: greenhouse, token: sofi, tier: frontend-product}
   - {company: Affirm, ats: greenhouse, token: affirm, tier: frontend-product}
@@ -84,13 +84,13 @@ companies:
   - {company: Checkr, ats: greenhouse, token: checkr, tier: frontend-product}
   - {company: Lattice, ats: greenhouse, token: lattice, tier: frontend-product}
   - {company: Glean, ats: greenhouse, token: gleanwork, tier: frontend-product}
-  - {company: Coda, ats: greenhouse, token: coda, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Coda, ats: greenhouse, token: coda, tier: frontend-product, disabled: true, no_autodetect: true, notes: part of Superhuman (listed)}
   - {company: ClickUp, ats: ashby, token: clickup, tier: frontend-product}
   - {company: Intercom, ats: greenhouse, token: intercom, tier: frontend-product}
-  - {company: Front, ats: lever, token: frontapp, tier: frontend-product, disabled: true, notes: no board found (validator)}
-  - {company: Superhuman, ats: greenhouse, token: superhuman, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Front, ats: ashby, token: frontcareers, tier: frontend-product}
+  - {company: Superhuman, ats: ashby, token: Superhuman Platform Inc, tier: frontend-product, notes: Grammarly + Coda + Superhuman Mail; Ashby board name embedded on superhuman.com/company/careers/jobs}
   - {company: Carta, ats: greenhouse, token: carta, tier: frontend-product}
-  - {company: dbt Labs, ats: greenhouse, token: dbtlabsinc, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: dbt Labs, ats: greenhouse, token: dbtlabsinc, tier: frontend-product, disabled: true, no_autodetect: true, notes: merged with Fivetran (listed)}
   - {company: Temporal, ats: ashby, token: temporal, tier: frontend-product}
   - {company: Vanta, ats: ashby, token: vanta, tier: frontend-product}
   - {company: Drata, ats: ashby, token: drata, tier: frontend-product}
@@ -99,13 +99,13 @@ companies:
   - {company: Render, ats: ashby, token: render, tier: frontend-product}
   - {company: Railway, ats: ashby, token: railway, tier: frontend-product}
   - {company: Neon, ats: ashby, token: neon, tier: frontend-product}
-  - {company: Convex, ats: ashby, token: convex, tier: frontend-product, disabled: true, notes: no board found (validator)}
-  - {company: Prisma, ats: ashby, token: prisma, tier: frontend-product, disabled: true, no_autodetect: true, notes: 'recruitee/prisma is a different company'}
+  - {company: Convex, ats: ashby, token: convex-dev, tier: frontend-product}
+  - {company: Prisma, ats: ashby, token: prisma, tier: frontend-product, disabled: true, no_autodetect: true, notes: recruitee/prisma is a different company}
   - {company: Mux, ats: ashby, token: mux, tier: frontend-product}
-  - {company: Cal.com, ats: ashby, token: cal, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Cal.com, ats: ashby, token: cal, tier: frontend-product, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Resend, ats: ashby, token: resend, tier: frontend-product}
-  - {company: Liveblocks, ats: ashby, token: liveblocks, tier: frontend-product, disabled: true, notes: no board found (validator)}
-  - {company: Stytch, ats: ashby, token: stytch, tier: frontend-product}
+  - {company: Liveblocks, ats: ashby, token: liveblocks, tier: frontend-product, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
+  - {company: Stytch, ats: ashby, token: stytch, tier: frontend-product, disabled: true, no_autodetect: true, notes: acquired by Twilio (listed); stytch.com/careers redirects to Twilio}
   - {company: WorkOS, ats: ashby, token: workos, tier: frontend-product}
   - {company: Mintlify, ats: ashby, token: mintlify, tier: frontend-product}
   - {company: Inngest, ats: ashby, token: inngest, tier: frontend-product}
@@ -115,52 +115,52 @@ companies:
   - {company: Graphite, ats: ashby, token: graphitehq, tier: frontend-product}
   - {company: Warp, ats: greenhouse, token: warp, tier: frontend-product}
   - {company: Zed Industries, ats: ashby, token: zed, tier: frontend-product}
-  - {company: The Browser Company, ats: greenhouse, token: thebrowsercompany, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: The Browser Company, ats: ashby, token: The Browser Company, tier: frontend-product}
   - {company: Hightouch, ats: ashby, token: hightouch, tier: frontend-product}
   - {company: Pinecone, ats: ashby, token: pinecone, tier: frontend-product}
-  - {company: Weights & Biases, ats: lever, token: wandb, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: CoreWeave (Weights & Biases), ats: greenhouse, token: coreweave, tier: frontend-product, notes: W&B was acquired by CoreWeave}
   - {company: Grafana Labs, ats: greenhouse, token: grafanalabs, tier: frontend-product}
   - {company: Sourcegraph, ats: greenhouse, token: sourcegraph91, tier: frontend-product}
   - {company: Nextdoor, ats: greenhouse, token: nextdoor, tier: frontend-product}
   - {company: Thumbtack, ats: ashby, token: thumbtack, tier: frontend-product}
-  - {company: Eventbrite, ats: lever, token: eventbrite, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Eventbrite, ats: other, token: eventbrite, tier: frontend-product, disabled: true, notes: acquired by Bending Spoons (custom jobs site)}
   - {company: Patreon, ats: ashby, token: patreon, tier: frontend-product}
   - {company: Substack, ats: ashby, token: substack, tier: frontend-product}
   - {company: Strava, ats: ashby, token: strava, tier: frontend-product}
   - {company: Peloton, ats: greenhouse, token: peloton, tier: frontend-product}
-  - {company: Headspace, ats: greenhouse, token: headspace, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Headspace, ats: greenhouse, token: hs, tier: frontend-product, notes: greenhouse/headspaceproviders is the clinician board}
   - {company: Calm, ats: greenhouse, token: calm, tier: frontend-product}
-  - {company: Vimeo, ats: greenhouse, token: vimeo, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Vimeo, ats: other, token: vimeo, tier: frontend-product, disabled: true, notes: acquired by Bending Spoons (custom jobs site)}
   - {company: Wealthfront, ats: lever, token: wealthfront, tier: frontend-product}
   - {company: Betterment, ats: greenhouse, token: betterment, tier: frontend-product}
   - {company: Acorns, ats: ashby, token: acorns, tier: frontend-product}
-  - {company: Loom, ats: greenhouse, token: loom, tier: frontend-product, disabled: true, notes: no board found (validator)}
-  - {company: Canva, ats: lever, token: canva, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Loom, ats: other, token: loom, tier: frontend-product, disabled: true, notes: 'acquired by Atlassian (iCIMS), not supported'}
+  - {company: Canva, ats: smartrecruiters, token: Canva, tier: frontend-product}
   - {company: Typeform, ats: greenhouse, token: typeform, tier: frontend-product}
-  - {company: Pitch, ats: ashby, token: pitch, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Pitch, ats: workable, token: pitch-software, tier: frontend-product}
   - {company: Gamma, ats: ashby, token: gamma, tier: frontend-product}
   - {company: Lovable, ats: ashby, token: lovable, tier: frontend-product}
   - {company: Bolt (StackBlitz), ats: greenhouse, token: stackblitz, tier: frontend-product}
   - {company: Storyblok, ats: greenhouse, token: storyblok, tier: frontend-product}
-  - {company: Builder.io, ats: greenhouse, token: builderio, tier: frontend-product, disabled: true, notes: no board found (validator)}
-  - {company: Plasmic, ats: ashby, token: plasmic, tier: frontend-product, disabled: true, notes: no board found (validator)}
-  - {company: Shopify, ats: ashby, token: shopify, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Builder.io, ats: greenhouse, token: builderio, tier: frontend-product, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
+  - {company: Plasmic, ats: ashby, token: plasmic, tier: frontend-product, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
+  - {company: Shopify, ats: other, token: shopify, tier: frontend-product, disabled: true, notes: custom ATS (shopify.com/careers)}
   - {company: Block, ats: greenhouse, token: block, tier: frontend-product}
   - {company: Ironclad, ats: ashby, token: ironcladhq, tier: frontend-product}
   - {company: Notable, ats: ashby, token: notable, tier: frontend-product}
-  - {company: Hebbia, ats: ashby, token: hebbia, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Hebbia, ats: ashby, token: hebbia-ai, tier: frontend-product}
   - {company: Harvey, ats: ashby, token: harvey, tier: frontend-product}
   - {company: Sierra, ats: ashby, token: sierra, tier: frontend-product}
   - {company: ElevenLabs, ats: ashby, token: elevenlabs, tier: frontend-product}
   - {company: Character.AI, ats: ashby, token: character, tier: frontend-product}
   - {company: Writer, ats: ashby, token: writer, tier: frontend-product}
-  - {company: Jasper, ats: ashby, token: jasper, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Jasper, ats: ashby, token: Jasper AI, tier: frontend-product}
   - {company: Glide, ats: ashby, token: glide, tier: frontend-product}
   - {company: Bubble, ats: ashby, token: bubble, tier: frontend-product}
   - {company: Airship, ats: greenhouse, token: airship, tier: frontend-product}
   - {company: Celonis, ats: greenhouse, token: celonis, tier: frontend-product}
   - {company: Zillow, ats: workday, token: zillow, host: zillow.wd5.myworkdayjobs.com, site: Zillow_Group_External, tier: frontend-product}
-  - {company: Remitly, ats: greenhouse, token: remitly, tier: frontend-product, disabled: true, notes: no board found (validator)}
+  - {company: Remitly, ats: workday, token: remitly, host: remitly.wd5.myworkdayjobs.com, site: Remitly_Careers, tier: frontend-product}
   - {company: Rula, ats: ashby, token: rula, tier: frontend-product}
   - {company: Abridge, ats: ashby, token: abridge, tier: frontend-product}
   - {company: Nuna, ats: ashby, token: nuna, tier: frontend-product}
@@ -173,17 +173,17 @@ companies:
   - {company: Decagon, ats: ashby, token: decagon, tier: frontend-product}
 
   # ---- boston
-  - {company: HubSpot, ats: greenhouse, token: hubspot, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: Wayfair, ats: greenhouse, token: wayfair, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: HubSpot, ats: greenhouse, token: hubspotjobs, tier: boston}
+  - {company: Wayfair, ats: other, token: wayfair, tier: boston, disabled: true, no_autodetect: true, notes: custom ATS; smartrecruiters/Wayfair has only stray store roles}
   - {company: DraftKings, ats: workday, token: draftkings, host: draftkings.wd1.myworkdayjobs.com, site: DraftKings, tier: boston}
   - {company: Toast, ats: greenhouse, token: toast, tier: boston}
   - {company: Klaviyo, ats: greenhouse, token: klaviyo, tier: boston}
-  - {company: Rapid7, ats: greenhouse, token: rapid7, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Rapid7, ats: other, token: rapid7, tier: boston, disabled: true, notes: custom ATS (careers.rapid7.com)}
   - {company: Whoop, ats: ashby, token: whoop, tier: boston}
   - {company: Formlabs, ats: greenhouse, token: formlabs, tier: boston}
   - {company: CarGurus, ats: greenhouse, token: cargurus, tier: boston}
   - {company: EverQuote, ats: greenhouse, token: everquote, tier: boston}
-  - {company: Flywire, ats: greenhouse, token: flywire, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Flywire, ats: workday, token: flywire, host: flywire.wd108.myworkdayjobs.com, site: flywirecareers, tier: boston}
   - {company: Wistia, ats: ashby, token: wistia, tier: boston}
   - {company: Kayak, ats: ashby, token: kayak, tier: boston}
   - {company: Tripadvisor, ats: greenhouse, token: tripadvisor, tier: boston}
@@ -193,42 +193,46 @@ companies:
   - {company: Recorded Future, ats: greenhouse, token: recordedfuture, tier: boston}
   - {company: Starburst, ats: greenhouse, token: starburst, tier: boston}
   - {company: ezCater, ats: greenhouse, token: ezcaterinc, tier: boston}
-  - {company: Quickbase, ats: greenhouse, token: quickbase, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Quickbase, ats: greenhouse, token: quickbase, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Acquia, ats: greenhouse, token: acquia, tier: boston}
   - {company: Salsify, ats: greenhouse, token: salsify, tier: boston}
   - {company: Catalant, ats: ashby, token: catalant, tier: boston}
   - {company: Amwell, ats: greenhouse, token: amwell, tier: boston}
-  - {company: Circle.so, ats: ashby, token: circle, tier: remote-first, notes: 'community platform (not Circle Internet Financial)'}
+
+  # ---- remote-first
+  - {company: Circle.so, ats: ashby, token: circle, tier: remote-first, notes: community platform (not Circle Internet Financial)}
+
+  # ---- boston
   - {company: Proof (Notarize), ats: greenhouse, token: proof, tier: boston}
-  - {company: BitSight, ats: greenhouse, token: bitsight, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: BitSight, ats: greenhouse, token: bitsight, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Snyk, ats: ashby, token: snyk, tier: boston}
   - {company: SimpliSafe, ats: greenhouse, token: simplisafe, tier: boston}
   - {company: Motional, ats: greenhouse, token: motional, tier: boston}
-  - {company: Devoted Health, ats: greenhouse, token: devotedhealth, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: Kensho, ats: greenhouse, token: kensho, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Devoted Health, ats: smartrecruiters, token: Devotedhealth, tier: boston, notes: SmartRecruiters board had only clinical roles on 2026-11-25}
+  - {company: Kensho, ats: greenhouse, token: kensho, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Hometap, ats: greenhouse, token: hometap, tier: boston}
-  - {company: Robin, ats: greenhouse, token: robinpowered, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Robin, ats: greenhouse, token: robinpowered, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Tulip Interfaces, ats: greenhouse, token: tulip, tier: boston}
   - {company: Ellevation Education, ats: lever, token: ellevationeducation, tier: boston}
   - {company: Nasuni, ats: greenhouse, token: nasuni, tier: boston}
   - {company: Constant Contact, ats: greenhouse, token: constantcontact, tier: boston}
-  - {company: DataRobot, ats: greenhouse, token: datarobot, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: Validity, ats: greenhouse, token: validity, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: DataRobot, ats: other, token: datarobot, tier: boston, disabled: true, notes: custom ATS (datarobot.com/careers/open-positions)}
+  - {company: Validity, ats: greenhouse, token: validity, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Paperless Parts, ats: greenhouse, token: paperlessparts, tier: boston}
   - {company: Lightmatter, ats: greenhouse, token: lightmatter, tier: boston}
-  - {company: Forward Financing, ats: greenhouse, token: forwardfinancing, tier: boston, disabled: true, notes: 'listed board not found; possible match greenhouse/forward -- confirm by hand'}
-  - {company: Buildium, ats: greenhouse, token: buildium, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: Cybereason, ats: greenhouse, token: cybereason, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: Akili, ats: greenhouse, token: akili, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: Drift, ats: greenhouse, token: drift, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: Embark Veterinary, ats: greenhouse, token: embarkveterinary, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Forward Financing, ats: greenhouse, token: forwardfinancing, tier: boston, disabled: true, no_autodetect: true, notes: 'greenhouse/forward is Forward (getfwd.com, Austin), not Forward Financing; forwardfinancing.com/careers lists no supported board'}
+  - {company: Buildium, ats: other, token: buildium, tier: boston, disabled: true, no_autodetect: true, notes: part of RealPage; smartrecruiters/Buildium has a single stray posting}
+  - {company: Cybereason, ats: other, token: cybereason, tier: boston, disabled: true, notes: merged into LevelBlue; ATS unknown}
+  - {company: Akili, ats: greenhouse, token: akili, tier: boston, disabled: true, notes: greenhouse embed token akiliinteractive is closed (404) as of 2026-11-25}
+  - {company: Salesloft (Drift), ats: greenhouse, token: salesloft, tier: boston, notes: Drift was acquired by Salesloft}
+  - {company: Embark Veterinary, ats: greenhouse, token: embarkveterinary, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Possible Finance, ats: ashby, token: possible-finance, tier: boston}
   - {company: LinkSquares, ats: greenhouse, token: linksquaresinc, tier: boston}
-  - {company: Cogo Labs, ats: greenhouse, token: cogolabs, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Cogo Labs, ats: other, token: cogolabs, tier: boston, disabled: true, notes: careers redirect to Link Ventures; no board}
   - {company: Gradient AI, ats: greenhouse, token: gradientai, tier: boston}
-  - {company: Vecna Robotics, ats: greenhouse, token: vecnarobotics, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: Firefly Health, ats: greenhouse, token: fireflyhealth, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: Spot AI, ats: ashby, token: spotai, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Vecna Robotics, ats: greenhouse, token: vecnarobotics, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
+  - {company: Firefly Health, ats: workable, token: firefly-health, tier: boston}
+  - {company: Spot AI, ats: ashby, token: spotai, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Reach Security, ats: ashby, token: reach, tier: boston}
   - {company: Hyperproof, ats: greenhouse, token: hyperproof, tier: boston}
   - {company: Liberty Mutual, ats: other, token: libertymutual, tier: boston, disabled: true, notes: 'not Workday: careers search is searchjobs.libertymutualgroup.com (custom ATS, not supported)'}
@@ -241,20 +245,19 @@ companies:
   - {company: Pegasystems, ats: other, token: pega, tier: boston, disabled: true, notes: 'not Workday: jobs listed on pega.com/about/careers/search (custom, not supported)'}
   - {company: ZoomInfo, ats: greenhouse, token: zoominfo, tier: boston}
   - {company: Mass General Brigham Digital, ats: workday, token: massgeneralbrigham, host: massgeneralbrigham.wd1.myworkdayjobs.com, site: MGBExternal, tier: boston}
-  - {company: Allurion, ats: greenhouse, token: allurion, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: InsightSquared, ats: greenhouse, token: insightsquared, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: Evisort, ats: greenhouse, token: evisort, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Allurion, ats: workable, token: allurion, tier: boston}
+  - {company: InsightSquared, ats: greenhouse, token: insightsquared, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
+  - {company: Evisort, ats: other, token: evisort, tier: boston, disabled: true, notes: acquired by Workday}
   - {company: Markforged, ats: greenhouse, token: markforged, tier: boston}
-  - {company: Desktop Metal, ats: greenhouse, token: desktopmetal, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Desktop Metal, ats: other, token: desktopmetal, tier: boston, disabled: true, notes: company wound down / acquired (site redirects to arc-impact.com)}
   - {company: Agero, ats: greenhouse, token: agero, tier: boston}
-  - {company: Rue Gilt Groupe, ats: greenhouse, token: ruegiltgroupe, tier: boston, disabled: true, notes: no board found (validator)}
-  - {company: Lexia Learning, ats: greenhouse, token: lexia, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Rue Gilt Groupe, ats: greenhouse, token: ruelala, tier: boston}
+  - {company: Lexia Learning, ats: greenhouse, token: lexia, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: EverTrue, ats: greenhouse, token: evertrue, tier: boston}
-  - {company: Aras, ats: greenhouse, token: aras, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: Aras, ats: other, token: aras, tier: boston, disabled: true, notes: 'BambooHR (aras.bamboohr.com), not supported'}
   - {company: Vestmark, ats: greenhouse, token: vestmark, tier: boston}
-  - {company: MineralTree, ats: greenhouse, token: mineraltree, tier: boston, disabled: true, notes: no board found (validator)}
+  - {company: MineralTree, ats: greenhouse, token: mineraltree, tier: boston, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Butterfly Network, ats: greenhouse, token: butterflynetwork, tier: boston}
-
   - {company: State Street, ats: workday, token: statestreet, host: statestreet.wd1.myworkdayjobs.com, site: Global, tier: boston}
   - {company: Biogen, ats: workday, token: biibhr, host: biibhr.wd3.myworkdayjobs.com, site: external, tier: boston, notes: Cambridge + RTP}
   - {company: BJ's Wholesale Club, ats: workday, token: bjswholesaleclub, host: bjswholesaleclub.wd1.myworkdayjobs.com, site: BJsCareers, tier: boston, notes: HQ Marlborough}
@@ -264,36 +267,36 @@ companies:
   - {company: Dell Technologies, ats: workday, token: dell, host: dell.wd1.myworkdayjobs.com, site: External, tier: boston, disabled: true, notes: 'retired Workday site: dell.wd1.../External page 500s and CXS returns 422 (2026-11); current ATS unknown'}
   - {company: Hanover Insurance, ats: other, token: hanover, tier: boston, disabled: true, notes: 'Dayforce (jobs.dayforcehcm.com/thg), not supported'}
   - {company: Akamai, ats: other, token: akamai, tier: boston, disabled: true, notes: 'Oracle Recruiting (jobs.akamai.com), not supported'}
-  - {company: MassMutual, ats: other, token: massmutual, tier: boston, disabled: true, notes: 'main US careers site not found (massmutual.com/careers timed out); Workday sites found are Ascend (Cincinnati) and India only'}
+  - {company: MassMutual, ats: other, token: massmutual, tier: boston, disabled: true, notes: main US careers site not found (massmutual.com/careers timed out); Workday sites found are Ascend (Cincinnati) and India only}
+
   # ---- rtp
   - {company: Pendo, ats: greenhouse, token: pendo, tier: rtp}
   - {company: Epic Games, ats: greenhouse, token: epicgames, tier: rtp}
   - {company: Bandwidth, ats: greenhouse, token: bandwidth, tier: rtp}
-  - {company: Lulu, ats: greenhouse, token: lulu, tier: rtp, disabled: true, notes: no board found (validator)}
-  - {company: Spreedly, ats: greenhouse, token: spreedly, tier: rtp, disabled: true, notes: no board found (validator)}
+  - {company: Lulu, ats: greenhouse, token: lulu, tier: rtp, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
+  - {company: Spreedly, ats: lever, token: spreedly, tier: rtp, disabled: true, notes: careers page links lever/spreedly; 0 postings as of 2026-11-25}
   - {company: Teamworks, ats: ashby, token: teamworks, tier: rtp}
-  - {company: Adwerx, ats: greenhouse, token: adwerx, tier: rtp, disabled: true, notes: no board found (validator)}
+  - {company: Adwerx, ats: other, token: adwerx, tier: rtp, disabled: true, notes: 'Breezy HR (adwerx.breezy.hr), not supported'}
   - {company: Levitate, ats: greenhouse, token: levitate, tier: rtp}
-  - {company: JupiterOne, ats: greenhouse, token: jupiterone, tier: rtp, disabled: true, notes: no board found (validator)}
+  - {company: JupiterOne, ats: greenhouse, token: jupiterone, tier: rtp, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Pryon, ats: lever, token: pryon, tier: rtp}
-  - {company: Validic, ats: greenhouse, token: validic, tier: rtp, disabled: true, notes: no board found (validator)}
+  - {company: Validic, ats: other, token: validic, tier: rtp, disabled: true, notes: 'BambooHR (validic.bamboohr.com), not supported'}
   - {company: Rithum, ats: greenhouse, token: rithum, tier: rtp}
-  - {company: WillowTree, ats: greenhouse, token: willowtree, tier: rtp, disabled: true, notes: no board found (validator)}
-  - {company: Prometheus Group, ats: greenhouse, token: prometheusgroup, tier: rtp, disabled: true, notes: 'listed board not found; possible match ashby/prometheus -- confirm by hand'}
-  - {company: Brightly Software, ats: greenhouse, token: brightly, tier: rtp, disabled: true, notes: no board found (validator)}
-  - {company: Diveplane, ats: greenhouse, token: diveplane, tier: rtp, disabled: true, notes: no board found (validator)}
+  - {company: TELUS Digital (WillowTree), ats: ashby, token: telus-digital, tier: rtp, notes: WillowTree careers redirect to TELUS Digital}
+  - {company: Prometheus Group, ats: greenhouse, token: prometheusgroup, tier: rtp, disabled: true, no_autodetect: true, notes: 'BambooHR (prometheusgroup.bamboohr.com), not supported; ashby/prometheus is an unrelated SF AI lab'}
+  - {company: Brightly Software, ats: other, token: brightly, tier: rtp, disabled: true, notes: part of Siemens (custom ATS)}
+  - {company: Howso (Diveplane), ats: workable, token: howso, tier: rtp, notes: Diveplane renamed to Howso}
   - {company: Red Hat, ats: workday, token: redhat, host: redhat.wd5.myworkdayjobs.com, site: jobs, tier: rtp}
   - {company: SAS, ats: other, token: sas, tier: rtp, disabled: true, notes: 'custom ATS, not supported'}
   - {company: Citrix (Cloud Software Group), ats: workday, token: citrix, host: citrix.wd1.myworkdayjobs.com, site: CitrixCareers, tier: rtp, disabled: true, notes: 'retired Workday site: citrix.wd1.../CitrixCareers page 500s and CXS returns 422 (2026-11); cloud.com/careers 404s'}
   - {company: NetApp, ats: workday, token: netapp, tier: rtp, disabled: true, notes: 'ATS unknown: netapp.com/company/careers 403s to fetchers and search finds no NetApp Workday site'}
   - {company: Avalara, ats: workday, token: avalara, tier: rtp, disabled: true, notes: 'ATS unknown: careers page 404s and search finds no Avalara Workday site'}
   - {company: Veradigm, ats: workday, token: veradigm, host: veradigm.wd12.myworkdayjobs.com, site: VR, tier: rtp}
-  - {company: Relias, ats: greenhouse, token: relias, tier: rtp, disabled: true, notes: no board found (validator)}
+  - {company: Relias, ats: greenhouse, token: relias, tier: rtp, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: SmartRent, ats: greenhouse, token: smartrent, tier: rtp}
-  - {company: Reveal Mobile, ats: greenhouse, token: revealmobile, tier: rtp, disabled: true, notes: no board found (validator)}
-  - {company: SciQuest / Jaggaer, ats: greenhouse, token: jaggaer, tier: rtp, disabled: true, notes: no board found (validator)}
-  - {company: Nuvolo, ats: greenhouse, token: nuvolo, tier: rtp, disabled: true, notes: no board found (validator)}
-
+  - {company: Reveal Mobile, ats: greenhouse, token: revealmobile, tier: rtp, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
+  - {company: SciQuest / Jaggaer, ats: other, token: jaggaer, tier: rtp, disabled: true, notes: 'iCIMS (careers-jaggaer.icims.com), not supported'}
+  - {company: Nuvolo, ats: greenhouse, token: nuvolo, tier: rtp, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: IQVIA, ats: workday, token: iqvia, host: iqvia.wd1.myworkdayjobs.com, site: IQVIA, tier: rtp}
   - {company: Cisco, ats: workday, token: cisco, host: cisco.wd5.myworkdayjobs.com, site: Cisco_Careers, tier: rtp}
   - {company: Merck, ats: workday, token: msd, host: msd.wd5.myworkdayjobs.com, site: SearchJobs, tier: rtp, notes: Durham/Wilson NC + Boston}
@@ -302,16 +305,17 @@ companies:
   - {company: Lenovo, ats: other, token: lenovo, tier: rtp, disabled: true, notes: 'custom search site (jobs.lenovo.com), not supported'}
   - {company: MetLife, ats: other, token: metlife, tier: rtp, disabled: true, notes: 'custom search site (metlifecareers.com), not supported'}
   - {company: Fortinet, ats: other, token: fortinet, tier: rtp, disabled: true, notes: 'Oracle Recruiting Cloud, not supported'}
+
   # ---- remote-first
   - {company: GitLab, ats: greenhouse, token: gitlab, tier: remote-first}
   - {company: Automattic, ats: greenhouse, token: automatticcareers, tier: remote-first}
   - {company: Zapier, ats: ashby, token: zapier, tier: remote-first}
-  - {company: Doist, ats: greenhouse, token: doist, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Doist, ats: greenhouse, token: doist, tier: remote-first, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Buffer, ats: ashby, token: buffer, tier: remote-first}
-  - {company: Help Scout, ats: greenhouse, token: helpscout, tier: remote-first, disabled: true, notes: 'listed board not found; possible match greenhouse/help -- confirm by hand'}
-  - {company: HashiCorp, ats: greenhouse, token: hashicorp, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Help Scout, ats: ashby, token: helpscout, tier: remote-first, no_autodetect: true, notes: greenhouse/help is an unrelated HVAC company}
+  - {company: HashiCorp, ats: other, token: hashicorp, tier: remote-first, disabled: true, notes: acquired by IBM (custom ATS)}
   - {company: Mozilla, ats: greenhouse, token: mozilla, tier: remote-first}
-  - {company: DuckDuckGo, ats: ashby, token: duckduckgo, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: DuckDuckGo, ats: ashby, token: duck-duck-go, tier: remote-first}
   - {company: Wikimedia Foundation, ats: greenhouse, token: wikimedia, tier: remote-first}
   - {company: Khan Academy, ats: greenhouse, token: khanacademy, tier: remote-first}
   - {company: Kraken, ats: ashby, token: kraken.com, tier: remote-first}
@@ -327,38 +331,38 @@ companies:
   - {company: Clipboard Health, ats: ashby, token: clipboard, tier: remote-first}
   - {company: Nava PBC, ats: greenhouse, token: navapbc, tier: remote-first}
   - {company: Ad Hoc, ats: ashby, token: ad-hoc, tier: remote-first}
-  - {company: Truss, ats: greenhouse, token: truss, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Truss, ats: greenhouse, token: trussworksinc, tier: remote-first}
   - {company: Skylight, ats: greenhouse, token: skylighthq, tier: remote-first}
   - {company: Coursera, ats: greenhouse, token: coursera, tier: remote-first}
   - {company: Udemy, ats: greenhouse, token: udemy, tier: remote-first}
   - {company: Zocdoc, ats: greenhouse, token: zocdoc, tier: remote-first}
-  - {company: Noom, ats: greenhouse, token: noom, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Noom, ats: greenhouse, token: noomgrowth, tier: remote-first}
   - {company: Lyra Health, ats: lever, token: lyrahealth, tier: remote-first}
-  - {company: Spring Health, ats: greenhouse, token: springhealth66, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Spring Health, ats: greenhouse, token: springhealth66, tier: remote-first, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Komodo Health, ats: greenhouse, token: komodohealth, tier: remote-first}
   - {company: Oscar Health, ats: greenhouse, token: oscar, tier: remote-first}
   - {company: Included Health, ats: lever, token: includedhealth, tier: remote-first}
   - {company: Headway, ats: ashby, token: headway, tier: remote-first}
   - {company: Grow Therapy, ats: ashby, token: grow-therapy, tier: remote-first}
   - {company: Alma, ats: ashby, token: alma, tier: remote-first}
-  - {company: Cerebral, ats: greenhouse, token: cerebral, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Cerebral, ats: greenhouse, token: cerebral, tier: remote-first, disabled: true, notes: careers page links greenhouse/cerebral and cerebralgoogle; both 404 as of 2026-11-25}
   - {company: Hims & Hers, ats: ashby, token: hims-and-hers, tier: remote-first}
   - {company: Ro, ats: lever, token: ro, tier: remote-first}
-  - {company: Nomad Health, ats: greenhouse, token: nomadhealth, tier: remote-first, disabled: true, notes: 'listed board not found; possible match ashby/nomad -- confirm by hand'}
-  - {company: Thoughtbot, ats: greenhouse, token: thoughtbot, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Nomad Health, ats: greenhouse, token: nomadhealth, tier: remote-first, disabled: true, no_autodetect: true, notes: 'careers page 404s, ATS unknown; ashby/nomad is an unrelated Denver company'}
+  - {company: Thoughtbot, ats: greenhouse, token: thoughtbot, tier: remote-first, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Viget, ats: lever, token: viget, tier: remote-first}
-  - {company: Sparkbox, ats: greenhouse, token: sparkbox, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Sparkbox, ats: greenhouse, token: sparkbox, tier: remote-first, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Toptal, ats: lever, token: toptal, tier: remote-first}
   - {company: Articulate, ats: lever, token: articulate, tier: remote-first}
-  - {company: Discourse, ats: greenhouse, token: discourse, tier: remote-first, disabled: true, notes: no board found (validator)}
-  - {company: Hotjar, ats: greenhouse, token: hotjar, tier: remote-first, disabled: true, notes: no board found (validator)}
-  - {company: Varo, ats: greenhouse, token: varomoney, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Discourse, ats: greenhouse, token: discourse, tier: remote-first, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
+  - {company: Contentsquare (Hotjar), ats: lever, token: contentsquare, tier: remote-first, notes: Hotjar is part of Contentsquare}
+  - {company: Varo, ats: greenhouse, token: varomoney, tier: remote-first, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Current, ats: greenhouse, token: current, tier: remote-first}
   - {company: Dave, ats: ashby, token: dave, tier: remote-first}
   - {company: Upstart, ats: greenhouse, token: upstart, tier: remote-first}
   - {company: Rocket Money, ats: greenhouse, token: truebill, tier: remote-first}
   - {company: Gemini, ats: greenhouse, token: gemini, tier: remote-first}
-  - {company: Chainalysis, ats: greenhouse, token: chainalysis, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Chainalysis, ats: ashby, token: chainalysis-careers, tier: remote-first}
   - {company: Alchemy, ats: ashby, token: alchemy, tier: remote-first}
   - {company: Fireblocks, ats: greenhouse, token: fireblocks, tier: remote-first}
   - {company: Anchorage Digital, ats: lever, token: anchorage, tier: remote-first}
@@ -369,12 +373,12 @@ companies:
   - {company: Coder, ats: ashby, token: coder, tier: remote-first}
   - {company: Chainguard, ats: greenhouse, token: chainguard, tier: remote-first}
   - {company: Socket, ats: ashby, token: socket, tier: remote-first}
-  - {company: Dagster Labs, ats: greenhouse, token: dagsterlabs, tier: remote-first}
+  - {company: Dagster Labs, ats: greenhouse, token: dagsterlabs, tier: remote-first, disabled: true, no_autodetect: true, notes: dagster.io/careers redirects to Prefect (listed)}
   - {company: Prefect, ats: ashby, token: prefect, tier: remote-first}
   - {company: Astronomer, ats: ashby, token: astronomer, tier: remote-first}
   - {company: Cockroach Labs, ats: greenhouse, token: cockroachlabs, tier: remote-first}
-  - {company: Redpanda, ats: greenhouse, token: redpandadata, tier: remote-first, disabled: true, notes: no board found (validator)}
-  - {company: Timescale, ats: ashby, token: timescale, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Redpanda, ats: ashby, token: redpanda-data, tier: remote-first}
+  - {company: Tiger Data (Timescale), ats: ashby, token: tigerdata, tier: remote-first, notes: Timescale renamed to Tiger Data}
   - {company: ClickHouse, ats: ashby, token: clickhouse, tier: remote-first}
   - {company: MotherDuck, ats: ashby, token: motherduck, tier: remote-first}
   - {company: Fivetran, ats: greenhouse, token: fivetran, tier: remote-first}
@@ -382,29 +386,29 @@ companies:
   - {company: Instructure, ats: ashby, token: instructure, tier: remote-first}
   - {company: Podium, ats: greenhouse, token: podium81, tier: remote-first}
   - {company: Lucid Software, ats: greenhouse, token: lucidsoftware, tier: remote-first}
-  - {company: Pluralsight, ats: greenhouse, token: pluralsight, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Pluralsight, ats: workday, token: pluralsight, host: pluralsight.wd1.myworkdayjobs.com, site: careers, tier: remote-first}
   - {company: Qualtrics, ats: greenhouse, token: qualtrics, tier: remote-first}
-  - {company: Domo, ats: greenhouse, token: domo, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Domo, ats: other, token: domo, tier: remote-first, disabled: true, notes: domo.com/careers redirects to Progress Software careers}
   - {company: Weave, ats: greenhouse, token: weave, tier: remote-first}
   - {company: Life360, ats: greenhouse, token: life360, tier: remote-first}
-  - {company: Grubhub, ats: greenhouse, token: grubhub, tier: remote-first, disabled: true, notes: no board found (validator)}
-  - {company: Zendesk, ats: greenhouse, token: zendesk, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Grubhub, ats: other, token: grubhub, tier: remote-first, disabled: true, notes: 'owned by Wonder (Workday tenant wonder), not Grubhub-specific'}
+  - {company: Zendesk, ats: workday, token: zendesk, host: zendesk.wd1.myworkdayjobs.com, site: zendesk, tier: remote-first}
   - {company: Twitch, ats: greenhouse, token: twitch, tier: remote-first}
   - {company: Roblox, ats: greenhouse, token: roblox, tier: remote-first}
-  - {company: Unity, ats: greenhouse, token: unity3d, tier: remote-first, disabled: true, notes: no board found (validator)}
-  - {company: Niantic, ats: greenhouse, token: niantic, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Unity, ats: greenhouse, token: unity3d, tier: remote-first, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
+  - {company: Niantic Spatial, ats: ashby, token: niantic-spatial, tier: remote-first, notes: Niantic games went to Scopely; Niantic Spatial is the remaining company}
   - {company: Riot Games, ats: greenhouse, token: riotgames, tier: remote-first}
   - {company: Jane Street, ats: greenhouse, token: janestreet, tier: remote-first}
-  - {company: Two Sigma, ats: greenhouse, token: twosigma, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Two Sigma, ats: greenhouse, token: twosigma, tier: remote-first, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
   - {company: Hudson River Trading, ats: greenhouse, token: wehrtyou, tier: remote-first}
   - {company: Nuro, ats: greenhouse, token: nuro, tier: remote-first}
   - {company: Samsara, ats: greenhouse, token: samsara, tier: remote-first}
   - {company: Verkada, ats: greenhouse, token: verkada, tier: remote-first}
-  - {company: Rippling, ats: ashby, token: rippling, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: Rippling, ats: other, token: rippling, tier: remote-first, disabled: true, notes: custom ATS (Rippling's own)}
   - {company: Justworks, ats: greenhouse, token: justworks, tier: remote-first}
   - {company: Jobber, ats: ashby, token: jobber, tier: remote-first}
-  - {company: ServiceTitan, ats: greenhouse, token: servicetitan, tier: remote-first, disabled: true, notes: no board found (validator)}
-  - {company: Procore, ats: greenhouse, token: procoretechnologies, tier: remote-first, disabled: true, notes: no board found (validator)}
-  - {company: Navan, ats: greenhouse, token: navan, tier: remote-first, disabled: true, notes: no board found (validator)}
+  - {company: ServiceTitan, ats: smartrecruiters, token: ServiceTitan, tier: remote-first}
+  - {company: Procore, ats: greenhouse, token: procoretechnologies, tier: remote-first, disabled: true, notes: careers page lists no supported ATS board (checked 2026-11-25)}
+  - {company: Navan, ats: greenhouse, token: tripactions, tier: remote-first}
   - {company: Expensify, ats: ashby, token: expensify, tier: remote-first}
   - {company: Bill.com, ats: greenhouse, token: billcom, tier: remote-first}
