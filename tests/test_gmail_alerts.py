@@ -100,6 +100,36 @@ def test_real_linkedin_alert_whole_card_is_one_link():
     assert all(j.tier == "linkedin-alert" for j in jobs)
 
 
+def test_real_linkedin_daily_job_alert():
+    # Real daily job-alert email from jobalerts-noreply@ (Nov 2026), sanitized: logo, title and card are
+    # separate links to the same job, and cards carry "N company alumni" / "1 connection" badges.
+    html = (FIXTURES / "gmail" / "linkedin_jobalert_real_2026-11.html").read_text()
+    jobs = gmail_alerts.parse_message(gmail_message(html, "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"))
+    assert [(j.id, j.title, j.company, j.location) for j in jobs] == [
+        ("linkedin:4493279270", "Software Engineer", "Optum", "Hartford, CT"),
+        ("linkedin:4486491615", "Software Engineer - Fern", "Postman", "New York, NY"),
+        (
+            "linkedin:4494730578",
+            "Junior Front End Software Engineer",
+            "ESChat",
+            "Greater San Luis Obispo Area (Hybrid)",
+        ),
+        ("linkedin:4490966442", "Forward Deployed Software Engineer", "ICF", "Reston, VA"),
+        ("linkedin:4493030227", "Full Stack Engineer (E1)", "Lockheed Martin", "Brandon, FL (Remote)"),
+        ("linkedin:4494177697", "Software Engineer", "Cisco", "Arlington, VA"),
+    ]
+    assert [j.remote for j in jobs] == [None, None, None, None, True, None]
+
+
+def test_alumni_badge_is_never_a_title():
+    html = (
+        '<a href="https://www.linkedin.com/comm/jobs/view/1/">'
+        "<p>36 company alumni</p><p>UI Engineer</p><p>Acme · Remote</p></a>"
+    )
+    jobs = gmail_alerts.parse_alert_html(html, "linkedin", None)
+    assert [(j.title, j.company, j.location) for j in jobs] == [("UI Engineer", "Acme", "Remote")]
+
+
 def test_card_text_does_not_leak_into_footer_or_skip_links():
     html = (
         '<a href="https://www.linkedin.com/comm/jobs/view/1/"><div>Frontend Engineer</div><p>Acme · Remote</p>'
